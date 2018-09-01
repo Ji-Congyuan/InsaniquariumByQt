@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/backgrounds">
+        <file>images/backgrounds/aquarium1.png</file>
+        <file>images/backgrounds/aquarium3.png</file>
+    </qresource>
+    <qresource prefix="/buttons">
+        <file>images/buttons/startGame.png</file>
+    </qresource>
+</RCC>
