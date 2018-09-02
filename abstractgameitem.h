@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include "randommaker.h"
+#include "pixmapsmaker.h"
 #include <QWidget>
 #include <QGraphicsObject>
 #include <QGraphicsScene>
@@ -24,7 +25,9 @@ public:
                      QGraphicsScene *scene,
                      QGraphicsItem *parent = nullptr);
     virtual ~AbstractGameItem(){}
-    virtual QString name() const = 0;
+    virtual const QString & name() const = 0;
+    qreal width() const;
+    qreal height() const;
 
 protected:
     uint m_step;

@@ -3,6 +3,7 @@
 
 #include "pixmapsmaker.h"
 #include "menubtn.h"
+#include "fishfactory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -10,6 +11,8 @@
 #include <QGraphicsRectItem>
 #include <QColor>
 #include <QPixmap>
+#include <QTime>
+#include <QTimer>
 
 class Insaniquarium : public QGraphicsView
 {
@@ -27,6 +30,8 @@ public slots:
     void slt_nextLevel(int);
     // game over
     void slt_gameOver();
+    // update scene
+    void slt_update();
 
 signals:
 
@@ -39,6 +44,8 @@ private:
 
     // btn images
     QPixmap m_startGameBtnPix;
+
+    QTimer * m_timer;
 
 };
 

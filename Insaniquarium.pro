@@ -9,7 +9,11 @@ HEADERS += \
     pixmapsmaker.h \
     abstractmovableitem.h \
     abstractcreature.h \
-    randommaker.h
+    randommaker.h \
+    abstractfish.h \
+    guppy.h \
+    fishfactory.h \
+    smallguppy.h
 
 SOURCES += \
     config.cpp \
@@ -21,7 +25,11 @@ SOURCES += \
     pixmapsmaker.cpp \
     abstractmovableitem.cpp \
     abstractcreature.cpp \
-    randommaker.cpp
+    randommaker.cpp \
+    abstractfish.cpp \
+    guppy.cpp \
+    fishfactory.cpp \
+    smallguppy.cpp
 
 RESOURCES += \
     images.qrc

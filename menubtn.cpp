@@ -32,10 +32,9 @@ void MenuBtn::paint(QPainter *painter,
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->drawPixmap(0, 0, m_pixs.at(m_pixIndex));
-    qDebug() << "paint";
 }
 
-QString MenuBtn::name() const
+const QString & MenuBtn::name() const
 {
     return m_name;
 }
@@ -48,8 +47,7 @@ void MenuBtn::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         event->accept();
-        qDebug() << "leftbutton";
-        m_pixIndex = 2;
+        m_pixIndex = Config::PRESSED_MENU_BTN_INDEX;
         update();
         emit sgn_startGame();
     } else {
@@ -60,16 +58,14 @@ void MenuBtn::mousePressEvent(QGraphicsSceneMouseEvent *event)
 void MenuBtn::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
     event->accept();
-    qDebug() << "enter";
-    m_pixIndex = 1;
+    m_pixIndex = Config::HOVER_MENU_BTN_INDEX;
     update();
 }
 
 void MenuBtn::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
     event->accept();
-    qDebug() << "leave";
-    m_pixIndex = 0;
+    m_pixIndex = Config::DEFAULT_MENU_BTN_INDEX;
     update();
 }
 

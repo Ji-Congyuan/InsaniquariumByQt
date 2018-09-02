@@ -8,13 +8,6 @@ int main(int argc, char * argv[]){
     Insaniquarium insaniquarium;
     insaniquarium.showMenu();
     insaniquarium.show();
-/*
-    qDebug() << RandomMaker::creatRandom(15);
-    qDebug() << RandomMaker::creatRandom(15);
-    qDebug() << RandomMaker::creatRandom(15);
-    qDebug() << RandomMaker::creatRandom(15, 20);
-    qDebug() << RandomMaker::creatRandom(15, 20);
-    qDebug() << RandomMaker::creatRandom(15, 20);
-*/
+
     return app.exec();
 }

@@ -6,4 +6,7 @@
     <qresource prefix="/buttons">
         <file>images/buttons/startGame.png</file>
     </qresource>
+    <qresource prefix="/fish">
+        <file>images/fish/smallGuppy.png</file>
+    </qresource>
 </RCC>

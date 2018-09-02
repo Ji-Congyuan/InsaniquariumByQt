@@ -19,7 +19,7 @@ public:
     void paint(QPainter *painter,
                const QStyleOptionGraphicsItem *option,
                QWidget *widget);
-    QString name() const;
+    const QString & name() const;
     void advance(int);
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event);

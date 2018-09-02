@@ -6,17 +6,18 @@
 class AbstractCreature : public AbstractMovableItem
 {
 public:
-    AbstractCreature(qreal blood, qreal w, qreal h, const QPointF &pos,
-                     qreal speed, const QPixmaps2 &pixs2, QGraphicsScene *scene,
+    AbstractCreature(qreal w, qreal h, const QPointF &pos,
+                     const QPixmaps2 &pixs2, QGraphicsScene *scene,
                      QGraphicsItem *parent = nullptr);
     ~AbstractCreature() {}
-    // virtual void eat(Food *) = 0;
+    // FIXME virtual void eat(Food *);
     virtual void die();
-
+    // FIXME virtual void findFood();
+    void move();
+    bool isAlive();
 
 protected:
-    qreal m_blood;
-
+    bool m_alive;
 };
 
 #endif // ABSTRACTCREATURE_H
