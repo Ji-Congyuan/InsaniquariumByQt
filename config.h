@@ -34,9 +34,6 @@ public:
     // foods path
     static const QString FOODS_PATH;
 
-    // fish path
-    static const QString SMALL_GUPPY_PATH;
-
     // pool size
     static const int POOL_UPPER_BOUND;
     static const int POOL_LOWER_BOUND;
@@ -45,17 +42,9 @@ public:
     static const int FISH_WIDTH;
     static const int FISH_HEIGHT;
 
-    // fish paint size
-    static const int SMALL_GUPPY_PAINT_WIDTH;
-    static const int SMALL_GUPPY_PAINT_HEIGHT;
-
     // foods size
     static const int FOODS_WIDTH;
     static const int FOODS_HEIGHT;
-
-    // foods paint size
-    static const int SMALL_FOOD_PAINT_WIDTH;
-    static const int SMALL_FOOD_PAINT_HEIGHT;
 
     // init counts
     static const int INIT_FOODS_RESTRICT;
@@ -82,19 +71,11 @@ public:
     static const int FISH_STATE_COUNT;
     static const int FISH_INDEX_COUNT;
 
-    static const int SMALL_FOOD_INDEX;
-    static const int MIDDLE_FOOD_INDEX;
-    static const int BIG_FOOD_INDEX;
-    static const int BUTTLE_FOOD_INDEX;
-    static const int SUPER_FOOD_INDEX;
-
     static const int FOOD_STATE_COUNT;
     static const int FOOD_INDEX_COUNT;
 
-    // move speed
+    // speed up
     static const qreal HUNGRY_INCREASE;
-
-    static const int GUPPY_SPEED;
 
     // sink speed
     static const int BODY_SINK_SPEED;
@@ -103,13 +84,6 @@ public:
     // threshold
     static const int HUNGRY_THRESHOLD;
     static const int FULL_THRESHOLD;
-
-    // foods exp
-    static const int SMALL_FOOD_EXP;
-    static const int MIDDLE_FOOD_EXP;
-    static const int BIG_FOOD_EXP;
-    static const int BUTTLE_FOOD_EXP;
-    static const int SUPER_FOOD_EXP;
 
     // steps
     static const int HUNGRY_STEP;

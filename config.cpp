@@ -22,9 +22,6 @@ const QString Config::BTN_STARTGAME_PATH = ":/buttons/images/buttons/startGameBt
 // foods path
 const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
 
-// fish path
-const QString Config::SMALL_GUPPY_PATH = ":/fish/images/fish/smallGuppy.png";
-
 // pool size
 const int Config::POOL_UPPER_BOUND = 120;
 const int Config::POOL_LOWER_BOUND = 660;
@@ -32,10 +29,6 @@ const int Config::POOL_LOWER_BOUND = 660;
 // fish size
 const int Config::FISH_WIDTH  = 80;
 const int Config::FISH_HEIGHT = 80;
-
-// fish paint size
-const int Config::SMALL_GUPPY_PAINT_WIDTH  = 40;
-const int Config::SMALL_GUPPY_PAINT_HEIGHT = 40;
 
 // init counts
 const int Config::INIT_FOODS_RESTRICT = 3;   // defualt 1
@@ -45,10 +38,6 @@ const int Config::INIT_HUNGRY         = 75;
 // foods size
 const int Config::FOODS_WIDTH  = 40;
 const int Config::FOODS_HEIGHT = 40;
-
-// foods paint size
-const int Config::SMALL_FOOD_PAINT_WIDTH  = 16;
-const int Config::SMALL_FOOD_PAINT_HEIGHT = 11;
 
 // pixs index
 const int Config::DEFAULT_MENU_BTN_INDEX = 0;
@@ -70,20 +59,12 @@ const int Config::DIE_RIGHT_STATE_INDEX         = 9;
 const int Config::FISH_STATE_COUNT              = 10;
 const int Config::FISH_INDEX_COUNT              = 10;
 
-const int Config::SMALL_FOOD_INDEX              = 0;
-const int Config::MIDDLE_FOOD_INDEX             = 1;
-const int Config::BIG_FOOD_INDEX                = 2;
-const int Config::BUTTLE_FOOD_INDEX             = 3;
-const int Config::SUPER_FOOD_INDEX              = 4;
-
 const int Config::FOOD_STATE_COUNT              = 5;
 const int Config::FOOD_INDEX_COUNT              = 10;
 
 
-// move speed
+// speed up
 const qreal Config::HUNGRY_INCREASE = 1.5;
-
-const int Config::GUPPY_SPEED       = 5;
 
 // sink speed
 const int Config::BODY_SINK_SPEED   = 10;
@@ -92,13 +73,6 @@ const int Config::FOOD_SINK_SPEED   = 2;
 // hungry threshold
 const int Config::HUNGRY_THRESHOLD = 25;
 const int Config::FULL_THRESHOLD   = 75;
-
-// foods exp
-const int Config::SMALL_FOOD_EXP  = 10;
-const int Config::MIDDLE_FOOD_EXP = 15;
-const int Config::BIG_FOOD_EXP    = 20;
-const int Config::BUTTLE_FOOD_EXP = 25;
-const int Config::SUPER_FOOD_EXP  = 30;
 
 // steps
 const int Config::HUNGRY_STEP           = 15;
@@ -110,41 +84,41 @@ const int Config::FIND_FOOD_STEP        = 5;
 
 // hash
 const QHash<QString, int> Config::FISH_SPEED = {
-    { "smallGuppy", Config::GUPPY_SPEED }
+    { "smallGuppy", 5 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_WIDTH = {
-    { "smallGuppy", Config::SMALL_GUPPY_PAINT_WIDTH }
+    { "smallGuppy", 40 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
-    { "smallGuppy", Config::SMALL_GUPPY_PAINT_HEIGHT }
+    { "smallGuppy", 40 }
 };
 
 const QHash<QString, QString> Config::FISH_PATH = {
-    { "smallGuppy", Config::SMALL_GUPPY_PATH }
+    { "smallGuppy", ":/fish/images/fish/smallGuppy.png" }
 };
 
 const QHash<QString, int> Config::FOODS_INDEX = {
-    { "smallFood", Config::SMALL_FOOD_INDEX },
-    { "middleFood", Config::MIDDLE_FOOD_INDEX },
-    { "bigFood", Config::BIG_FOOD_INDEX },
-    { "buttleFood", Config::BUTTLE_FOOD_INDEX },
-    { "superFood", Config::SUPER_FOOD_INDEX }
+    { "smallFood", 0 },
+    { "middleFood", 1 },
+    { "bigFood", 2 },
+    { "buttleFood", 3 },
+    { "superFood", 4 }
 };
 
 const QHash<QString, int> Config::FOODS_EXP = {
-    { "smallFood", Config::SMALL_FOOD_EXP },
-    { "middleFood", Config::MIDDLE_FOOD_EXP },
-    { "bigFood", Config::BIG_FOOD_EXP },
-    { "buttleFood", Config::BUTTLE_FOOD_EXP },
-    { "superFood", Config::SUPER_FOOD_EXP }
+    { "smallFood", 10 },
+    { "middleFood", 15 },
+    { "bigFood", 20 },
+    { "buttleFood", 25 },
+    { "superFood", 30 }
 };
 
 const QHash<QString, int> Config::FOODS_PAINT_WIDTH = {
-    { "smallFood", Config::SMALL_FOOD_PAINT_WIDTH }
+    { "smallFood", 16 }
 };
 
 const QHash<QString, int> Config::FOODS_PAINT_HEIGHT = {
-    { "smallFood", Config::SMALL_FOOD_PAINT_HEIGHT }
+    { "smallFood", 11 }
 };
