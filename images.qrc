@@ -4,9 +4,12 @@
         <file>images/backgrounds/aquarium3.png</file>
     </qresource>
     <qresource prefix="/buttons">
-        <file>images/buttons/startGame.png</file>
+        <file>images/buttons/startGameBtn.png</file>
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
+    </qresource>
+    <qresource prefix="/foods">
+        <file>images/foods/food.png</file>
     </qresource>
 </RCC>

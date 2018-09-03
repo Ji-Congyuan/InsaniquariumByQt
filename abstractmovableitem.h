@@ -32,6 +32,10 @@ public:
     void toLeft();
     void toRight();
     void turning(const bool turn);
+    void setPaintWidth(const qreal w);
+    void setPaintHeight(const qreal h);
+    qreal paintWidth() const;
+    qreal paintHeight() const;
     void updateDirection();
     virtual void vanish();
 
@@ -42,15 +46,21 @@ protected:
 
     QPixmaps2 m_pixs2;
     int m_pixStateIndex;
+
     bool m_hasTarget;
     QGraphicsObject * m_target;
 
     // distance to
     qreal m_distance;
 
+    // control turning
     bool m_left;
     bool m_right;
     bool m_turning;
+
+    // size to paint
+    qreal m_paintWidth;
+    qreal m_paintHeight;
 };
 
 #endif // ABSTRACTMOVABLEITEM_H

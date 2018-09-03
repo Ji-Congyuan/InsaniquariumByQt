@@ -11,16 +11,33 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
 
 void AbstractFish::advance(int)
 {
-    AbstractMovableItem::advance(0);
+    AbstractCreature::advance(0);
 
     if (m_step % Config::MOVE_STEP == 0){
         updateDirection();
 
+        m_pixIndex++;
+
+        if (m_pixIndex == Config::FISH_INDEX_COUNT){
+            m_pixIndex = 0;
+            // finish turning
+            if (turning()){
+                turning(false);
+            }
+            // vanish after sink
+            else if (!isAlive()){
+                vanish();
+            }
+        }
+       //  qDebug() << m_pixIndex;
+
         if (turning()){
             if (right()){
+                // qDebug() << "turning right";
                 m_pixStateIndex = Config::NORMAL_TURN_RIGHT_STATE_INDEX;
             }
             else if (left()){
+                // qDebug() << "turning left";
                 m_pixStateIndex = Config::NORMAL_TURN_LEFT_STATE_INDEX;
             }
         }
@@ -34,33 +51,16 @@ void AbstractFish::advance(int)
         }
         else {
             if (left()){
+                // qDebug() << "swim left";
                 m_pixStateIndex = Config::NORMAL_SWIM_LEFT_STATE_INDEX;
             }
             else if (right()){
+                // qDebug() << "swim right";
                 m_pixStateIndex = Config::NORMAL_SWIM_RIGHT_STATE_INDEX;
             }
         }
         if ( isAlive() && isHungry()){
             m_pixStateIndex += 4;
-        }
-
-        m_pixIndex++;
-        if (m_pixIndex == Config::FISH_INDEX_COUNT){
-            m_pixIndex = 0;
-            // finish turning
-            if (turning()){
-                turning(false);
-                if (left()){
-                    toRight();
-                }
-                else if (right()){
-                    toLeft();
-                }
-            }
-            // vanish after sink
-            else if (!isAlive()){
-                vanish();
-            }
         }
 
         move();

@@ -107,6 +107,8 @@ AbstractFish *FishFactory::creatFish(const QString &name,
     }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
+    fish->setPaintWidth(Config::FISH_PAINT_WIDTH[name]);
+    fish->setPaintHeight(Config::FISH_PAINT_HEIGHT[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
 
     fish->updateDirection();

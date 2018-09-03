@@ -35,7 +35,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
                     Qt::KeepAspectRatioByExpanding);
 
     // load btn images
-    m_startGameBtnPix = QPixmap(Config::BTN_STARTGAME);
+    m_startGameBtnPix = QPixmap(Config::BTN_STARTGAME_PATH);
     qreal width = m_startGameBtnPix.width();
     qreal height = m_startGameBtnPix.height();
     m_startGameBtnPix = m_startGameBtnPix.scaled(width * Config::SCALE_RATIO,

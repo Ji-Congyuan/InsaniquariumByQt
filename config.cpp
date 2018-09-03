@@ -17,7 +17,10 @@ const QString Config::BG_MENU_PATH   = ":/backgrounds/images/backgrounds/aquariu
 const QString Config::BG_GAME_PATH_1 = ":/backgrounds/images/backgrounds/aquarium1.png";
 
 // buttons path
-const QString Config::BTN_STARTGAME = ":/buttons/images/buttons/startGame.png";
+const QString Config::BTN_STARTGAME_PATH = ":/buttons/images/buttons/startGameBtn.png";
+
+// foods path
+const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
 
 // fish path
 const QString Config::SMALL_GUPPY_PATH = ":/fish/images/fish/smallGuppy.png";
@@ -25,6 +28,10 @@ const QString Config::SMALL_GUPPY_PATH = ":/fish/images/fish/smallGuppy.png";
 // pool size
 const int Config::POOL_UPPER_BOUND = 120;
 const int Config::POOL_LOWER_BOUND = 660;
+
+// fish paint size
+const int Config::SMALL_GUPPY_PAINT_WIDTH  = 40;
+const int Config::SMALL_GUPPY_PAINT_HEIGHT = 40;
 
 // fish size
 const int Config::SMALL_GUPPY_WIDTH  = 80;
@@ -76,6 +83,14 @@ const QHash<QString, int> Config::FISH_WIDTH = {
 
 const QHash<QString, int> Config::FISH_HEIGHT = {
     { "smallGuppy", Config::SMALL_GUPPY_HEIGHT }
+};
+
+const QHash<QString, int> Config::FISH_PAINT_WIDTH = {
+    { "smallGuppy", Config::SMALL_GUPPY_PAINT_WIDTH }
+};
+
+const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
+    { "smallGuppy", Config::SMALL_GUPPY_PAINT_HEIGHT }
 };
 
 const QHash<QString, QString> Config::FISH_PATH = {

@@ -10,6 +10,7 @@ public:
                      const QPixmaps2 &pixs2, QGraphicsScene *scene,
                      QGraphicsItem *parent = nullptr);
     ~AbstractCreature() {}
+    void advance(int);
     // FIXME virtual void eat(Food *);
     virtual void die();
     // FIXME virtual void findFood();

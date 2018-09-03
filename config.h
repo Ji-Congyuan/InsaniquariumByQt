@@ -29,7 +29,10 @@ public:
     static const QString BG_GAME_PATH_1;
 
     // buttons path
-    static const QString BTN_STARTGAME;
+    static const QString BTN_STARTGAME_PATH;
+
+    // foods path
+    static const QString FOODS_PATH;
 
     // fish path
     static const QString SMALL_GUPPY_PATH;
@@ -41,6 +44,10 @@ public:
     // fish size
     static const int SMALL_GUPPY_WIDTH;
     static const int SMALL_GUPPY_HEIGHT;
+
+    // fish paint size
+    static const int SMALL_GUPPY_PAINT_WIDTH;
+    static const int SMALL_GUPPY_PAINT_HEIGHT;
 
     // pixs index
     static const int DEFAULT_MENU_BTN_INDEX;
@@ -82,6 +89,8 @@ public:
     static const QHash<QString, QString> FISH_PATH;
     static const QHash<QString, int> FISH_WIDTH;
     static const QHash<QString, int> FISH_HEIGHT;
+    static const QHash<QString, int> FISH_PAINT_WIDTH;
+    static const QHash<QString, int> FISH_PAINT_HEIGHT;
     static const QHash<QString, int> FISH_SPEED;
 
 

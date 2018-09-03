@@ -8,6 +8,11 @@ AbstractCreature::AbstractCreature(qreal w, qreal h, const QPointF &pos,
 {
 }
 
+void AbstractCreature::advance(int)
+{
+    AbstractMovableItem::advance(0);
+}
+
 void AbstractCreature::die()
 {
     m_alive = false;
@@ -16,7 +21,7 @@ void AbstractCreature::die()
 void AbstractCreature::move()
 {
 
-    if (!m_hasTarget){
+    if (!m_hasTarget && !turning() ){
         if (m_step % Config::CHANGE_DIRECTION_STEP == 0){
             setDirection(direction() + RandomMaker::creatRandom(-5, 6) / 40.0);
         }
@@ -31,20 +36,20 @@ void AbstractCreature::move()
         break;
     case UPEDGE:
         setDirection( 2 * Config::PI - direction());
-        pos.ry() = Config::POOL_UPPER_BOUND;
+        pos.ry() = Config::POOL_UPPER_BOUND - (height() - paintHeight()) / 2;
         break;
     case DOWNEDGE:
         setDirection( 2 * Config::PI - direction());
-        pos.ry() = Config::POOL_LOWER_BOUND - height();
+        pos.ry() = Config::POOL_LOWER_BOUND - (height() + paintHeight()) / 2;
         break;
     case LEFTEDGE:
         setDirection(Config::PI - direction());
-        pos.rx() = 0;
+        pos.rx() = - (width() - paintWidth()) / 2;
         m_pixIndex = 0;
         break;
     case RIGHTEDGE:
         setDirection(Config::PI - direction());
-        pos.rx() = Config::SCREEN_WIDTH - width();
+        pos.rx() = Config::SCREEN_WIDTH - (width() + paintWidth()) / 2;
         m_pixIndex = 0;
         break;
     default:

@@ -1,4 +1,5 @@
 #include "abstractmovableitem.h"
+#include <QDebug>
 
 AbstractMovableItem::AbstractMovableItem(qreal w, qreal h, const QPointF &pos,
                                          const QPixmaps2 &pixs2, QGraphicsScene *scene,
@@ -24,7 +25,14 @@ AbstractMovableItem::AbstractMovableItem(qreal w, qreal h, const QPointF &pos,
 
 QRectF AbstractMovableItem::boundingRect() const
 {
-    return m_pixs2.at(0).at(0).rect();
+    QRectF outerRect = m_pixs2.at(0).at(0).rect();
+    qreal outerX = outerRect.x();
+    qreal outerY = outerRect.y();
+    qreal outerWidth = outerRect.width();
+    qreal outerHeight = outerRect.height();
+    qreal innerX = outerX + outerWidth / 2 - paintWidth() / 2;
+    qreal innerY = outerY + outerHeight / 2 - paintHeight() / 2;
+    return QRectF(innerX, innerY, paintWidth(), paintHeight());
 }
 
 QPainterPath AbstractMovableItem::shape() const
@@ -43,10 +51,10 @@ void AbstractMovableItem::paint(QPainter *painter, const QStyleOptionGraphicsIte
 
 EDGE AbstractMovableItem::checkPos()
 {
-    if (scenePos().rx() <= 0) return LEFTEDGE;
-    if (scenePos().ry() <= Config::POOL_UPPER_BOUND) return UPEDGE;
-    if (scenePos().rx() + m_w >= Config::SCREEN_WIDTH) return RIGHTEDGE;
-    if (scenePos().ry() + m_h >= Config::POOL_LOWER_BOUND) return DOWNEDGE;
+    if (scenePos().rx() + (width()  - paintWidth()) / 2  <= 0) return LEFTEDGE;
+    if (scenePos().ry() + (height() - paintHeight()) / 2 <= Config::POOL_UPPER_BOUND) return UPEDGE;
+    if (scenePos().rx() + (width()  + paintWidth()) / 2  >= Config::SCREEN_WIDTH) return RIGHTEDGE;
+    if (scenePos().ry() + (height() + paintHeight()) / 2 >= Config::POOL_LOWER_BOUND) return DOWNEDGE;
     return INSIDE;
 }
 
@@ -112,17 +120,39 @@ void AbstractMovableItem::toLeft()
 {
     m_left = true;
     m_right = false;
+    // qDebug() << "to left";
 }
 
 void AbstractMovableItem::toRight()
 {
     m_left = false;
     m_right = true;
+    // qDebug() << "to right";
 }
 
 void AbstractMovableItem::turning(const bool turn)
 {
     m_turning = turn;
+}
+
+void AbstractMovableItem::setPaintWidth(const qreal w)
+{
+    m_paintWidth = w;
+}
+
+void AbstractMovableItem::setPaintHeight(const qreal h)
+{
+    m_paintHeight = h;
+}
+
+qreal AbstractMovableItem::paintWidth() const
+{
+    return m_paintWidth;
+}
+
+qreal AbstractMovableItem::paintHeight() const
+{
+    return m_paintHeight;
 }
 
 void AbstractMovableItem::updateDirection()
@@ -135,15 +165,16 @@ void AbstractMovableItem::updateDirection()
     }
 
     qreal dir = direction();
+    // qDebug() << "direction: "<< dir / Config::PI << "pi";
     if (dir <= Config::PI / 2 || dir > Config::PI * 3 / 2){
-        if (left()){
+        if (!right()){
             toRight();
             turning(true);
             m_pixIndex = 0;
         }
     }
     else if (dir > Config::PI / 2 && dir <= Config::PI * 3 / 2){
-        if (right()){
+        if (!left()){
             toLeft();
             turning(true);
             m_pixIndex = 0;
