@@ -2,6 +2,7 @@
 #define ABSTRACTMOVABLEITEM_H
 
 #include "abstractgameitem.h"
+#include <QObject>
 
 class AbstractMovableItem : public AbstractGameItem
 {
@@ -19,13 +20,17 @@ public:
     // check if item in the view
     EDGE checkPos();
     void advance(int);
-    virtual void aimAt(QGraphicsObject *target) = 0;
+    virtual void aimAt(AbstractMovableItem *target);
     virtual void move();
+    void updateDirection();
+    virtual void vanish();
+    QPointF centrePos();
+
+    qreal calDistance(QPointF &pos);
     qreal speed() const;
     qreal direction() const;
     void setSpeed(const qreal speed);
     void setDirection(const qreal dir);
-    qreal calDistance(QPointF &pos);
     bool left() const;
     bool right() const;
     bool turning() const;
@@ -37,8 +42,15 @@ public:
     void setState(const int state);
     qreal paintWidth() const;
     qreal paintHeight() const;
-    void updateDirection();
-    virtual void vanish();
+    void setExp(const int e);
+    int exp() const;
+
+
+signals:
+    void sgn_deleting();
+
+public slots:
+    void slt_lostAim();
 
 protected:
     qreal m_speed;
@@ -49,7 +61,7 @@ protected:
     int m_pixStateIndex;
 
     bool m_hasTarget;
-    QGraphicsObject * m_target;
+    AbstractMovableItem * m_target;
 
     // distance to
     qreal m_distance;
@@ -62,6 +74,8 @@ protected:
     // size to paint
     qreal m_paintWidth;
     qreal m_paintHeight;
+
+    int m_exp;
 };
 
 #endif // ABSTRACTMOVABLEITEM_H

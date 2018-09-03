@@ -5,7 +5,8 @@
 Insaniquarium::Insaniquarium(QWidget *parent)
     : QGraphicsView(parent),
       m_alienAttack(false), m_gaming(false),
-      m_maxFoodCount(1), m_currentFoodCount(0),
+      m_maxFoodCount(Config::INIT_FOODS_RESTRICT),
+      m_currentFoodCount(0),
       m_maxFoodLevel(4), m_foodLevel(0)
 {
     // set screen sizes
@@ -113,12 +114,15 @@ void Insaniquarium::slt_start()
     m_scene->clear();
     setBackgroundBrush(m_bgGamePix);
 
-    // init with two small Guppy
-    QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                     Config::POOL_UPPER_BOUND,
-                                                     Config::POOL_LOWER_BOUND);
+    for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
+            // init small Guppy
+        QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
 
-    m_scene->addItem(FishFactory::creatFish("smallGuppy", initPos1, m_scene));
+        AbstractFish * fish = FishFactory::creatFish("smallGuppy", initPos1, m_scene);
+        m_scene->addItem(fish);
+    }
 
     m_timer->start(20);
 

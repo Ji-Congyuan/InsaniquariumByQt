@@ -17,13 +17,10 @@ Food *FoodFactory::createFood(const QString &name,
                         pos, pixs2, scene);
     }
 
-    food->setSpeed(Config::SINK_SPEED);
+    food->setSpeed(Config::FOOD_SINK_SPEED);
     food->setDirection(Config::PI / 2);
     food->setPaintWidth(Config::FOODS_PAINT_WIDTH[name]);
     food->setPaintHeight(Config::FOODS_PAINT_HEIGHT[name]);
-
-    qDebug() << food->direction() / Config::PI << "pi";
-    qDebug() << food->speed();
 
     return food;
 }

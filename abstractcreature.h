@@ -11,15 +11,17 @@ public:
                      QGraphicsItem *parent = nullptr);
     ~AbstractCreature() {}
     void advance(int);
-    // FIXME virtual void eat(Food *);
+    // FIXME virtual void eat(/* Food * */);
     virtual void die();
-    // FIXME virtual void findFood();
+    virtual void findFood() = 0;
     void move();
-    void aimAt(QGraphicsObject *target);
+    void aimAt(AbstractMovableItem *target);
     bool isAlive();
+    bool willDie();
 
 protected:
     bool m_alive;
+    bool m_willDie;
 };
 
 #endif // ABSTRACTCREATURE_H

@@ -57,6 +57,11 @@ public:
     static const int SMALL_FOOD_PAINT_WIDTH;
     static const int SMALL_FOOD_PAINT_HEIGHT;
 
+    // init counts
+    static const int INIT_FOODS_RESTRICT;
+    static const int INIT_FISH_COUNT;
+    static const int INIT_HUNGRY;
+
     // pixs index
     static const int DEFAULT_MENU_BTN_INDEX;
     static const int HOVER_MENU_BTN_INDEX;
@@ -86,14 +91,18 @@ public:
     static const int FOOD_STATE_COUNT;
     static const int FOOD_INDEX_COUNT;
 
-    // fish speed
+    // move speed
     static const qreal HUNGRY_INCREASE;
-    static const int SINK_SPEED;
 
     static const int GUPPY_SPEED;
 
-    // hungry threshold
+    // sink speed
+    static const int BODY_SINK_SPEED;
+    static const int FOOD_SINK_SPEED;
+
+    // threshold
     static const int HUNGRY_THRESHOLD;
+    static const int FULL_THRESHOLD;
 
     // foods exp
     static const int SMALL_FOOD_EXP;
@@ -107,6 +116,8 @@ public:
     static const int YIELD_STEP;
     static const int UPDATE_PAINT_STEP;
     static const int CHANGE_DIRECTION_STEP;
+    static const int CHASE_STEP;
+    static const int FIND_FOOD_STEP;
 
     // hash
     static const QHash<QString, QString> FISH_PATH;

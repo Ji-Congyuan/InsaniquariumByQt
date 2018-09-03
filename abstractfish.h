@@ -1,7 +1,7 @@
 #ifndef ABSTRACTFISH_H
 #define ABSTRACTFISH_H
 
-#include <abstractcreature.h>
+#include "abstractcreature.h"
 
 class AbstractFish : public AbstractCreature
 {
@@ -18,11 +18,7 @@ public:
     virtual void gettingHungry();
     virtual void yield() = 0;
     bool isHungry();
-
-    /*
-    int blood() const;
-    void setMaxBlood(const int blood);
-    */
+    bool isFull();
 
 protected:
     // hungry: 0 will die and 100 is full
@@ -30,18 +26,6 @@ protected:
     // related to upgrade
     int m_exp;
 
-    /*
-    bool m_upgradable;
-    AbstractFish * m_nextPhase;
-
-    // yield product
-    AbstractMovableItem * m_yieldItem;
-    */
-
-
-    /*
-    int m_blood;
-    */
 };
 
 #endif // ABSTRACTFISH_H

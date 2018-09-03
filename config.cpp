@@ -37,6 +37,11 @@ const int Config::FISH_HEIGHT = 80;
 const int Config::SMALL_GUPPY_PAINT_WIDTH  = 40;
 const int Config::SMALL_GUPPY_PAINT_HEIGHT = 40;
 
+// init counts
+const int Config::INIT_FOODS_RESTRICT = 3;   // defualt 1
+const int Config::INIT_FISH_COUNT     = 1;   // default 2
+const int Config::INIT_HUNGRY         = 75;
+
 // foods size
 const int Config::FOODS_WIDTH  = 40;
 const int Config::FOODS_HEIGHT = 40;
@@ -75,15 +80,18 @@ const int Config::FOOD_STATE_COUNT              = 5;
 const int Config::FOOD_INDEX_COUNT              = 10;
 
 
-// fish speed
+// move speed
 const qreal Config::HUNGRY_INCREASE = 1.5;
-
-const int Config::SINK_SPEED        = 2;
 
 const int Config::GUPPY_SPEED       = 5;
 
+// sink speed
+const int Config::BODY_SINK_SPEED   = 10;
+const int Config::FOOD_SINK_SPEED   = 2;
+
 // hungry threshold
 const int Config::HUNGRY_THRESHOLD = 25;
+const int Config::FULL_THRESHOLD   = 75;
 
 // foods exp
 const int Config::SMALL_FOOD_EXP  = 10;
@@ -93,10 +101,12 @@ const int Config::BUTTLE_FOOD_EXP = 25;
 const int Config::SUPER_FOOD_EXP  = 30;
 
 // steps
-const int Config::HUNGRY_STEP           = 10;
-const int Config::YIELD_STEP            = 20;
+const int Config::HUNGRY_STEP           = 15;
+const int Config::YIELD_STEP            = 1000;
 const int Config::UPDATE_PAINT_STEP     = 5;
 const int Config::CHANGE_DIRECTION_STEP = 5;
+const int Config::CHASE_STEP            = 2;
+const int Config::FIND_FOOD_STEP        = 5;
 
 // hash
 const QHash<QString, int> Config::FISH_SPEED = {

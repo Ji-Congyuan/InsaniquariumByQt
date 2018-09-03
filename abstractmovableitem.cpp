@@ -66,6 +66,23 @@ void AbstractMovableItem::advance(int)
     }
 }
 
+void AbstractMovableItem::aimAt(AbstractMovableItem *target)
+{
+    if (target == Q_NULLPTR){ // target doesn't exist
+        m_hasTarget = false;
+    } else {
+        qreal tx = target->centrePos().x();
+        qreal ty = target->centrePos().y();
+        qreal mx = centrePos().x();
+        qreal my = centrePos().y();
+        qreal dir = atan2(ty - my, tx - mx);
+        if (dir < 0){
+            dir += Config::PI * 2;
+        }
+        setDirection(dir);
+    }
+}
+
 void AbstractMovableItem::move()
 {
     QPointF pos = scenePos();
@@ -120,14 +137,12 @@ void AbstractMovableItem::toLeft()
 {
     m_left = true;
     m_right = false;
-    // qDebug() << "to left";
 }
 
 void AbstractMovableItem::toRight()
 {
     m_left = false;
     m_right = true;
-    // qDebug() << "to right";
 }
 
 void AbstractMovableItem::turning(const bool turn)
@@ -160,6 +175,22 @@ qreal AbstractMovableItem::paintHeight() const
     return m_paintHeight;
 }
 
+void AbstractMovableItem::setExp(const int e)
+{
+    m_exp = e;
+}
+
+int AbstractMovableItem::exp() const
+{
+    return m_exp;
+}
+
+void AbstractMovableItem::slt_lostAim()
+{
+    m_hasTarget = false;
+    m_target = Q_NULLPTR;
+}
+
 void AbstractMovableItem::updateDirection()
 {
     if (direction() < 0){
@@ -170,7 +201,6 @@ void AbstractMovableItem::updateDirection()
     }
 
     qreal dir = direction();
-    // qDebug() << "direction: "<< dir / Config::PI << "pi";
     if (dir <= Config::PI / 2 || dir > Config::PI * 3 / 2){
         if (!right()){
             toRight();
@@ -191,6 +221,16 @@ void AbstractMovableItem::vanish()
 {
     setFlag(QGraphicsItem::ItemIsMovable, false);
     setVisible(false);
-    deleteLater();
-    // FIXME emit something
+    emit sgn_deleting();
+    scene()->removeItem(this);
+    delete this;
+}
+
+QPointF AbstractMovableItem::centrePos()
+{
+    QPointF leftTop = scenePos();
+    QPointF center;
+    center.rx() = leftTop.rx() + width() / 2;
+    center.ry() = leftTop.ry() + height() / 2;
+    return center;
 }

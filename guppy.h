@@ -13,6 +13,7 @@ public:
     // void yield();
     // void upgrade();
     void advance(int);
+    void findFood();
 
 protected:
     bool m_upgradable;
