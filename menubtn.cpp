@@ -39,10 +39,6 @@ const QString & MenuBtn::name() const
     return m_name;
 }
 
-void MenuBtn::advance(int)
-{
-}
-
 void MenuBtn::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {

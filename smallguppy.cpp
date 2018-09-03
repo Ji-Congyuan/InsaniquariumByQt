@@ -31,4 +31,5 @@ void SmallGuppy::yield()
 void SmallGuppy::advance(int)
 {
     Guppy::advance(0);
+    // FIXME
 }

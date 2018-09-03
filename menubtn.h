@@ -20,7 +20,6 @@ public:
                const QStyleOptionGraphicsItem *option,
                QWidget *widget);
     const QString & name() const;
-    void advance(int);
 
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);

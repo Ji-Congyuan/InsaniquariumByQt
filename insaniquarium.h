@@ -4,6 +4,7 @@
 #include "pixmapsmaker.h"
 #include "menubtn.h"
 #include "fishfactory.h"
+#include "foodfactory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -23,6 +24,9 @@ public:
     // show start menu
     void showMenu();
 
+    void mousePressEvent(QMouseEvent *event);
+    void addFood(const QPointF &pos);
+
 public slots:
     // game start
     void slt_start();
@@ -32,9 +36,10 @@ public slots:
     void slt_gameOver();
     // update scene
     void slt_update();
+    // food eaten by fish or out of screen
+    void slt_foodReduce();
 
 signals:
-
 
 private:
     QGraphicsScene *m_scene;
@@ -42,10 +47,18 @@ private:
     QPixmap m_bgGamePix;
     QPixmap m_bgMenuPix;
 
-    // btn images
     QPixmap m_startGameBtnPix;
 
+    int m_maxFoodCount;
+    int m_currentFoodCount;
+
+    int m_foodLevel;
+    int m_maxFoodLevel;
+
     QTimer * m_timer;
+
+    bool m_alienAttack;
+    bool m_gaming;
 
 };
 

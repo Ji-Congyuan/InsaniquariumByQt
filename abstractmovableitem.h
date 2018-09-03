@@ -19,7 +19,7 @@ public:
     // check if item in the view
     EDGE checkPos();
     void advance(int);
-    // FIXME virtual void aimAt(QGraphicsObject *target);
+    virtual void aimAt(QGraphicsObject *target) = 0;
     virtual void move();
     qreal speed() const;
     qreal direction() const;
@@ -34,6 +34,7 @@ public:
     void turning(const bool turn);
     void setPaintWidth(const qreal w);
     void setPaintHeight(const qreal h);
+    void setState(const int state);
     qreal paintWidth() const;
     qreal paintHeight() const;
     void updateDirection();

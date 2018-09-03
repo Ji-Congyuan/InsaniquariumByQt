@@ -7,6 +7,7 @@
 class FishFactory
 {
 public:  
+    // pos is the point where the left top of image is
     static AbstractFish * creatFish(const QString & name,
                                     const QPointF & pos,
                                     QGraphicsScene *scene);

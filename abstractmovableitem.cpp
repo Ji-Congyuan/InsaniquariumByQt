@@ -145,6 +145,11 @@ void AbstractMovableItem::setPaintHeight(const qreal h)
     m_paintHeight = h;
 }
 
+void AbstractMovableItem::setState(const int state)
+{
+    m_pixStateIndex = state;
+}
+
 qreal AbstractMovableItem::paintWidth() const
 {
     return m_paintWidth;

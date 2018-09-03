@@ -13,7 +13,7 @@ void AbstractFish::advance(int)
 {
     AbstractCreature::advance(0);
 
-    if (m_step % Config::MOVE_STEP == 0){
+    if (m_step % Config::UPDATE_PAINT_STEP == 0){
         updateDirection();
 
         m_pixIndex++;
@@ -29,15 +29,12 @@ void AbstractFish::advance(int)
                 vanish();
             }
         }
-       //  qDebug() << m_pixIndex;
 
         if (turning()){
             if (right()){
-                // qDebug() << "turning right";
                 m_pixStateIndex = Config::NORMAL_TURN_RIGHT_STATE_INDEX;
             }
             else if (left()){
-                // qDebug() << "turning left";
                 m_pixStateIndex = Config::NORMAL_TURN_LEFT_STATE_INDEX;
             }
         }
@@ -51,11 +48,9 @@ void AbstractFish::advance(int)
         }
         else {
             if (left()){
-                // qDebug() << "swim left";
                 m_pixStateIndex = Config::NORMAL_SWIM_LEFT_STATE_INDEX;
             }
             else if (right()){
-                // qDebug() << "swim right";
                 m_pixStateIndex = Config::NORMAL_SWIM_RIGHT_STATE_INDEX;
             }
         }
@@ -65,6 +60,7 @@ void AbstractFish::advance(int)
 
         move();
     }
+    // FIXME with other action
 
 }
 

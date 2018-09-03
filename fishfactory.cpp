@@ -20,8 +20,8 @@ AbstractFish *FishFactory::creatFish(const QString &name,
     QPixmaps dieL;
     QPixmaps dieR;
 
-    int width = Config::FISH_WIDTH[name];
-    int height = Config::FISH_HEIGHT[name];
+    int width = Config::FISH_WIDTH;
+    int height = Config::FISH_HEIGHT;
 
     for (int i = 0; i < Config::FISH_INDEX_COUNT; ++i){
         // NORMAL_SWIM_LEFT_STATE
@@ -101,15 +101,15 @@ AbstractFish *FishFactory::creatFish(const QString &name,
 
     AbstractFish * fish;
     if (name == "smallGuppy"){
-        fish = new SmallGuppy(Config::SMALL_GUPPY_WIDTH,
-                                           Config::SMALL_GUPPY_HEIGHT,
-                                           pos, pixs2, scene);
+        fish = new SmallGuppy(Config::FISH_WIDTH,
+                              Config::FISH_HEIGHT,
+                              pos, pixs2, scene);
     }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
-    fish->setPaintWidth(Config::FISH_PAINT_WIDTH[name]);
-    fish->setPaintHeight(Config::FISH_PAINT_HEIGHT[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
+    fish->setPaintWidth(Config::FISH_PAINT_WIDTH[name]);
+    fish->setPaintHeight(Config::FISH_PAINT_HEIGHT[name]);   
 
     fish->updateDirection();
 

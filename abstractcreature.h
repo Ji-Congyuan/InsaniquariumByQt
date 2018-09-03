@@ -15,6 +15,7 @@ public:
     virtual void die();
     // FIXME virtual void findFood();
     void move();
+    void aimAt(QGraphicsObject *target);
     bool isAlive();
 
 protected:

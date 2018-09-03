@@ -13,7 +13,10 @@ HEADERS += \
     abstractfish.h \
     guppy.h \
     fishfactory.h \
-    smallguppy.h
+    smallguppy.h \
+    abstractdropdownitem.h \
+    food.h \
+    foodfactory.h
 
 SOURCES += \
     config.cpp \
@@ -29,7 +32,10 @@ SOURCES += \
     abstractfish.cpp \
     guppy.cpp \
     fishfactory.cpp \
-    smallguppy.cpp
+    smallguppy.cpp \
+    abstractdropdownitem.cpp \
+    food.cpp \
+    foodfactory.cpp
 
 RESOURCES += \
     images.qrc

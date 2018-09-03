@@ -60,6 +60,11 @@ void AbstractCreature::move()
 
 }
 
+void AbstractCreature::aimAt(QGraphicsObject *target)
+{
+
+}
+
 bool AbstractCreature::isAlive()
 {
     return m_alive;
