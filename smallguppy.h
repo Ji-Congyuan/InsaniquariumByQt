@@ -5,6 +5,7 @@
 
 class SmallGuppy : public Guppy
 {
+    Q_OBJECT
 public:
     SmallGuppy(qreal w, qreal h, const QPointF &pos,
                const QPixmaps2 &pixs2, QGraphicsScene *scene,

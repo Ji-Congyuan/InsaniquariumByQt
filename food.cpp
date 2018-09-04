@@ -1,4 +1,5 @@
 #include "food.h"
+#include <QDebug>
 
 Food::Food(qreal w, qreal h, const QPointF &pos,
            const QPixmaps2 &pixs2, QGraphicsScene *scene,
@@ -16,6 +17,7 @@ const QString &Food::name() const
 
 void Food::vanish()
 {
+    qDebug() << "sgn_foodWasted";
     emit sgn_foodWasted();
     AbstractMovableItem::vanish(); 
 }

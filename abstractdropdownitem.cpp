@@ -20,6 +20,7 @@ void AbstractDropdownItem::advance(int)
         }
 
         move();
+        // qDebug() << scenePos();
     }
 }
 

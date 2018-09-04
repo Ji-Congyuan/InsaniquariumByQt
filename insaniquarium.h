@@ -23,7 +23,6 @@ public:
     Insaniquarium(QWidget *parent = nullptr);
     // show start menu
     void showMenu();
-
     void mousePressEvent(QMouseEvent *event);
     void addFood(const QPointF &pos);
 
@@ -59,6 +58,8 @@ private:
 
     bool m_alienAttack;
     bool m_gaming;
+
+    int m_step;
 
 };
 

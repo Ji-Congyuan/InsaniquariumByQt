@@ -104,6 +104,8 @@ public:
     static const QHash<QString, int> FOODS_PAINT_WIDTH;
     static const QHash<QString, int> FOODS_PAINT_HEIGHT;
 
+    static const QHash<QString, int> FISH_EXP;
+
 private:
     explicit Config() {}
 };

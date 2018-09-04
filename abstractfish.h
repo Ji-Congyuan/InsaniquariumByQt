@@ -14,6 +14,7 @@ public:
     ~AbstractFish(){}
     void advance(int);
     void move();
+    void eat(const int exp);
     virtual void upgrade() = 0;
     virtual void gettingHungry();
     virtual void yield() = 0;
@@ -23,8 +24,6 @@ public:
 protected:
     // hungry: 0 will die and 100 is full
     int m_hungry;
-    // related to upgrade
-    int m_exp;
 
 };
 

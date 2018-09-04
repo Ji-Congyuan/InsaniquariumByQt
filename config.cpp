@@ -31,8 +31,8 @@ const int Config::FISH_WIDTH  = 80;
 const int Config::FISH_HEIGHT = 80;
 
 // init counts
-const int Config::INIT_FOODS_RESTRICT = 3;   // defualt 1
-const int Config::INIT_FISH_COUNT     = 1;   // default 2
+const int Config::INIT_FOODS_RESTRICT = 2;   // defualt 1
+const int Config::INIT_FISH_COUNT     = 2;   // default 2
 const int Config::INIT_HUNGRY         = 75;
 
 // foods size
@@ -107,6 +107,14 @@ const QHash<QString, int> Config::FOODS_INDEX = {
     { "superFood", 4 }
 };
 
+const QHash<QString, int> Config::FOODS_PAINT_WIDTH = {
+    { "smallFood", 16 }
+};
+
+const QHash<QString, int> Config::FOODS_PAINT_HEIGHT = {
+    { "smallFood", 11 }
+};
+
 const QHash<QString, int> Config::FOODS_EXP = {
     { "smallFood", 10 },
     { "middleFood", 15 },
@@ -115,10 +123,6 @@ const QHash<QString, int> Config::FOODS_EXP = {
     { "superFood", 30 }
 };
 
-const QHash<QString, int> Config::FOODS_PAINT_WIDTH = {
-    { "smallFood", 16 }
-};
-
-const QHash<QString, int> Config::FOODS_PAINT_HEIGHT = {
-    { "smallFood", 11 }
+const QHash<QString, int> Config::FISH_EXP = {
+    { "smallGuppy", 10 }
 };

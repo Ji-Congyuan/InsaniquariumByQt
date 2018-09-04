@@ -5,7 +5,7 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
                            const QPixmaps2 &pixs2,
                            QGraphicsScene *scene, QGraphicsItem *parent)
     : AbstractCreature(w, h, pos, pixs2, scene, parent),
-      m_hungry(Config::INIT_HUNGRY), m_exp(0)
+      m_hungry(Config::INIT_HUNGRY)
 {
 }
 
@@ -37,17 +37,12 @@ void AbstractFish::advance(int)
             else if (turning()){
                 turning(false);
             }
-        }
-        qDebug() << "state: " << m_pixStateIndex;
-        qDebug() << "index: " << m_pixIndex;
+        }      
         if (willDie()){
-            qDebug() << "will die";
             if (right()){
-                qDebug() << "right";
                 m_pixStateIndex = Config::DIE_RIGHT_STATE_INDEX;
             }
             else if (left()){
-                qDebug() << "left";
                 m_pixStateIndex = Config::DIE_LEFT_STATE_INDEX;
             }
             m_pixIndex = 0;
@@ -87,6 +82,7 @@ void AbstractFish::advance(int)
             && isAlive()){
         gettingHungry();
     }
+
     // FIXME with other action
 
 }
@@ -100,6 +96,16 @@ void AbstractFish::move()
         pos.ry() += Config::BODY_SINK_SPEED;
         setPos(pos);
     }
+}
+
+void AbstractFish::eat(const int exp)
+{
+    m_exp += exp;
+    /*
+    if ...
+        upgrade
+    */
+    m_hungry = 100;
 }
 
 void AbstractFish::gettingHungry()

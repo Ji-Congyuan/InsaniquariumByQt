@@ -6,7 +6,7 @@ AbstractMovableItem::AbstractMovableItem(qreal w, qreal h, const QPointF &pos,
                                          QGraphicsItem *parent)
     : AbstractGameItem(w, h, scene, parent),
       m_pixStateIndex(0), m_hasTarget(false), m_target(nullptr),
-      m_left(false), m_right(false), m_turning(false)
+      m_left(false), m_right(false), m_turning(false), m_exp(0)
 {   
     for (int j = 0; j < pixs2.size(); ++j) {
         QPixmaps tempPixs;
@@ -51,6 +51,7 @@ void AbstractMovableItem::paint(QPainter *painter, const QStyleOptionGraphicsIte
 
 EDGE AbstractMovableItem::checkPos()
 {
+    if (!isVisible()) return INSIDE;
     if (scenePos().rx() + (width()  - paintWidth()) / 2  <= 0) return LEFTEDGE;
     if (scenePos().ry() + (height() - paintHeight()) / 2 <= Config::POOL_UPPER_BOUND) return UPEDGE;
     if (scenePos().rx() + (width()  + paintWidth()) / 2  >= Config::SCREEN_WIDTH) return RIGHTEDGE;
@@ -60,6 +61,11 @@ EDGE AbstractMovableItem::checkPos()
 
 void AbstractMovableItem::advance(int)
 {
+    if (!isVisible())
+    {
+        return;
+    }
+    doCollide();
     m_step++;
     if (m_step == 999999){
         m_step = 0;
@@ -218,12 +224,16 @@ void AbstractMovableItem::updateDirection()
 }
 
 void AbstractMovableItem::vanish()
-{
-    setFlag(QGraphicsItem::ItemIsMovable, false);
+{    
     setVisible(false);
     emit sgn_deleting();
-    scene()->removeItem(this);
-    delete this;
+    setPos(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
+    setFlag(QGraphicsItem::ItemIsMovable, false);
+
+    // scene()->removeItem(this);
+
+    // delete this;
+
 }
 
 QPointF AbstractMovableItem::centrePos()

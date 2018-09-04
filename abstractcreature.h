@@ -5,13 +5,14 @@
 
 class AbstractCreature : public AbstractMovableItem
 {
+    Q_OBJECT
 public:
     AbstractCreature(qreal w, qreal h, const QPointF &pos,
                      const QPixmaps2 &pixs2, QGraphicsScene *scene,
                      QGraphicsItem *parent = nullptr);
     ~AbstractCreature() {}
     void advance(int);
-    // FIXME virtual void eat(/* Food * */);
+    virtual void eat(const int exp) = 0;
     virtual void die();
     virtual void findFood() = 0;
     void move();

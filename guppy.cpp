@@ -14,13 +14,26 @@ void Guppy::advance(int)
     AbstractFish::advance(0);
 }
 
+void Guppy::doCollide()
+{
+    foreach (QGraphicsItem * t, collidingItems()) {
+        AbstractMovableItem * movableItem = dynamic_cast<AbstractMovableItem *> (t);
+        if (movableItem->name() == "food"){
+            Food * food = dynamic_cast<Food *> (movableItem);
+            eat(food->exp());
+            food->vanish();
+        }
+    }
+}
+
 void Guppy::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
     QList<AbstractMovableItem*> edibleItems;
     foreach (QGraphicsItem * item, items_) {
         AbstractGameItem * gameItem = dynamic_cast<AbstractGameItem *> (item);
-        if (gameItem->name() == "food"){
+        if (gameItem->name() == "food"
+                && gameItem->isVisible()){
             edibleItems.append(dynamic_cast<AbstractMovableItem *>(gameItem));
         }
     }

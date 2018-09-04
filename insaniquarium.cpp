@@ -7,7 +7,8 @@ Insaniquarium::Insaniquarium(QWidget *parent)
       m_alienAttack(false), m_gaming(false),
       m_maxFoodCount(Config::INIT_FOODS_RESTRICT),
       m_currentFoodCount(0),
-      m_maxFoodLevel(4), m_foodLevel(0)
+      m_maxFoodLevel(4), m_foodLevel(0),
+      m_step(0)
 {
     // set screen sizes
     setFixedSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -107,6 +108,7 @@ void Insaniquarium::addFood(const QPointF & pos)
     connect(food, SIGNAL(sgn_foodWasted()), this, SLOT(slt_foodReduce()));
     m_scene->addItem(food);
     m_currentFoodCount++;
+    // qDebug() << m_currentFoodCount;
 }
 
 void Insaniquarium::slt_start()
@@ -142,9 +144,26 @@ void Insaniquarium::slt_gameOver()
 void Insaniquarium::slt_update()
 {
     m_scene->advance();
+    m_step++;
+    if (m_step == 999999){
+        m_step = 0;
+    }
+    if (m_step % 250 == 0){
+        qDebug() << "before search " << m_scene->items().size();
+        foreach (QGraphicsItem * item, m_scene->items()) {
+            if (!item->isVisible()){
+                m_scene->removeItem(item);
+
+            }
+        }
+        qDebug() << "after search " << m_scene->items().size();
+
+    }
 }
 
 void Insaniquarium::slt_foodReduce()
 {
+    qDebug() << "slt_foodReduce";
     m_currentFoodCount--;
+    // qDebug() << m_currentFoodCount;
 }

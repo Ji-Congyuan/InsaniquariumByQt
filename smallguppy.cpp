@@ -15,7 +15,7 @@ const QString & SmallGuppy::name() const
 
 void SmallGuppy::doCollide()
 {
-    // FIXME
+    Guppy::doCollide();
 }
 
 void SmallGuppy::upgrade()

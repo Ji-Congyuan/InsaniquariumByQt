@@ -21,6 +21,7 @@ Food *FoodFactory::createFood(const QString &name,
     food->setDirection(Config::PI / 2);
     food->setPaintWidth(Config::FOODS_PAINT_WIDTH[name]);
     food->setPaintHeight(Config::FOODS_PAINT_HEIGHT[name]);
+    food->setExp(Config::FOODS_EXP[name]);
 
     return food;
 }
