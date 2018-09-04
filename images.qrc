@@ -16,4 +16,7 @@
     <qresource prefix="/money">
         <file>images/money/money.png</file>
     </qresource>
+    <qresource prefix="/aliens">
+        <file>images/aliens/sylv.png</file>
+    </qresource>
 </RCC>

@@ -16,6 +16,8 @@ public:
     virtual void die();
     virtual void findFood() = 0;
     void move();
+    void keepInScene();
+    virtual void yield() = 0;
     void aimAt(AbstractMovableItem *target);
     bool isAlive();
     bool willDie();

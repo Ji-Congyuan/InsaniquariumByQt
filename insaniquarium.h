@@ -6,6 +6,7 @@
 #include "fishfactory.h"
 #include "foodfactory.h"
 #include "moneyfactory.h"
+#include "alienfactory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -29,6 +30,7 @@ public:
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
     void addMoney(const QString & name, const QPointF &pos);
+    void alienAttack();
 
 public slots:
     // game start
@@ -49,8 +51,11 @@ public slots:
     void slt_yieldFish(const QString &, const QPointF &);
     void slt_yieldMoney(const QString &, const QPointF &);
     void slt_yieldFood(const QPointF &);
+    // alien attack ends
+    void slt_attatckEnd();
 
 signals:
+    void sgn_attackAlien(const QPointF &);
 
 private:
     QGraphicsScene *m_scene;
@@ -69,6 +74,8 @@ private:
     QTimer * m_timer;
 
     bool m_alienAttack;
+    QString m_alienName;
+
     bool m_gaming;
 
     int m_step;

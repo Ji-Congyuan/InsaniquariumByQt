@@ -45,6 +45,10 @@ public:
     static const int FISH_WIDTH;
     static const int FISH_HEIGHT;
 
+    // aliens size
+    static const int ALIENS_WIDTH;
+    static const int ALIENS_HEIGHT;
+
     // foods size
     static const int FOODS_WIDTH;
     static const int FOODS_HEIGHT;
@@ -76,8 +80,16 @@ public:
     static const int DIE_LEFT_STATE_INDEX;
     static const int DIE_RIGHT_STATE_INDEX;
 
+    static const int ALIEN_SWIM_LEFT_STATE_INDEX;
+    static const int ALIEN_SWIM_RIGHT_STATE_INDEX;
+    static const int ALIEN_TURN_LEFT_STATE_INDEX;
+    static const int ALIEN_TURN_RIGHT_STATE_INDEX;
+
     static const int FISH_STATE_COUNT;
     static const int FISH_INDEX_COUNT;
+
+    static const int ALIEN_STATE_COUNT;
+    static const int ALIEN_INDEX_COUNT;
 
     static const int FOOD_STATE_COUNT;
     static const int FOOD_INDEX_COUNT;
@@ -97,12 +109,16 @@ public:
     static const int HUNGRY_THRESHOLD;
     static const int FULL_THRESHOLD;
 
+    // damage
+    static const int ATTACK_ALIEN_DAMAGE;
+
     // steps
     static const int HUNGRY_STEP;
     static const int UPDATE_PAINT_STEP;
     static const int CHANGE_DIRECTION_STEP;
     static const int CHASE_STEP;
     static const int FIND_FOOD_STEP;
+    static const int ALIENS_ATTACK_BASE_STEP;
 
     // hash
     static const QHash<QString, int> FISH_YIELD_STEP;
@@ -111,19 +127,29 @@ public:
     static const QHash<QString, int> FISH_PAINT_HEIGHT;
     static const QHash<QString, int> FISH_SPEED;
 
+    static const QHash<QString, int> FISH_EATEN_EXP;
+    static const QHash<QString, int> FISH_UPGRADE_EXP;
+
     static const QHash<QString, int> FOODS_INDEX;
     static const QHash<int, QString> FOODS_NAME;
     static const QHash<QString, int> FOODS_EXP;
     static const QHash<QString, int> FOODS_PAINT_WIDTH;
     static const QHash<QString, int> FOODS_PAINT_HEIGHT;
 
-    static const QHash<QString, int> FISH_EATEN_EXP;
-    static const QHash<QString, int> FISH_UPGRADE_EXP;
+    static const QHash<QString, int> ALIENS_MAX_HEALTH;
+    static const QHash<QString, QString> ALIENS_PATH;
+    static const QHash<QString, int> ALIENS_PAINT_WIDTH;
+    static const QHash<QString, int> ALIENS_PAINT_HEIGHT;
+    static const QHash<QString, int> ALIENS_SPEED;
+    static const QHash<int, QString> ALIENS_NAME;
 
     static const QHash<QString, int> MONEY_VALUE;
     static const QHash<QString, int> MONEY_INDEX;
     static const QHash<QString, int> MONEY_PAINT_WIDTH;
     static const QHash<QString, int> MONEY_PAINT_HEIGHT;
+
+    // list
+    static const QStringList FISH_TYPE;
 
 private:
     explicit Config() {}

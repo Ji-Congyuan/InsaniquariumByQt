@@ -7,7 +7,7 @@ class MoneyFactory
 {
 public:
     // pos is the point where the left top of image is
-    static Money * createMoney(const QString & name,
+    static AbstractMoney * createMoney(const QString & name,
                                const QPointF & pos,
                                QGraphicsScene *scene);
 

@@ -1,7 +1,7 @@
 #include "moneyfactory.h"
 
 
-Money *MoneyFactory::createMoney(const QString &name,
+AbstractMoney *MoneyFactory::createMoney(const QString &name,
                                  const QPointF &pos,
                                  QGraphicsScene *scene)
 {
@@ -10,7 +10,7 @@ Money *MoneyFactory::createMoney(const QString &name,
     QPixmaps2 all = PixmapsMaker::createQPixmaps(pic, 10, 6);
     pixs2.append(all.at(Config::MONEY_INDEX[name]));
 
-    Money * money;
+    AbstractMoney * money;
     if (name == "silver"){
         money = new Silver(Config::MONEY_WIDTH,
                            Config::MONEY_HEIGHT,

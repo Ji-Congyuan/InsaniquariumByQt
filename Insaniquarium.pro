@@ -18,9 +18,12 @@ HEADERS += \
     food.h \
     foodfactory.h \
     middleguppy.h \
-    money.h \
     silver.h \
-    moneyfactory.h
+    moneyfactory.h \
+    abstractalien.h \
+    abstractmoney.h \
+    deepblue.h \
+    alienfactory.h
 
 SOURCES += \
     config.cpp \
@@ -41,9 +44,12 @@ SOURCES += \
     food.cpp \
     foodfactory.cpp \
     middleguppy.cpp \
-    money.cpp \
     silver.cpp \
-    moneyfactory.cpp
+    moneyfactory.cpp \
+    abstractalien.cpp \
+    abstractmoney.cpp \
+    deepblue.cpp \
+    alienfactory.cpp
 
 RESOURCES += \
     images.qrc

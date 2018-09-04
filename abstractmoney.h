@@ -3,14 +3,14 @@
 
 #include "abstractdropdownitem.h"
 
-class Money : public AbstractDropdownItem
+class AbstractMoney : public AbstractDropdownItem
 {
     Q_OBJECT
 public:
-    Money(qreal w, qreal h, const QPointF &pos,
+    AbstractMoney(qreal w, qreal h, const QPointF &pos,
           const QPixmaps2 &pixs2, QGraphicsScene *scene,
           QGraphicsItem *parent = nullptr);
-    ~Money(){}
+    ~AbstractMoney(){}
 
     virtual const int value() const = 0;
     virtual void mousePressEvent(QGraphicsSceneMouseEvent * event);

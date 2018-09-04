@@ -34,7 +34,12 @@ void AbstractCreature::move()
         }
     }
 
-    AbstractMovableItem::move();
+    AbstractMovableItem::move();    
+    keepInScene();
+}
+
+void AbstractCreature::keepInScene()
+{
     QPointF pos = scenePos();
 
     // restrict in the scene
@@ -64,7 +69,6 @@ void AbstractCreature::move()
     }
 
     setPos(pos);
-
 }
 
 void AbstractCreature::aimAt(AbstractMovableItem *target)

@@ -1,9 +1,9 @@
 #ifndef SILVER_H
 #define SILVER_H
 
-#include "money.h"
+#include "abstractmoney.h"
 
-class Silver : public Money
+class Silver : public AbstractMoney
 {
 public:
     Silver(qreal w, qreal h, const QPointF &pos,

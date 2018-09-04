@@ -33,6 +33,10 @@ const int Config::POOL_LOWER_BOUND = 660;
 const int Config::FISH_WIDTH  = 80;
 const int Config::FISH_HEIGHT = 80;
 
+// aliens size
+const int Config::ALIENS_WIDTH  = 160;
+const int Config::ALIENS_HEIGHT = 160;
+
 // money size
 const int Config::MONEY_WIDTH  = 72;
 const int Config::MONEY_HEIGHT = 72;
@@ -64,8 +68,16 @@ const int Config::HUNGRY_TURN_RIGHT_STATE_INDEX = 7;
 const int Config::DIE_LEFT_STATE_INDEX          = 8;
 const int Config::DIE_RIGHT_STATE_INDEX         = 9;
 
+const int Config::ALIEN_SWIM_LEFT_STATE_INDEX   = 0;
+const int Config::ALIEN_SWIM_RIGHT_STATE_INDEX  = 1;
+const int Config::ALIEN_TURN_LEFT_STATE_INDEX   = 2;
+const int Config::ALIEN_TURN_RIGHT_STATE_INDEX  = 3;
+
 const int Config::FISH_STATE_COUNT              = 10;
 const int Config::FISH_INDEX_COUNT              = 10;
+
+const int Config::ALIEN_STATE_COUNT             = 4;
+const int Config::ALIEN_INDEX_COUNT             = 10;
 
 const int Config::FOOD_STATE_COUNT              = 5;
 const int Config::FOOD_INDEX_COUNT              = 10;
@@ -84,14 +96,18 @@ const int Config::MONEY_SINK_SPEED  = 5;
 
 // hungry threshold
 const int Config::HUNGRY_THRESHOLD = 25;
-const int Config::FULL_THRESHOLD   = 75;
+const int Config::FULL_THRESHOLD   = 85;
+
+// damage
+const int Config::ATTACK_ALIEN_DAMAGE = 10;
 
 // steps
-const int Config::HUNGRY_STEP           = 15;
-const int Config::UPDATE_PAINT_STEP     = 5;
-const int Config::CHANGE_DIRECTION_STEP = 5;
-const int Config::CHASE_STEP            = 2;
-const int Config::FIND_FOOD_STEP        = 5;
+const int Config::HUNGRY_STEP             = 15;
+const int Config::UPDATE_PAINT_STEP       = 5;
+const int Config::CHANGE_DIRECTION_STEP   = 5;
+const int Config::CHASE_STEP              = 2;
+const int Config::FIND_FOOD_STEP          = 5;
+const int Config::ALIENS_ATTACK_BASE_STEP = 500; // default maybe 2000
 
 // hash
 const QHash<QString, int> Config::FISH_YIELD_STEP = {
@@ -117,6 +133,16 @@ const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
 const QHash<QString, QString> Config::FISH_PATH = {
     { "smallGuppy",  ":/fish/images/fish/smallGuppy.png" },
     { "middleGuppy", ":/fish/images/fish/mediumGuppy.png" }
+};
+
+const QHash<QString, int> Config::FISH_EATEN_EXP = {
+    { "smallGuppy",  10 },
+    { "middleGuppy", 15 }
+};
+
+const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
+    { "smallGuppy",  30 },
+    { "middleGuppy", 45 }
 };
 
 const QHash<QString, int> Config::FOODS_INDEX = {
@@ -151,19 +177,33 @@ const QHash<QString, int> Config::FOODS_EXP = {
     { "superFood", 30 }
 };
 
-const QHash<QString, int> Config::FISH_EATEN_EXP = {
-    { "smallGuppy",  10 },
-    { "middleGuppy", 15 }
+const QHash<QString, int> Config::ALIENS_MAX_HEALTH = {
+    { "deepBlue", 100 }
 };
 
-const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
-    { "smallGuppy",  30 },
-    { "middleGuppy", 45 }
+const QHash<QString, QString> Config::ALIENS_PATH = {
+    { "deepBlue",  ":/aliens/images/aliens/sylv.png" }
+};
+
+const QHash<QString, int> Config::ALIENS_PAINT_WIDTH = {
+    { "deepBlue", 120 }
+};
+
+const QHash<QString, int> Config::ALIENS_PAINT_HEIGHT = {
+    { "deepBlue", 160 }
+};
+
+const QHash<QString, int> Config::ALIENS_SPEED = {
+    { "deepBlue",  10 }
+};
+
+const QHash<int, QString> Config::ALIENS_NAME = {
+    { 0, "deepBlue" }
 };
 
 const QHash<QString, int> Config::MONEY_VALUE = {
-    { "silver",   30 },
-    { "gold",     60 },
+    { "silver",   15 },
+    { "gold",     35 },
     { "star",     100 },
     { "diamond",  200 },
     { "treasure", 2000 },
@@ -195,4 +235,11 @@ const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
     { "diamond",  48 },
     { "treasure", 48 },
     { "insect",   48 }
+};
+
+const QStringList Config::FISH_TYPE = {
+    "smallGuppy",
+    "middleGuppy",
+    "bigGuppy",
+    "kingGuppy"
 };

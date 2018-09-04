@@ -17,7 +17,7 @@ public:
     void eat(const int exp);
     virtual void upgrade() = 0;
     virtual void gettingHungry();
-    virtual void yield() = 0;
+
     bool isHungry();
     bool isFull();
 

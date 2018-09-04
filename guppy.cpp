@@ -20,7 +20,8 @@ void Guppy::doCollide()
         return;
     }
     foreach (QGraphicsItem * t, collidingItems()) {
-        AbstractMovableItem * movableItem = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractMovableItem * movableItem
+                = dynamic_cast<AbstractMovableItem *> (t);
         if (movableItem->name() == "food"){
             Food * food = dynamic_cast<Food *> (movableItem);
             eat(food->eatenExp());
