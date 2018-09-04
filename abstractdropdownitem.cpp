@@ -30,3 +30,8 @@ void AbstractDropdownItem::move()
         vanish();
     }
 }
+
+void AbstractDropdownItem::doCollide()
+{
+    // do nothing
+}

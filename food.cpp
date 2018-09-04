@@ -30,11 +30,6 @@ void Food::vanish()
     AbstractMovableItem::vanish(); 
 }
 
-void Food::doCollide()
-{
-
-}
-
 void Food::aimAt(QGraphicsObject *target)
 {
     Q_UNUSED(target);

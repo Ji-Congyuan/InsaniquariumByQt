@@ -17,7 +17,10 @@ HEADERS += \
     abstractdropdownitem.h \
     food.h \
     foodfactory.h \
-    middleguppy.h
+    middleguppy.h \
+    money.h \
+    silver.h \
+    moneyfactory.h
 
 SOURCES += \
     config.cpp \
@@ -37,7 +40,10 @@ SOURCES += \
     abstractdropdownitem.cpp \
     food.cpp \
     foodfactory.cpp \
-    middleguppy.cpp
+    middleguppy.cpp \
+    money.cpp \
+    silver.cpp \
+    moneyfactory.cpp
 
 RESOURCES += \
     images.qrc

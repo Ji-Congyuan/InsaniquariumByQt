@@ -13,6 +13,7 @@ public:
     ~AbstractDropdownItem(){}
     void advance(int);
     void move();
+    void doCollide();
 
 };
 

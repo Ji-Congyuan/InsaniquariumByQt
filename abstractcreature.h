@@ -20,6 +20,13 @@ public:
     bool isAlive();
     bool willDie();
 
+signals:
+    void sgn_fishUpgrade(const QString &, const QPointF &,
+                         const qreal);
+    void sgn_yieldMoney(const QString &, const QPointF &);
+    void sgn_yieldFish(const QString &, const QPointF &);
+    void sgn_yieldFood(const QPointF &);
+
 protected:
     bool m_alive;
     bool m_willDie;

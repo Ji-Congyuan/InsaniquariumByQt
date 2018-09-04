@@ -26,7 +26,6 @@ public:
     virtual void vanish();
     QPointF centrePos();
 
-    qreal calDistance(QPointF &pos);
     qreal speed() const;
     qreal direction() const;
     void setSpeed(const qreal speed);
@@ -63,8 +62,6 @@ protected:
     bool m_hasTarget;
     AbstractMovableItem * m_target;
 
-    // distance to
-    qreal m_distance;
 
     // control turning
     bool m_left;

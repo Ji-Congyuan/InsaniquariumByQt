@@ -15,7 +15,6 @@ public:
     const QString & name() const;
     void advance(int);
     void vanish();
-    void doCollide();
     void aimAt(QGraphicsObject *target);
 
 signals:

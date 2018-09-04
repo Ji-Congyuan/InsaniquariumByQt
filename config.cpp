@@ -22,6 +22,9 @@ const QString Config::BTN_STARTGAME_PATH = ":/buttons/images/buttons/startGameBt
 // foods path
 const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
 
+// money path
+const QString Config::MONEY_PATH = ":/money/images/money/money.png";
+
 // pool size
 const int Config::POOL_UPPER_BOUND = 120;
 const int Config::POOL_LOWER_BOUND = 660;
@@ -30,10 +33,15 @@ const int Config::POOL_LOWER_BOUND = 660;
 const int Config::FISH_WIDTH  = 80;
 const int Config::FISH_HEIGHT = 80;
 
-// init counts
+// money size
+const int Config::MONEY_WIDTH  = 72;
+const int Config::MONEY_HEIGHT = 72;
+
+// init const
 const int Config::INIT_FOODS_RESTRICT = 2;   // defualt 1
-const int Config::INIT_FISH_COUNT     = 1;   // default 2
+const int Config::INIT_FISH_COUNT     = 2;   // default 2
 const int Config::INIT_HUNGRY         = 75;
+const int Config::INIT_MONEY          = 0;   // default 0
 
 // foods size
 const int Config::FOODS_WIDTH  = 40;
@@ -62,6 +70,9 @@ const int Config::FISH_INDEX_COUNT              = 10;
 const int Config::FOOD_STATE_COUNT              = 5;
 const int Config::FOOD_INDEX_COUNT              = 10;
 
+const int Config::MONEY_STATE_COUNT             = 6;
+const int Config::MONEY_INDEX_COUNT             = 10;
+
 
 // speed up
 const qreal Config::HUNGRY_INCREASE = 1.5;
@@ -69,6 +80,7 @@ const qreal Config::HUNGRY_INCREASE = 1.5;
 // sink speed
 const int Config::BODY_SINK_SPEED   = 10;
 const int Config::FOOD_SINK_SPEED   = 2;
+const int Config::MONEY_SINK_SPEED  = 5;
 
 // hungry threshold
 const int Config::HUNGRY_THRESHOLD = 25;
@@ -76,13 +88,17 @@ const int Config::FULL_THRESHOLD   = 75;
 
 // steps
 const int Config::HUNGRY_STEP           = 15;
-const int Config::YIELD_STEP            = 1000;
 const int Config::UPDATE_PAINT_STEP     = 5;
 const int Config::CHANGE_DIRECTION_STEP = 5;
 const int Config::CHASE_STEP            = 2;
 const int Config::FIND_FOOD_STEP        = 5;
 
 // hash
+const QHash<QString, int> Config::FISH_YIELD_STEP = {
+    { "smallGuppy",  9999 },
+    { "middleGuppy", 1000 }
+};
+
 const QHash<QString, int> Config::FISH_SPEED = {
     { "smallGuppy",  5 },
     { "middleGuppy", 5 }
@@ -143,4 +159,40 @@ const QHash<QString, int> Config::FISH_EATEN_EXP = {
 const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
     { "smallGuppy",  30 },
     { "middleGuppy", 45 }
+};
+
+const QHash<QString, int> Config::MONEY_VALUE = {
+    { "silver",   30 },
+    { "gold",     60 },
+    { "star",     100 },
+    { "diamond",  200 },
+    { "treasure", 2000 },
+    { "insect",   200 }
+};
+
+const QHash<QString, int> Config::MONEY_INDEX = {
+    { "silver",   0 },
+    { "gold",     1 },
+    { "star",     2 },
+    { "diamond",  3 },
+    { "treasure", 4 },
+    { "insect",   5 }
+};
+
+const QHash<QString, int> Config::MONEY_PAINT_WIDTH = {
+    { "silver",   48 },
+    { "gold",     48 },
+    { "star",     48 },
+    { "diamond",  48 },
+    { "treasure", 48 },
+    { "insect",   48 }
+};
+
+const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
+    { "silver",   48 },
+    { "gold",     48 },
+    { "star",     48 },
+    { "diamond",  48 },
+    { "treasure", 48 },
+    { "insect",   48 }
 };

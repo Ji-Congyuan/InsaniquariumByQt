@@ -34,6 +34,9 @@ public:
     // foods path
     static const QString FOODS_PATH;
 
+    // money path
+    static const QString MONEY_PATH;
+
     // pool size
     static const int POOL_UPPER_BOUND;
     static const int POOL_LOWER_BOUND;
@@ -46,10 +49,15 @@ public:
     static const int FOODS_WIDTH;
     static const int FOODS_HEIGHT;
 
-    // init counts
+    // money size
+    static const int MONEY_WIDTH;
+    static const int MONEY_HEIGHT;
+
+    // init const
     static const int INIT_FOODS_RESTRICT;
     static const int INIT_FISH_COUNT;
     static const int INIT_HUNGRY;
+    static const int INIT_MONEY;
 
     // pixs index
     static const int DEFAULT_MENU_BTN_INDEX;
@@ -74,12 +82,16 @@ public:
     static const int FOOD_STATE_COUNT;
     static const int FOOD_INDEX_COUNT;
 
+    static const int MONEY_STATE_COUNT;
+    static const int MONEY_INDEX_COUNT;
+
     // speed up
     static const qreal HUNGRY_INCREASE;
 
     // sink speed
     static const int BODY_SINK_SPEED;
     static const int FOOD_SINK_SPEED;
+    static const int MONEY_SINK_SPEED;
 
     // threshold
     static const int HUNGRY_THRESHOLD;
@@ -87,13 +99,13 @@ public:
 
     // steps
     static const int HUNGRY_STEP;
-    static const int YIELD_STEP;
     static const int UPDATE_PAINT_STEP;
     static const int CHANGE_DIRECTION_STEP;
     static const int CHASE_STEP;
     static const int FIND_FOOD_STEP;
 
     // hash
+    static const QHash<QString, int> FISH_YIELD_STEP;
     static const QHash<QString, QString> FISH_PATH;
     static const QHash<QString, int> FISH_PAINT_WIDTH;
     static const QHash<QString, int> FISH_PAINT_HEIGHT;
@@ -107,6 +119,11 @@ public:
 
     static const QHash<QString, int> FISH_EATEN_EXP;
     static const QHash<QString, int> FISH_UPGRADE_EXP;
+
+    static const QHash<QString, int> MONEY_VALUE;
+    static const QHash<QString, int> MONEY_INDEX;
+    static const QHash<QString, int> MONEY_PAINT_WIDTH;
+    static const QHash<QString, int> MONEY_PAINT_HEIGHT;
 
 private:
     explicit Config() {}

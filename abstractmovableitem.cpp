@@ -18,9 +18,6 @@ AbstractMovableItem::AbstractMovableItem(qreal w, qreal h, const QPointF &pos,
         m_pixs2.append(tempPixs);
     }
     setPos(pos);
-
-    m_distance = sqrt(Config::SCREEN_WIDTH * Config::SCREEN_WIDTH +
-                      Config::SCREEN_HEIGHT * Config::SCREEN_HEIGHT);
 }
 
 QRectF AbstractMovableItem::boundingRect() const
@@ -111,13 +108,6 @@ void AbstractMovableItem::setSpeed(const qreal speed)
 void AbstractMovableItem::setDirection(const qreal dir)
 {
     m_direction = dir;
-}
-
-qreal AbstractMovableItem::calDistance(QPointF &pos)
-{
-    QPointF myPos = scenePos();
-    return sqrt((myPos.rx() - pos.rx()) * (myPos.rx() - pos.rx()) +
-                (myPos.ry() - pos.ry()) * (myPos.ry() - pos.ry()));
 }
 
 bool AbstractMovableItem::left() const

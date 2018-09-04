@@ -16,6 +16,9 @@ void Guppy::advance(int)
 
 void Guppy::doCollide()
 {
+    if (!m_hasTarget){
+        return;
+    }
     foreach (QGraphicsItem * t, collidingItems()) {
         AbstractMovableItem * movableItem = dynamic_cast<AbstractMovableItem *> (t);
         if (movableItem->name() == "food"){

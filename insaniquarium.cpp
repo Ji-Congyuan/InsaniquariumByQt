@@ -8,7 +8,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
       m_maxFoodCount(Config::INIT_FOODS_RESTRICT),
       m_currentFoodCount(0),
       m_maxFoodLevel(4), m_foodLevel(0),
-      m_step(0)
+      m_step(0), m_money(Config::INIT_MONEY)
 {
     // set screen sizes
     setFixedSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -79,14 +79,16 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
         if (event->button() == Qt::LeftButton){
             event->accept();
             if (!m_alienAttack){ // feed fish
-                if (m_currentFoodCount < m_maxFoodCount){
-                    QPointF pos = event->pos();
-                    QPointF foodPos;
-                    qreal deltaX = Config::FOODS_WIDTH / 2;
-                    qreal deltaY = Config::FOODS_HEIGHT / 2;
-                    foodPos.rx() = pos.rx() - deltaX;
-                    foodPos.ry() = pos.ry() - deltaY;
-                    addFood(foodPos);
+                if ((m_scene->items(event->pos())).size() == 0){ // if not press on other item
+                    if (m_currentFoodCount < m_maxFoodCount){
+                        QPointF pos = event->pos();
+                        QPointF foodPos;
+                        qreal deltaX = Config::FOODS_WIDTH / 2;
+                        qreal deltaY = Config::FOODS_HEIGHT / 2;
+                        foodPos.rx() = pos.rx() - deltaX;
+                        foodPos.ry() = pos.ry() - deltaY;
+                        addFood(foodPos);
+                    }
                 }
 
             } else { // attack aliens
@@ -115,6 +117,12 @@ void Insaniquarium::addFish(const QString &name, const QPointF &pos)
     AbstractFish * fish = FishFactory::creatFish(name, pos, m_scene);
     connect(fish, SIGNAL(sgn_fishUpgrade(QString,QPointF,qreal)),
             this, SLOT(slt_fishUpgrade(QString,QPointF,qreal)));
+    connect(fish, SIGNAL(sgn_yieldFish(QString,QPointF)),
+            this, SLOT(slt_yieldFish(QString,QPointF)));
+    connect(fish, SIGNAL(sgn_yieldMoney(QString,QPointF)),
+            this, SLOT(slt_yieldMoney(QString,QPointF)));
+    connect(fish, SIGNAL(sgn_yieldFood(QPointF)),
+            this, SLOT(slt_yieldFood(QPointF)));
     m_scene->addItem(fish);
 }
 
@@ -124,7 +132,21 @@ void Insaniquarium::addFish(const QString &name, const QPointF &pos, const qreal
     fish->setDirection(dir);
     connect(fish, SIGNAL(sgn_fishUpgrade(QString,QPointF,qreal)),
             this, SLOT(slt_fishUpgrade(QString,QPointF,qreal)));
+    connect(fish, SIGNAL(sgn_yieldFish(QString,QPointF)),
+            this, SLOT(slt_yieldFish(QString,QPointF)));
+    connect(fish, SIGNAL(sgn_yieldMoney(QString,QPointF)),
+            this, SLOT(slt_yieldMoney(QString,QPointF)));
+    connect(fish, SIGNAL(sgn_yieldFood(QPointF)),
+            this, SLOT(slt_yieldFood(QPointF)));
     m_scene->addItem(fish);
+}
+
+void Insaniquarium::addMoney(const QString &name, const QPointF &pos)
+{
+    Money * money = MoneyFactory::createMoney(name, pos, m_scene);
+    connect(money, SIGNAL(sgn_moneyPicked(int)),
+            this, SLOT(slt_moneyPicked(int)));
+    m_scene->addItem(money);
 }
 
 void Insaniquarium::slt_start()
@@ -182,4 +204,25 @@ void Insaniquarium::slt_foodReduce()
 void Insaniquarium::slt_fishUpgrade(const QString & name, const QPointF & pos, const qreal dir)
 {
     addFish(name, pos, dir);
+}
+
+void Insaniquarium::slt_moneyPicked(int value)
+{
+    m_money += value;
+    qDebug() << "money: " << m_money;
+}
+
+void Insaniquarium::slt_yieldFish(const QString &, const QPointF &)
+{
+
+}
+
+void Insaniquarium::slt_yieldMoney(const QString & name, const QPointF & pos)
+{
+    addMoney(name, pos);
+}
+
+void Insaniquarium::slt_yieldFood(const QPointF &)
+{
+
 }

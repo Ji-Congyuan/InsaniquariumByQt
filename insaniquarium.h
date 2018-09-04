@@ -5,6 +5,7 @@
 #include "menubtn.h"
 #include "fishfactory.h"
 #include "foodfactory.h"
+#include "moneyfactory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -27,6 +28,7 @@ public:
     void addFood(const QPointF &pos);
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
+    void addMoney(const QString & name, const QPointF &pos);
 
 public slots:
     // game start
@@ -41,6 +43,12 @@ public slots:
     void slt_foodReduce();
     // fish upgrade
     void slt_fishUpgrade(const QString &, const QPointF &, const qreal);
+    // pick money
+    void slt_moneyPicked(int);
+    // yield
+    void slt_yieldFish(const QString &, const QPointF &);
+    void slt_yieldMoney(const QString &, const QPointF &);
+    void slt_yieldFood(const QPointF &);
 
 signals:
 
@@ -64,6 +72,8 @@ private:
     bool m_gaming;
 
     int m_step;
+
+    int m_money;
 
 };
 

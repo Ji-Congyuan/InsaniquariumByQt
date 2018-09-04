@@ -83,6 +83,11 @@ void AbstractFish::advance(int)
         gettingHungry();
     }
 
+    if (m_step % Config::FISH_YIELD_STEP[name()] == 0
+            && isAlive()){
+        yield();
+    }
+
     // FIXME with other action
 
 }

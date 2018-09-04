@@ -26,7 +26,7 @@ void MiddleGuppy::upgrade()
 
 void MiddleGuppy::yield()
 {
-    // FIXME
+    emit sgn_yieldMoney("silver", scenePos());
 }
 
 void MiddleGuppy::advance(int)
