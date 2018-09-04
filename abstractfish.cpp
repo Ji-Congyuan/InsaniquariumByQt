@@ -5,7 +5,7 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
                            const QPixmaps2 &pixs2,
                            QGraphicsScene *scene, QGraphicsItem *parent)
     : AbstractCreature(w, h, pos, pixs2, scene, parent),
-      m_hungry(Config::INIT_HUNGRY)
+      m_hungry(Config::INIT_HUNGRY), m_exp(0)
 {
 }
 
@@ -101,10 +101,11 @@ void AbstractFish::move()
 void AbstractFish::eat(const int exp)
 {
     m_exp += exp;
-    /*
-    if ...
-        upgrade
-    */
+
+    if (m_exp >= Config::FISH_UPGRADE_EXP[name()]){
+        upgrade();
+    }
+
     m_hungry = 100;
 }
 

@@ -15,9 +15,17 @@ const QString &Food::name() const
     return m_name;
 }
 
+void Food::advance(int)
+{
+    if (!isVisible())
+    {
+        return;
+    }
+    AbstractDropdownItem::advance(0);
+}
+
 void Food::vanish()
 {
-    qDebug() << "sgn_foodWasted";
     emit sgn_foodWasted();
     AbstractMovableItem::vanish(); 
 }

@@ -20,7 +20,7 @@ void Guppy::doCollide()
         AbstractMovableItem * movableItem = dynamic_cast<AbstractMovableItem *> (t);
         if (movableItem->name() == "food"){
             Food * food = dynamic_cast<Food *> (movableItem);
-            eat(food->exp());
+            eat(food->eatenExp());
             food->vanish();
         }
     }

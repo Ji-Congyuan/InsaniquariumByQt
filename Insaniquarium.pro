@@ -16,7 +16,8 @@ HEADERS += \
     smallguppy.h \
     abstractdropdownitem.h \
     food.h \
-    foodfactory.h
+    foodfactory.h \
+    middleguppy.h
 
 SOURCES += \
     config.cpp \
@@ -35,7 +36,8 @@ SOURCES += \
     smallguppy.cpp \
     abstractdropdownitem.cpp \
     food.cpp \
-    foodfactory.cpp
+    foodfactory.cpp \
+    middleguppy.cpp
 
 RESOURCES += \
     images.qrc

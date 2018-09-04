@@ -42,8 +42,8 @@ public:
     void setState(const int state);
     qreal paintWidth() const;
     qreal paintHeight() const;
-    void setExp(const int e);
-    int exp() const;
+    void setEatenExp(const int e);
+    int eatenExp() const;
 
 
 signals:
@@ -75,7 +75,7 @@ protected:
     qreal m_paintWidth;
     qreal m_paintHeight;
 
-    int m_exp;
+    int m_eatenExp;
 };
 
 #endif // ABSTRACTMOVABLEITEM_H

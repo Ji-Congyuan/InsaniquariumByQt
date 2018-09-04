@@ -104,11 +104,27 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
 
 void Insaniquarium::addFood(const QPointF & pos)
 {
-    Food * food = FoodFactory::createFood("smallFood", pos, m_scene);
+    Food * food = FoodFactory::createFood(Config::FOODS_NAME[m_foodLevel], pos, m_scene);
     connect(food, SIGNAL(sgn_foodWasted()), this, SLOT(slt_foodReduce()));
     m_scene->addItem(food);
     m_currentFoodCount++;
-    // qDebug() << m_currentFoodCount;
+}
+
+void Insaniquarium::addFish(const QString &name, const QPointF &pos)
+{
+    AbstractFish * fish = FishFactory::creatFish(name, pos, m_scene);
+    connect(fish, SIGNAL(sgn_fishUpgrade(QString,QPointF,qreal)),
+            this, SLOT(slt_fishUpgrade(QString,QPointF,qreal)));
+    m_scene->addItem(fish);
+}
+
+void Insaniquarium::addFish(const QString &name, const QPointF &pos, const qreal dir)
+{
+    AbstractFish * fish = FishFactory::creatFish(name, pos, m_scene);
+    fish->setDirection(dir);
+    connect(fish, SIGNAL(sgn_fishUpgrade(QString,QPointF,qreal)),
+            this, SLOT(slt_fishUpgrade(QString,QPointF,qreal)));
+    m_scene->addItem(fish);
 }
 
 void Insaniquarium::slt_start()
@@ -116,14 +132,13 @@ void Insaniquarium::slt_start()
     m_scene->clear();
     setBackgroundBrush(m_bgGamePix);
 
-    for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
-            // init small Guppy
+    for (int i = 0; i < Config::INIT_FISH_COUNT; i++){ // init small Guppy
+
         QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        AbstractFish * fish = FishFactory::creatFish("smallGuppy", initPos1, m_scene);
-        m_scene->addItem(fish);
+        addFish("smallGuppy", initPos1);
     }
 
     m_timer->start(20);
@@ -149,21 +164,22 @@ void Insaniquarium::slt_update()
         m_step = 0;
     }
     if (m_step % 250 == 0){
-        qDebug() << "before search " << m_scene->items().size();
         foreach (QGraphicsItem * item, m_scene->items()) {
             if (!item->isVisible()){
                 m_scene->removeItem(item);
 
             }
         }
-        qDebug() << "after search " << m_scene->items().size();
 
     }
 }
 
 void Insaniquarium::slt_foodReduce()
 {
-    qDebug() << "slt_foodReduce";
     m_currentFoodCount--;
-    // qDebug() << m_currentFoodCount;
+}
+
+void Insaniquarium::slt_fishUpgrade(const QString & name, const QPointF & pos, const qreal dir)
+{
+    addFish(name, pos, dir);
 }

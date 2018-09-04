@@ -6,7 +6,7 @@ AbstractMovableItem::AbstractMovableItem(qreal w, qreal h, const QPointF &pos,
                                          QGraphicsItem *parent)
     : AbstractGameItem(w, h, scene, parent),
       m_pixStateIndex(0), m_hasTarget(false), m_target(nullptr),
-      m_left(false), m_right(false), m_turning(false), m_exp(0)
+      m_left(false), m_right(false), m_turning(false), m_eatenExp(0)
 {   
     for (int j = 0; j < pixs2.size(); ++j) {
         QPixmaps tempPixs;
@@ -61,10 +61,6 @@ EDGE AbstractMovableItem::checkPos()
 
 void AbstractMovableItem::advance(int)
 {
-    if (!isVisible())
-    {
-        return;
-    }
     doCollide();
     m_step++;
     if (m_step == 999999){
@@ -181,14 +177,14 @@ qreal AbstractMovableItem::paintHeight() const
     return m_paintHeight;
 }
 
-void AbstractMovableItem::setExp(const int e)
+void AbstractMovableItem::setEatenExp(const int e)
 {
-    m_exp = e;
+    m_eatenExp = e;
 }
 
-int AbstractMovableItem::exp() const
+int AbstractMovableItem::eatenExp() const
 {
-    return m_exp;
+    return m_eatenExp;
 }
 
 void AbstractMovableItem::slt_lostAim()

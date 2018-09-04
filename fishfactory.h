@@ -2,6 +2,7 @@
 #define FISHFACTORY_H
 
 #include "smallguppy.h"
+#include "middleguppy.h"
 #include <QImage>
 
 class FishFactory

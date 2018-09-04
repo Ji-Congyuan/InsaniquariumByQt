@@ -25,6 +25,8 @@ public:
     void showMenu();
     void mousePressEvent(QMouseEvent *event);
     void addFood(const QPointF &pos);
+    void addFish(const QString &name, const QPointF &pos);
+    void addFish(const QString & name, const QPointF &pos, const qreal dir);
 
 public slots:
     // game start
@@ -37,6 +39,8 @@ public slots:
     void slt_update();
     // food eaten by fish or out of screen
     void slt_foodReduce();
+    // fish upgrade
+    void slt_fishUpgrade(const QString &, const QPointF &, const qreal);
 
 signals:
 

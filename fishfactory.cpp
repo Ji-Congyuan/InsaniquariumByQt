@@ -105,12 +105,17 @@ AbstractFish *FishFactory::creatFish(const QString &name,
                               Config::FISH_HEIGHT,
                               pos, pixs2, scene);
     }
+    else if (name == "middleGuppy"){
+        fish = new MiddleGuppy(Config::FISH_WIDTH,
+                               Config::FISH_HEIGHT,
+                               pos, pixs2, scene);
+    }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
     fish->setPaintWidth(Config::FISH_PAINT_WIDTH[name]);
     fish->setPaintHeight(Config::FISH_PAINT_HEIGHT[name]);   
-    fish->setExp(Config::FISH_EXP[name]);
+    fish->setEatenExp(Config::FISH_EATEN_EXP[name]);
 
     fish->updateDirection();
 

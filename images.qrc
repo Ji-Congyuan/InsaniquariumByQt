@@ -8,6 +8,7 @@
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
+        <file>images/fish/mediumGuppy.png</file>
     </qresource>
     <qresource prefix="/foods">
         <file>images/foods/food.png</file>

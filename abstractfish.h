@@ -21,9 +21,14 @@ public:
     bool isHungry();
     bool isFull();
 
+signals:
+    void sgn_fishUpgrade(const QString &, const QPointF &, const qreal);
+
 protected:
     // hungry: 0 will die and 100 is full
     int m_hungry;
+
+    int m_exp;
 
 };
 

@@ -100,11 +100,13 @@ public:
     static const QHash<QString, int> FISH_SPEED;
 
     static const QHash<QString, int> FOODS_INDEX;
+    static const QHash<int, QString> FOODS_NAME;
     static const QHash<QString, int> FOODS_EXP;
     static const QHash<QString, int> FOODS_PAINT_WIDTH;
     static const QHash<QString, int> FOODS_PAINT_HEIGHT;
 
-    static const QHash<QString, int> FISH_EXP;
+    static const QHash<QString, int> FISH_EATEN_EXP;
+    static const QHash<QString, int> FISH_UPGRADE_EXP;
 
 private:
     explicit Config() {}

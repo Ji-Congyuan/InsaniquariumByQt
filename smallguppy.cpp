@@ -20,7 +20,8 @@ void SmallGuppy::doCollide()
 
 void SmallGuppy::upgrade()
 {
-    // FIXME
+    emit sgn_fishUpgrade("middleGuppy", scenePos(), direction());
+    vanish();
 }
 
 void SmallGuppy::yield()
@@ -30,6 +31,10 @@ void SmallGuppy::yield()
 
 void SmallGuppy::advance(int)
 {
+    if (!isVisible())
+    {
+        return;
+    }
     Guppy::advance(0);
     // FIXME
 }
