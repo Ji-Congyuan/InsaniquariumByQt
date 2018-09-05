@@ -17,12 +17,13 @@ public:
     void eat(const int exp);
     virtual void upgrade() = 0;
     virtual void gettingHungry();
+    void vanish();
 
     bool isHungry();
     bool isFull();
 
 signals:
-
+    void sgn_die();
 
 protected:
     // hungry: 0 will die and 100 is full

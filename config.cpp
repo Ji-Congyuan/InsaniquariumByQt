@@ -43,13 +43,17 @@ const int Config::MONEY_HEIGHT = 72;
 
 // init const
 const int Config::INIT_FOODS_RESTRICT = 2;   // defualt 1
-const int Config::INIT_FISH_COUNT     = 2;   // default 2
+const int Config::INIT_FISH_COUNT     = 1;   // default 2
 const int Config::INIT_HUNGRY         = 75;
 const int Config::INIT_MONEY          = 0;   // default 0
 
 // foods size
 const int Config::FOODS_WIDTH  = 40;
 const int Config::FOODS_HEIGHT = 40;
+
+// pets size
+const int Config::PETS_WIDTH   = 80;
+const int Config::PETS_HEIGHT  = 80;
 
 // pixs index
 const int Config::DEFAULT_MENU_BTN_INDEX = 0;
@@ -73,6 +77,11 @@ const int Config::ALIEN_SWIM_RIGHT_STATE_INDEX  = 1;
 const int Config::ALIEN_TURN_LEFT_STATE_INDEX   = 2;
 const int Config::ALIEN_TURN_RIGHT_STATE_INDEX  = 3;
 
+const int Config::PETS_SWIM_LEFT_STATE_INDEX    = 0;
+const int Config::PETS_SWIM_RIGHT_STATE_INDEX   = 1;
+const int Config::PETS_TURN_LEFT_STATE_INDEX    = 2;
+const int Config::PETS_TURN_RIGHT_STATE_INDEX   = 3;
+
 const int Config::FISH_STATE_COUNT              = 10;
 const int Config::FISH_INDEX_COUNT              = 10;
 
@@ -85,6 +94,8 @@ const int Config::FOOD_INDEX_COUNT              = 10;
 const int Config::MONEY_STATE_COUNT             = 6;
 const int Config::MONEY_INDEX_COUNT             = 10;
 
+const int Config::PETS_STATE_COUNT              = 4;
+const int Config::PETS_INDEX_COUNT              = 10;
 
 // speed up
 const qreal Config::HUNGRY_INCREASE = 1.5;
@@ -107,7 +118,8 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 500; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 2000; // default maybe 2000
+const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
 const QHash<QString, int> Config::FISH_YIELD_STEP = {
@@ -237,9 +249,43 @@ const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
     { "insect",   48 }
 };
 
+const QHash<QString, QString> Config::PETS_PATH = {
+    { "stinky",  ":/pets/images/pets/stinky_converted.png" }
+};
+
+const QHash<QString, int> Config::PETS_SPEED = {
+    { "stinky", 2 }
+};
+
+const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
+    { "stinky", 80 }
+};
+
+const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
+    { "stinky", 70 }
+};
+
+const QHash<QString, int> Config::PETS_INIT_POS_X = {
+    { "stinky", 480 }   // Config::SCREEN_WIDTH / 2
+};
+
+const QHash<QString, int> Config::PETS_INIT_POS_Y = {
+    { "stinky", 579 }    // Config::POOL_LOWER_BOUND - Config::PETS_HEIGHT - 1
+};
+
+// list
 const QStringList Config::FISH_TYPE = {
     "smallGuppy",
     "middleGuppy",
     "bigGuppy",
     "kingGuppy"
+};
+
+const QStringList Config::MONEY_TYPE = {
+    "silver",
+    "gold",
+    "star",
+    "diamond",
+    "treasure",
+    "insect"
 };

@@ -12,18 +12,17 @@ HEADERS += \
     randommaker.h \
     abstractfish.h \
     guppy.h \
-    fishfactory.h \
     smallguppy.h \
     abstractdropdownitem.h \
     food.h \
-    foodfactory.h \
     middleguppy.h \
     silver.h \
-    moneyfactory.h \
     abstractalien.h \
     abstractmoney.h \
     deepblue.h \
-    alienfactory.h
+    abstractpet.h \
+    stinky.h \
+    factory.h
 
 SOURCES += \
     config.cpp \
@@ -38,18 +37,17 @@ SOURCES += \
     randommaker.cpp \
     abstractfish.cpp \
     guppy.cpp \
-    fishfactory.cpp \
     smallguppy.cpp \
     abstractdropdownitem.cpp \
     food.cpp \
-    foodfactory.cpp \
     middleguppy.cpp \
     silver.cpp \
-    moneyfactory.cpp \
     abstractalien.cpp \
     abstractmoney.cpp \
     deepblue.cpp \
-    alienfactory.cpp
+    abstractpet.cpp \
+    stinky.cpp \
+    factory.cpp
 
 RESOURCES += \
     images.qrc

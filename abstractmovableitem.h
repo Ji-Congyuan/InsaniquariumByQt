@@ -22,9 +22,10 @@ public:
     void advance(int);
     virtual void aimAt(AbstractMovableItem *target);
     virtual void move();
-    void updateDirection();
+    virtual void updateDirection();
     virtual void vanish();
     QPointF centrePos();
+    virtual void keepInScene();
 
     qreal speed() const;
     qreal direction() const;

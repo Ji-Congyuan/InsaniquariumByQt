@@ -3,10 +3,7 @@
 
 #include "pixmapsmaker.h"
 #include "menubtn.h"
-#include "fishfactory.h"
-#include "foodfactory.h"
-#include "moneyfactory.h"
-#include "alienfactory.h"
+#include "factory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -30,22 +27,17 @@ public:
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
     void addMoney(const QString & name, const QPointF &pos);
+    void addPet(const QString & name, const QPointF &pos);
     void alienAttack();
+    void gameOver();
 
 public slots:
-    // game start
     void slt_start();
-    // next level
     void slt_nextLevel(int);
-    // game over
-    void slt_gameOver();
     // update scene
     void slt_update();
-    // food eaten by fish or out of screen
     void slt_foodReduce();
-    // fish upgrade
     void slt_fishUpgrade(const QString &, const QPointF &, const qreal);
-    // pick money
     void slt_moneyPicked(int);
     // yield
     void slt_yieldFish(const QString &, const QPointF &);
@@ -53,6 +45,10 @@ public slots:
     void slt_yieldFood(const QPointF &);
     // alien attack ends
     void slt_attatckEnd();
+    void slt_fishDie();
+    void slt_petSkill(const QString &);
+
+
 
 signals:
     void sgn_attackAlien(const QPointF &);
@@ -68,8 +64,12 @@ private:
     int m_maxFoodCount;
     int m_currentFoodCount;
 
+    int m_fishCount;
+
     int m_foodLevel;
     int m_maxFoodLevel;
+
+    int m_gameLevel;
 
     QTimer * m_timer;
 
@@ -81,6 +81,8 @@ private:
     int m_step;
 
     int m_money;
+
+    QStringList m_petsName;
 
 };
 

@@ -22,7 +22,6 @@ void AbstractCreature::die()
 
 void AbstractCreature::move()
 {
-
     if (!m_hasTarget && !turning()){
         if (m_step % Config::CHANGE_DIRECTION_STEP == 0){
             setDirection(direction() + RandomMaker::creatRandom(-5, 6) / 40.0);
@@ -40,35 +39,7 @@ void AbstractCreature::move()
 
 void AbstractCreature::keepInScene()
 {
-    QPointF pos = scenePos();
-
-    // restrict in the scene
-    switch (checkPos()) {
-    case INSIDE:
-        break;
-    case UPEDGE:
-        setDirection( 2 * Config::PI - direction());
-        pos.ry() = Config::POOL_UPPER_BOUND - (height() - paintHeight()) / 2;
-        break;
-    case DOWNEDGE:
-        setDirection( 2 * Config::PI - direction());
-        pos.ry() = Config::POOL_LOWER_BOUND - (height() + paintHeight()) / 2;
-        break;
-    case LEFTEDGE:
-        setDirection(Config::PI - direction());
-        pos.rx() = - (width() - paintWidth()) / 2;
-        m_pixIndex = 0;
-        break;
-    case RIGHTEDGE:
-        setDirection(Config::PI - direction());
-        pos.rx() = Config::SCREEN_WIDTH - (width() + paintWidth()) / 2;
-        m_pixIndex = 0;
-        break;
-    default:
-        break;
-    }
-
-    setPos(pos);
+    AbstractMovableItem::keepInScene();
 }
 
 void AbstractCreature::aimAt(AbstractMovableItem *target)

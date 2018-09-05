@@ -4,7 +4,7 @@
 AbstractDropdownItem::AbstractDropdownItem(qreal w, qreal h, const QPointF &pos,
                                            const QPixmaps2 &pixs2, QGraphicsScene *scene,
                                            QGraphicsItem *parent)
-    : AbstractMovableItem(w, h, pos, pixs2, scene, parent)
+    : AbstractMovableItem(w, h, pos, pixs2, scene, parent), m_isDown(false)
 {
     setDirection(Config::PI / 2);
 }
@@ -26,12 +26,27 @@ void AbstractDropdownItem::advance(int)
 void AbstractDropdownItem::move()
 {
     AbstractMovableItem::move();
-    if (checkPos() == DOWNEDGE){
-        vanish();
+    if (checkPos() == DOWNEDGE && !m_isDown){
+        m_isDown = true;
+        m_timer = new QTimer;
+        connect(m_timer, SIGNAL(timeout()),
+                this, SLOT(slt_vanish()));
+        m_timer->start(500);
+        setSpeed(0);
     }
 }
 
 void AbstractDropdownItem::doCollide()
 {
     // do nothing
+}
+
+void AbstractDropdownItem::keepInScene()
+{
+    // do nothing
+}
+
+void AbstractDropdownItem::slt_vanish()
+{
+    vanish();
 }

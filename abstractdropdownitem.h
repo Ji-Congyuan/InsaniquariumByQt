@@ -2,6 +2,7 @@
 #define ABSTRACTDROPDOWNITEM_H
 
 #include "abstractmovableitem.h"
+#include <QTimer>
 
 class AbstractDropdownItem : public AbstractMovableItem
 {
@@ -14,6 +15,14 @@ public:
     void advance(int);
     void move();
     void doCollide();
+    void keepInScene();
+
+public slots:
+    void slt_vanish();
+
+protected:
+    QTimer * m_timer;
+    bool m_isDown;
 
 };
 

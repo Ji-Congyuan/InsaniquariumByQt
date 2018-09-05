@@ -12,7 +12,7 @@ public:
     ~DeepBlue(){}
     const QString & name() const;
     void doCollide();
-    void eat(const int exp);
+    void eat(const int);
 
 public slots:
     void slt_attacked(const QPointF &);

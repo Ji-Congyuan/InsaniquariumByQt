@@ -30,8 +30,10 @@ void AbstractFish::advance(int)
             m_pixIndex = 0;            
             // vanish after sink
             if (!isAlive()){
-                vanish();
-                return;
+                if(isVisible()){
+                    vanish();
+                    return;
+                }
             }
             // finish turning
             else if (turning()){
@@ -120,6 +122,12 @@ void AbstractFish::gettingHungry()
     if (m_hungry == 0){
         die();
     }
+}
+
+void AbstractFish::vanish()
+{
+    AbstractMovableItem::vanish();
+    emit sgn_die();
 }
 
 bool AbstractFish::isHungry()

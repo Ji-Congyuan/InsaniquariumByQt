@@ -57,6 +57,10 @@ public:
     static const int MONEY_WIDTH;
     static const int MONEY_HEIGHT;
 
+    // pets size
+    static const int PETS_WIDTH;
+    static const int PETS_HEIGHT;
+
     // init const
     static const int INIT_FOODS_RESTRICT;
     static const int INIT_FISH_COUNT;
@@ -85,6 +89,11 @@ public:
     static const int ALIEN_TURN_LEFT_STATE_INDEX;
     static const int ALIEN_TURN_RIGHT_STATE_INDEX;
 
+    static const int PETS_SWIM_LEFT_STATE_INDEX;
+    static const int PETS_SWIM_RIGHT_STATE_INDEX;
+    static const int PETS_TURN_LEFT_STATE_INDEX;
+    static const int PETS_TURN_RIGHT_STATE_INDEX;
+
     static const int FISH_STATE_COUNT;
     static const int FISH_INDEX_COUNT;
 
@@ -96,6 +105,9 @@ public:
 
     static const int MONEY_STATE_COUNT;
     static const int MONEY_INDEX_COUNT;
+
+    static const int PETS_STATE_COUNT;
+    static const int PETS_INDEX_COUNT;
 
     // speed up
     static const qreal HUNGRY_INCREASE;
@@ -119,6 +131,7 @@ public:
     static const int CHASE_STEP;
     static const int FIND_FOOD_STEP;
     static const int ALIENS_ATTACK_BASE_STEP;
+    static const int FIND_TARGET_STEP;
 
     // hash
     static const QHash<QString, int> FISH_YIELD_STEP;
@@ -148,8 +161,16 @@ public:
     static const QHash<QString, int> MONEY_PAINT_WIDTH;
     static const QHash<QString, int> MONEY_PAINT_HEIGHT;
 
+    static const QHash<QString, QString> PETS_PATH;
+    static const QHash<QString, int> PETS_SPEED;
+    static const QHash<QString, int> PETS_PAINT_WIDTH;
+    static const QHash<QString, int> PETS_PAINT_HEIGHT;
+    static const QHash<QString, int> PETS_INIT_POS_X;
+    static const QHash<QString, int> PETS_INIT_POS_Y;
+
     // list
     static const QStringList FISH_TYPE;
+    static const QStringList MONEY_TYPE;
 
 private:
     explicit Config() {}

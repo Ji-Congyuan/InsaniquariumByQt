@@ -28,7 +28,7 @@ void DeepBlue::doCollide()
     }
 }
 
-void DeepBlue::eat(const int exp)
+void DeepBlue::eat(const int)
 {
     // do nothing
 }

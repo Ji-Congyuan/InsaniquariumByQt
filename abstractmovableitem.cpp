@@ -230,3 +230,36 @@ QPointF AbstractMovableItem::centrePos()
     center.ry() = leftTop.ry() + height() / 2;
     return center;
 }
+
+void AbstractMovableItem::keepInScene()
+{
+    QPointF pos = scenePos();
+
+    // restrict in the scene
+    switch (checkPos()) {
+    case INSIDE:
+        break;
+    case UPEDGE:
+        setDirection( 2 * Config::PI - direction());
+        pos.ry() = Config::POOL_UPPER_BOUND - (height() - paintHeight()) / 2;
+        break;
+    case DOWNEDGE:
+        setDirection( 2 * Config::PI - direction());
+        pos.ry() = Config::POOL_LOWER_BOUND - (height() + paintHeight()) / 2;
+        break;
+    case LEFTEDGE:
+        setDirection(Config::PI - direction());
+        pos.rx() = - (width() - paintWidth()) / 2;
+        m_pixIndex = 0;
+        break;
+    case RIGHTEDGE:
+        setDirection(Config::PI - direction());
+        pos.rx() = Config::SCREEN_WIDTH - (width() + paintWidth()) / 2;
+        m_pixIndex = 0;
+        break;
+    default:
+        break;
+    }
+
+    setPos(pos);
+}

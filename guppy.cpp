@@ -35,7 +35,8 @@ void Guppy::findFood()
     QList<QGraphicsItem*> items_ = scene()->items();
     QList<AbstractMovableItem*> edibleItems;
     foreach (QGraphicsItem * item, items_) {
-        AbstractGameItem * gameItem = dynamic_cast<AbstractGameItem *> (item);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (item);
         if (gameItem->name() == "food"
                 && gameItem->isVisible()){
             edibleItems.append(dynamic_cast<AbstractMovableItem *>(gameItem));

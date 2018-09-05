@@ -19,4 +19,7 @@
     <qresource prefix="/aliens">
         <file>images/aliens/sylv.png</file>
     </qresource>
+    <qresource prefix="/pets">
+        <file>images/pets/stinky_converted.png</file>
+    </qresource>
 </RCC>
