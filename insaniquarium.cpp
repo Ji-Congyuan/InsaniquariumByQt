@@ -51,7 +51,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
     // set random seed
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 
-    // delete later
+    // !!! delete later !!!
     m_petsName.append("stinky");
 }
 
@@ -201,7 +201,22 @@ void Insaniquarium::slt_start()
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        addFish("kingGuppy", initPos);
+        addFish("smallGuppy", initPos);
+        QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        addFish("carnivore", initPos1);
+        QPointF initPos2 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        addFish("ulturavore", initPos2);
+        QPointF initPos3 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        addFish("middleBreeder", initPos3);
     }
 
     foreach (QString petName, m_petsName) { // init pets
@@ -257,9 +272,9 @@ void Insaniquarium::slt_moneyPicked(int value)
     qDebug() << "money: " << m_money;
 }
 
-void Insaniquarium::slt_yieldFish(const QString &, const QPointF &)
+void Insaniquarium::slt_yieldFish(const QString & name, const QPointF & pos)
 {
-
+    addFish(name, pos);
 }
 
 void Insaniquarium::slt_yieldMoney(const QString & name, const QPointF & pos)

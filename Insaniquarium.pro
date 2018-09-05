@@ -26,7 +26,12 @@ HEADERS += \
     bigguppy.h \
     gold.h \
     diamond.h \
-    kingguppy.h
+    kingguppy.h \
+    carnivore.h \
+    ulturavore.h \
+    breeder.h \
+    middlebreeder.h \
+    bigbreeder.h
 
 SOURCES += \
     config.cpp \
@@ -55,7 +60,12 @@ SOURCES += \
     bigguppy.cpp \
     gold.cpp \
     diamond.cpp \
-    kingguppy.cpp
+    kingguppy.cpp \
+    carnivore.cpp \
+    ulturavore.cpp \
+    breeder.cpp \
+    middlebreeder.cpp \
+    bigbreeder.cpp
 
 RESOURCES += \
     images.qrc

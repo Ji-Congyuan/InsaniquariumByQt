@@ -39,7 +39,8 @@ void Stinky::doCollide()
     foreach (QGraphicsItem * t, collidingItems()) {
         AbstractMovableItem * movableItem
                 = dynamic_cast<AbstractMovableItem *> (t);
-        if (Config::MONEY_TYPE.contains(movableItem->name())){
+        if (Config::COLLIDABLE_ITEMS[name()]
+                .contains(movableItem->name())){
             AbstractMoney * money =
                     dynamic_cast<AbstractMoney *> (movableItem);
             connect(this, SIGNAL(sgn_pickMoney(int)),
@@ -69,7 +70,8 @@ void Stinky::findTarget()
     foreach (QGraphicsItem * item, items_) {
         AbstractGameItem * gameItem
                 = dynamic_cast<AbstractGameItem *> (item);
-        if (Config::MONEY_TYPE.contains(gameItem->name())
+        if (Config::COLLIDABLE_ITEMS[name()]
+                .contains(gameItem->name())
                 && gameItem->isVisible()){
             money.append(dynamic_cast<AbstractMoney *>(gameItem));
         }

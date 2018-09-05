@@ -7,6 +7,10 @@
 #include "middleguppy.h"
 #include "bigguppy.h"
 #include "kingguppy.h"
+#include "carnivore.h"
+#include "ulturavore.h"
+#include "middlebreeder.h"
+#include "bigbreeder.h"
 
 #include "food.h"
 

@@ -87,7 +87,8 @@ void AbstractAlien::findFood()
     QList<AbstractMovableItem*> edibleItems;
     foreach (QGraphicsItem * item, items_){
         AbstractGameItem * gameItem = dynamic_cast<AbstractGameItem *> (item);
-        if (Config::FISH_TYPE.contains(gameItem->name())
+        if (Config::COLLIDABLE_ITEMS[name()]
+                .contains(gameItem->name())
                 && gameItem->isVisible()){
             edibleItems.append(dynamic_cast<AbstractMovableItem *>(gameItem));
         }
@@ -113,7 +114,7 @@ void AbstractAlien::die()
 
 void AbstractAlien::yield()
 {
-    emit sgn_yieldMoney("silver", scenePos());
+    emit sgn_yieldMoney("diamond", scenePos());
 }
 
 void AbstractAlien::slt_attacked(const QPointF & pos)

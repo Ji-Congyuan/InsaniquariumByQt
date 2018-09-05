@@ -12,14 +12,9 @@ public:
           const QPixmaps2 &pixs2, QGraphicsScene *scene,
           QGraphicsItem *parent = nullptr);
     ~Guppy() {}
-    // void yield();
-    // void upgrade();
     void advance(int);
     void doCollide();
     void findFood();
-
-protected:
-    bool m_upgradable;
 
 };
 

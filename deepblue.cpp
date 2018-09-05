@@ -20,7 +20,8 @@ void DeepBlue::doCollide()
     foreach (QGraphicsItem * t, collidingItems()){
         AbstractMovableItem * movableItem
                 = dynamic_cast<AbstractMovableItem *> (t);
-        if (Config::FISH_TYPE.contains(movableItem->name())){
+        if (Config::COLLIDABLE_ITEMS[name()]
+                .contains(movableItem->name())){
             AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
             eat(0);
             fish->vanish();

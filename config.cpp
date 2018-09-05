@@ -30,8 +30,10 @@ const int Config::POOL_UPPER_BOUND = 120;
 const int Config::POOL_LOWER_BOUND = 660;
 
 // fish size
-const int Config::FISH_WIDTH  = 80;
-const int Config::FISH_HEIGHT = 80;
+const int Config::FISH_WIDTH        = 80;
+const int Config::FISH_HEIGHT       = 80;
+const int Config::ULTURAVORE_WIDTH  = 160;
+const int Config::ULTURAVORE_HEIGHT = 160;
 
 // aliens size
 const int Config::ALIENS_WIDTH  = 160;
@@ -123,52 +125,80 @@ const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
 const QHash<QString, int> Config::FISH_YIELD_STEP = {
-    { "smallGuppy",  9999 },
-    { "middleGuppy", 1000 },
-    { "bigGuppy",    1000 },
-    { "kingGuppy",   1000 }
+    { "smallGuppy",    9999 },
+    { "middleGuppy",   1000 },
+    { "bigGuppy",      1000 },
+    { "kingGuppy",     1000 },
+    { "carnivore",     1000 },
+    { "ulturavore",    1000 },
+    { "middleBreeder", 1000 },
+    { "bigBreeder",    500 }
 };
 
 const QHash<QString, int> Config::FISH_SPEED = {
-    { "smallGuppy",  5 },
-    { "middleGuppy", 5 },
-    { "bigGuppy",    5 },
-    { "kingGuppy",   5 }
+    { "smallGuppy",    5 },
+    { "middleGuppy",   5 },
+    { "bigGuppy",      5 },
+    { "kingGuppy",     5 },
+    { "carnivore",     6 },
+    { "ulturavore",    8 },
+    { "middleBreeder", 5 },
+    { "bigBreeder",    5 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_WIDTH = {
-    { "smallGuppy",  40 },
-    { "middleGuppy", 50 },
-    { "bigGuppy",    70 },
-    { "kingGuppy",   75 }
+    { "smallGuppy",    40 },
+    { "middleGuppy",   50 },
+    { "bigGuppy",      70 },
+    { "kingGuppy",     75 },
+    { "carnivore",     75 },
+    { "ulturavore",    150 },
+    { "middleBreeder", 55 },
+    { "bigBreeder",    70 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
-    { "smallGuppy",  40 },
-    { "middleGuppy", 45 },
-    { "bigGuppy",    65 },
-    { "kingGuppy",   70 }
+    { "smallGuppy",    40 },
+    { "middleGuppy",   45 },
+    { "bigGuppy",      65 },
+    { "kingGuppy",     70 },
+    { "carnivore",     70 },
+    { "ulturavore",    135 },
+    { "middleBreeder", 50 },
+    { "bigBreeder",    60 }
 };
 
 const QHash<QString, QString> Config::FISH_PATH = {
-    { "smallGuppy",  ":/fish/images/fish/smallGuppy.png" },
-    { "middleGuppy", ":/fish/images/fish/mediumGuppy.png" },
-    { "bigGuppy",    ":/fish/images/fish/bigGuppy.png" },
-    { "kingGuppy",   ":/fish/images/fish/kingGuppy.png" }
+    { "smallGuppy",    ":/fish/images/fish/smallGuppy.png" },
+    { "middleGuppy",   ":/fish/images/fish/mediumGuppy.png" },
+    { "bigGuppy",      ":/fish/images/fish/bigGuppy.png" },
+    { "kingGuppy",     ":/fish/images/fish/kingGuppy.png" },
+    { "carnivore",     ":/fish/images/fish/carnivore.png" },
+    { "ulturavore",    ":/fish/images/fish/ulturavore_converted.png" },
+    { "middleBreeder", ":/fish/images/fish/mediumBreeder.png" },
+    { "bigBreeder",    ":/fish/images/fish/bigBreeder.png" }
 };
 
 const QHash<QString, int> Config::FISH_EATEN_EXP = {
-    { "smallGuppy",  10 },
-    { "middleGuppy", 15 },
-    { "bigGuppy",    20 },
-    { "kingGuppy",   25 }
+    { "smallGuppy",    10 },
+    { "middleGuppy",   15 },
+    { "bigGuppy",      20 },
+    { "kingGuppy",     25 },
+    { "carnivore",     30 },
+    { "ulturavore",    45 },
+    { "middleBreeder", 15 },
+    { "bigBreeder",    20 }
 };
 
 const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
-    { "smallGuppy",  30 },
-    { "middleGuppy", 45 },
-    { "bigGuppy",    60 },
-    { "kingGuppy",   9999}
+    { "smallGuppy",    30 },
+    { "middleGuppy",   45 },
+    { "bigGuppy",      60 },
+    { "kingGuppy",     9999 },
+    { "carnivore",     9999 },
+    { "ulturavore",    9999 },
+    { "middleBreeder", 45 },
+    { "bigBreeder",    60 }
 };
 
 const QHash<QString, int> Config::FOODS_INDEX = {
@@ -228,7 +258,7 @@ const QHash<QString, int> Config::ALIENS_PAINT_HEIGHT = {
 };
 
 const QHash<QString, int> Config::ALIENS_SPEED = {
-    { "deepBlue",  10 }
+    { "deepBlue",  5 }
 };
 
 const QHash<int, QString> Config::ALIENS_NAME = {
@@ -240,7 +270,7 @@ const QHash<QString, int> Config::MONEY_VALUE = {
     { "gold",     35 },
     { "star",     100 },
     { "diamond",  200 },
-    { "treasure", 2000 },
+    { "treasure", 1000 },
     { "insect",   200 }
 };
 
@@ -295,12 +325,31 @@ const QHash<QString, int> Config::PETS_INIT_POS_Y = {
     { "stinky", 579 }    // Config::POOL_LOWER_BOUND - Config::PETS_HEIGHT - 1
 };
 
+const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
+    { "smallGuppy",    5 },
+    { "middleGuppy",   5 },
+    { "bigGuppy",      5 },
+    { "kingGuppy",     5 },
+    { "carnivore",     5 },
+    { "ulturavore",    5 },
+    { "middleBreeder", 5 },
+    { "bigBreeder",    5 },
+
+    { "stinky",        2 },
+
+    { "deepBlue",      2 }
+};
+
 // list
 const QStringList Config::FISH_TYPE = {
     "smallGuppy",
     "middleGuppy",
     "bigGuppy",
-    "kingGuppy"
+    "kingGuppy",
+    "carnivore",
+    "ulturavore",
+    "middleBreeder",
+    "bigBreeder"
 };
 
 const QStringList Config::MONEY_TYPE = {
@@ -310,4 +359,26 @@ const QStringList Config::MONEY_TYPE = {
     "diamond",
     "treasure",
     "insect"
+};
+
+const QStringList Config::GUPPY_TYPE = {
+    "smallGuppy",
+    "middleGuppy",
+    "bigGuppy",
+    "kingGuppy"
+};
+
+const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
+    { "smallGuppy",    QStringList("food") },
+    { "middleGuppy",   QStringList("food") },
+    { "bigGuppy",      QStringList("food") },
+    { "kingGuppy",     QStringList("food") },
+    { "carnivore",     Config::GUPPY_TYPE },
+    { "ulturavore",    QStringList("carnivore") },
+    { "middleBreeder", QStringList("food") },
+    { "bigBreeder",    QStringList("food") },
+
+    { "deepBlue",      Config::FISH_TYPE },
+
+    { "stinky",        Config::MONEY_TYPE }
 };

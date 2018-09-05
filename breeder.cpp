@@ -1,19 +1,18 @@
-#include "guppy.h"
-#include <QDebug>
+#include "breeder.h"
 
-Guppy::Guppy(qreal w, qreal h, const QPointF &pos,
-             const QPixmaps2 &pixs2, QGraphicsScene *scene,
-             QGraphicsItem *parent)
+Breeder::Breeder(qreal w, qreal h, const QPointF &pos,
+                 const QPixmaps2 &pixs2, QGraphicsScene *scene,
+                 QGraphicsItem *parent)
     : AbstractFish(w, h, pos, pixs2, scene, parent)
 {
 }
 
-void Guppy::advance(int)
+void Breeder::advance(int)
 {
     AbstractFish::advance(0);
 }
 
-void Guppy::doCollide()
+void Breeder::doCollide()
 {
     if (!m_hasTarget){
         return;
@@ -30,7 +29,7 @@ void Guppy::doCollide()
     }
 }
 
-void Guppy::findFood()
+void Breeder::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
     QList<AbstractMovableItem*> edibleItems;

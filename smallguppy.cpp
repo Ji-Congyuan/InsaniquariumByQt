@@ -5,7 +5,6 @@ SmallGuppy::SmallGuppy(qreal w, qreal h, const QPointF &pos,
                        QGraphicsItem *parent)
     : Guppy(w, h, pos, pixs2, scene, parent), m_name("smallGuppy")
 {
-    m_upgradable = true;
 }
 
 const QString & SmallGuppy::name() const

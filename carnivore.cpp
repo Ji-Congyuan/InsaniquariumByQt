@@ -1,19 +1,22 @@
-#include "guppy.h"
-#include <QDebug>
+#include "carnivore.h"
 
-Guppy::Guppy(qreal w, qreal h, const QPointF &pos,
-             const QPixmaps2 &pixs2, QGraphicsScene *scene,
-             QGraphicsItem *parent)
-    : AbstractFish(w, h, pos, pixs2, scene, parent)
+Carnivore::Carnivore(qreal w, qreal h, const QPointF &pos,
+                     const QPixmaps2 &pixs2, QGraphicsScene *scene,
+                     QGraphicsItem *parent)
+    : AbstractFish(w, h, pos, pixs2, scene, parent),
+      m_name("carnivore")
 {
 }
 
-void Guppy::advance(int)
+void Carnivore::advance(int)
 {
+    if (!isVisible()){
+        return;
+    }
     AbstractFish::advance(0);
 }
 
-void Guppy::doCollide()
+void Carnivore::doCollide()
 {
     if (!m_hasTarget){
         return;
@@ -23,14 +26,14 @@ void Guppy::doCollide()
                 = dynamic_cast<AbstractMovableItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
                 .contains(movableItem->name())){
-            Food * food = dynamic_cast<Food *> (movableItem);
-            eat(food->eatenExp());
-            food->vanish();
+            AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
+            eat(fish->eatenExp());
+            fish->vanish();
         }
     }
 }
 
-void Guppy::findFood()
+void Carnivore::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
     QList<AbstractMovableItem*> edibleItems;
@@ -50,4 +53,19 @@ void Guppy::findFood()
         connect(m_target, SIGNAL(sgn_deleting()),
                 this, SLOT(slt_lostAim()));
     }
+}
+
+const QString &Carnivore::name() const
+{
+    return m_name;
+}
+
+void Carnivore::upgrade()
+{
+    // do nothing
+}
+
+void Carnivore::yield()
+{
+    emit sgn_yieldMoney("diamond", scenePos());
 }

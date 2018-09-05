@@ -44,6 +44,8 @@ public:
     // fish size
     static const int FISH_WIDTH;
     static const int FISH_HEIGHT;
+    static const int ULTURAVORE_WIDTH;
+    static const int ULTURAVORE_HEIGHT;
 
     // aliens size
     static const int ALIENS_WIDTH;
@@ -168,9 +170,14 @@ public:
     static const QHash<QString, int> PETS_INIT_POS_X;
     static const QHash<QString, int> PETS_INIT_POS_Y;
 
+    static const QHash<QString, int> ORIGIN_IMAGE_ROWS;
+
+    static const QHash<QString, QStringList> COLLIDABLE_ITEMS;
+
     // list
     static const QStringList FISH_TYPE;
     static const QStringList MONEY_TYPE;
+    static const QStringList GUPPY_TYPE;
 
 private:
     explicit Config() {}

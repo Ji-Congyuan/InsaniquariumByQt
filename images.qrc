@@ -11,6 +11,10 @@
         <file>images/fish/mediumGuppy.png</file>
         <file>images/fish/bigGuppy.png</file>
         <file>images/fish/kingGuppy.png</file>
+        <file>images/fish/carnivore.png</file>
+        <file>images/fish/ulturavore_converted.png</file>
+        <file>images/fish/mediumBreeder.png</file>
+        <file>images/fish/bigBreeder.png</file>
     </qresource>
     <qresource prefix="/foods">
         <file>images/foods/food.png</file>
