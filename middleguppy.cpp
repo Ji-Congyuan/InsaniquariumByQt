@@ -4,9 +4,9 @@
 MiddleGuppy::MiddleGuppy(qreal w, qreal h, const QPointF &pos,
                          const QPixmaps2 &pixs2, QGraphicsScene *scene,
                          QGraphicsItem *parent)
-    : Guppy(w, h, pos, pixs2, scene, parent), m_name("middleGuppy")
+    : Guppy(w, h, pos, pixs2, scene, parent),
+      m_name("middleGuppy")
 {
-
 }
 
 const QString &MiddleGuppy::name() const
@@ -21,7 +21,8 @@ void MiddleGuppy::doCollide()
 
 void MiddleGuppy::upgrade()
 {
-    // FIXME
+    emit sgn_fishUpgrade("bigGuppy", scenePos(), direction());
+    vanish();
 }
 
 void MiddleGuppy::yield()

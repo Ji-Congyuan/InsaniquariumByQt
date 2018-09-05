@@ -20,7 +20,6 @@ void SmallGuppy::doCollide()
 
 void SmallGuppy::upgrade()
 {
-
     emit sgn_fishUpgrade("middleGuppy", scenePos(), direction());
     vanish();
 }

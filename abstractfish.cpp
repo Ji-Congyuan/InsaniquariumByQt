@@ -108,7 +108,7 @@ void AbstractFish::move()
 void AbstractFish::eat(const int exp)
 {
     m_exp += exp;
-
+    qDebug() << "exp: " << m_exp;
     if (m_exp >= Config::FISH_UPGRADE_EXP[name()]){
         upgrade();
     }

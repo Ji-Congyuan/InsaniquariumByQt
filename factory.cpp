@@ -172,6 +172,16 @@ AbstractFish *Factory::creatFish(const QString &name,
                                Config::FISH_HEIGHT,
                                pos, pixs2, scene);
     }
+    else if (name == "bigGuppy"){
+        fish = new BigGuppy(Config::FISH_WIDTH,
+                            Config::FISH_HEIGHT,
+                            pos, pixs2, scene);
+    }
+    else if (name == "kingGuppy"){
+        fish = new KingGuppy(Config::FISH_WIDTH,
+                             Config::FISH_HEIGHT,
+                             pos, pixs2, scene);
+    }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
@@ -193,12 +203,9 @@ Food *Factory::createFood(const QString &name,
     QPixmaps2 all = PixmapsMaker::createQPixmaps(pic, 10, 5);
     pixs2.append(all.at(Config::FOODS_INDEX[name]));
 
-    Food * food;
-    if (name == "smallFood"){
-        food = new Food(Config::FOODS_WIDTH,
+    Food * food = new Food(Config::FOODS_WIDTH,
                         Config::FOODS_HEIGHT,
                         pos, pixs2, scene);
-    }
 
     food->setSpeed(Config::FOOD_SINK_SPEED);
     food->setDirection(Config::PI / 2);
@@ -223,6 +230,16 @@ AbstractMoney *Factory::createMoney(const QString &name,
         money = new Silver(Config::MONEY_WIDTH,
                            Config::MONEY_HEIGHT,
                            pos, pixs2, scene);
+    }
+    else if (name == "gold"){
+        money = new Gold(Config::MONEY_WIDTH,
+                         Config::MONEY_HEIGHT,
+                         pos, pixs2, scene);
+    }
+    else if (name == "diamond"){
+        money = new Diamond(Config::MONEY_WIDTH,
+                            Config::MONEY_HEIGHT,
+                            pos, pixs2, scene);
     }
 
     money->setSpeed(Config::MONEY_SINK_SPEED);

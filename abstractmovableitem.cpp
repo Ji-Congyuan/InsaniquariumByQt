@@ -215,11 +215,6 @@ void AbstractMovableItem::vanish()
     emit sgn_deleting();
     setPos(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
     setFlag(QGraphicsItem::ItemIsMovable, false);
-
-    // scene()->removeItem(this);
-
-    // delete this;
-
 }
 
 QPointF AbstractMovableItem::centrePos()

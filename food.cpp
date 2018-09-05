@@ -26,6 +26,10 @@ void Food::advance(int)
 
 void Food::vanish()
 {
+    if (!isVisible())
+    {
+        return;
+    }
     emit sgn_foodWasted();
     AbstractMovableItem::vanish(); 
 }

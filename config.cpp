@@ -118,43 +118,57 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 2000; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 999999999; // default maybe 2000
 const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
 const QHash<QString, int> Config::FISH_YIELD_STEP = {
     { "smallGuppy",  9999 },
-    { "middleGuppy", 1000 }
+    { "middleGuppy", 1000 },
+    { "bigGuppy",    1000 },
+    { "kingGuppy",   1000 }
 };
 
 const QHash<QString, int> Config::FISH_SPEED = {
     { "smallGuppy",  5 },
-    { "middleGuppy", 5 }
+    { "middleGuppy", 5 },
+    { "bigGuppy",    5 },
+    { "kingGuppy",   5 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_WIDTH = {
     { "smallGuppy",  40 },
-    { "middleGuppy", 50 }
+    { "middleGuppy", 50 },
+    { "bigGuppy",    70 },
+    { "kingGuppy",   75 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
     { "smallGuppy",  40 },
-    { "middleGuppy", 45 }
+    { "middleGuppy", 45 },
+    { "bigGuppy",    65 },
+    { "kingGuppy",   70 }
 };
 
 const QHash<QString, QString> Config::FISH_PATH = {
     { "smallGuppy",  ":/fish/images/fish/smallGuppy.png" },
-    { "middleGuppy", ":/fish/images/fish/mediumGuppy.png" }
+    { "middleGuppy", ":/fish/images/fish/mediumGuppy.png" },
+    { "bigGuppy",    ":/fish/images/fish/bigGuppy.png" },
+    { "kingGuppy",   ":/fish/images/fish/kingGuppy.png" }
 };
 
 const QHash<QString, int> Config::FISH_EATEN_EXP = {
     { "smallGuppy",  10 },
-    { "middleGuppy", 15 }
+    { "middleGuppy", 15 },
+    { "bigGuppy",    20 },
+    { "kingGuppy",   25 }
 };
 
 const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
     { "smallGuppy",  30 },
-    { "middleGuppy", 45 }
+    { "middleGuppy", 45 },
+    { "bigGuppy",    60 },
+    { "kingGuppy",   9999}
 };
 
 const QHash<QString, int> Config::FOODS_INDEX = {
@@ -174,11 +188,19 @@ const QHash<int, QString> Config::FOODS_NAME = {
 };
 
 const QHash<QString, int> Config::FOODS_PAINT_WIDTH = {
-    { "smallFood", 16 }
+    { "smallFood",  16 },
+    { "middleFood", 16 },
+    { "bigFood",    16 },
+    { "buttleFood", 16 },
+    { "superFood",  16 }
 };
 
 const QHash<QString, int> Config::FOODS_PAINT_HEIGHT = {
-    { "smallFood", 11 }
+    { "smallFood",  11 },
+    { "middleFood", 16 },
+    { "bigFood",    16 },
+    { "buttleFood", 16 },
+    { "superFood",  16 }
 };
 
 const QHash<QString, int> Config::FOODS_EXP = {
@@ -262,7 +284,7 @@ const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
 };
 
 const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
-    { "stinky", 70 }
+    { "stinky", 60 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_X = {

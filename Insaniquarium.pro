@@ -22,7 +22,11 @@ HEADERS += \
     deepblue.h \
     abstractpet.h \
     stinky.h \
-    factory.h
+    factory.h \
+    bigguppy.h \
+    gold.h \
+    diamond.h \
+    kingguppy.h
 
 SOURCES += \
     config.cpp \
@@ -47,7 +51,11 @@ SOURCES += \
     deepblue.cpp \
     abstractpet.cpp \
     stinky.cpp \
-    factory.cpp
+    factory.cpp \
+    bigguppy.cpp \
+    gold.cpp \
+    diamond.cpp \
+    kingguppy.cpp
 
 RESOURCES += \
     images.qrc

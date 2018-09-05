@@ -5,10 +5,14 @@
 
 #include "smallguppy.h"
 #include "middleguppy.h"
+#include "bigguppy.h"
+#include "kingguppy.h"
 
 #include "food.h"
 
 #include "silver.h"
+#include "gold.h"
+#include "diamond.h"
 
 #include "stinky.h"
 

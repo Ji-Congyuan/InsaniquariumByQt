@@ -201,7 +201,7 @@ void Insaniquarium::slt_start()
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        addFish("smallGuppy", initPos);
+        addFish("kingGuppy", initPos);
     }
 
     foreach (QString petName, m_petsName) { // init pets
