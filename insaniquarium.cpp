@@ -389,32 +389,6 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
         int y = Config::POOL_UPPER_BOUND;
         slt_yieldFish(name, QPointF(x, y));
     }
-    /*
-    else if (btnName == "smallGuppyBtn"){
-        int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
-                                         Config::SCREEN_WIDTH * 0.8);
-        int y = Config::POOL_UPPER_BOUND;
-        slt_yieldFish("smallGuppy", QPointF(x, y));
-    }
-    else if (btnName == "middleBreederBtn"){
-        int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
-                                         Config::SCREEN_WIDTH * 0.8);
-        int y = Config::POOL_UPPER_BOUND;
-        slt_yieldFish("middleBreeder", QPointF(x, y));
-    }
-    else if (btnName == "carnivoreBtn"){
-        int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
-                                         Config::SCREEN_WIDTH * 0.8);
-        int y = Config::POOL_UPPER_BOUND;
-        slt_yieldFish("carnivore", QPointF(x, y));
-    }
-    else if (btnName == "ulturavoreBtn"){
-        int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
-                                         Config::SCREEN_WIDTH * 0.8);
-        int y = Config::POOL_UPPER_BOUND;
-        slt_yieldFish("ulturavore", QPointF(x, y));
-    }
-    */
     else if (btnName == "foodUpgradeBtn"){
         if (m_foodLevel < m_maxFoodLevel){
             m_foodLevel++;
