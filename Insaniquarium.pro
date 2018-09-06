@@ -4,8 +4,6 @@ HEADERS += \
     config.h \
     insaniquarium.h \
     abstractgameitem.h \
-    abstractbtn.h \
-    menubtn.h \
     pixmapsmaker.h \
     abstractmovableitem.h \
     abstractcreature.h \
@@ -31,15 +29,15 @@ HEADERS += \
     ulturavore.h \
     breeder.h \
     middlebreeder.h \
-    bigbreeder.h
+    bigbreeder.h \
+    btn.h \
+    treasure.h
 
 SOURCES += \
     config.cpp \
     insaniquarium.cpp \
     main.cpp \
     abstractgameitem.cpp \
-    abstractbtn.cpp \
-    menubtn.cpp \
     pixmapsmaker.cpp \
     abstractmovableitem.cpp \
     abstractcreature.cpp \
@@ -65,7 +63,9 @@ SOURCES += \
     ulturavore.cpp \
     breeder.cpp \
     middlebreeder.cpp \
-    bigbreeder.cpp
+    bigbreeder.cpp \
+    btn.cpp \
+    treasure.cpp
 
 RESOURCES += \
     images.qrc

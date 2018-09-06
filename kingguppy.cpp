@@ -6,6 +6,7 @@ KingGuppy::KingGuppy(qreal w, qreal h, const QPointF &pos,
     : Guppy(w, h, pos, pixs2, scene, parent),
       m_name("kingGuppy")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 const QString &KingGuppy::name() const

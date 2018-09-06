@@ -244,7 +244,9 @@ AbstractMoney *Factory::createMoney(const QString &name,
 {
     QPixmaps2 pixs2;
     QPixmap pic(Config::MONEY_PATH);
-    QPixmaps2 all = PixmapsMaker::createQPixmaps(pic, 10, 6);
+    QPixmaps2 all = PixmapsMaker::createQPixmaps(pic,
+                                                 Config::MONEY_INDEX_COUNT,
+                                                 Config::MONEY_STATE_COUNT);
     pixs2.append(all.at(Config::MONEY_INDEX[name]));
 
     AbstractMoney * money;
@@ -262,6 +264,11 @@ AbstractMoney *Factory::createMoney(const QString &name,
         money = new Diamond(Config::MONEY_WIDTH,
                             Config::MONEY_HEIGHT,
                             pos, pixs2, scene);
+    }
+    else if (name == "treasure"){
+        money = new Treasure(Config::MONEY_WIDTH,
+                             Config::MONEY_HEIGHT,
+                             pos, pixs2, scene);
     }
 
     money->setSpeed(Config::MONEY_SINK_SPEED);
@@ -333,4 +340,17 @@ AbstractPet *Factory::createPet(const QString &name,
     pet->updateDirection();
 
     return pet;
+}
+
+Btn *Factory::creatBtn(const QString &name, QGraphicsScene *scene)
+{
+    QPixmap pic(Config::BTNS_PATH[name]);
+    QPixmaps2 pixs2 = PixmapsMaker::createQPixmaps(pic, 3,
+                                                   Config::ORIGIN_IMAGE_ROWS[name]);
+    Btn * btn = new Btn(name, Config::BTNS_INIT_POS[name],
+                        Config::BTNS_WIDTH[name],
+                        Config::BTNS_HEIGHT[name],
+                        pixs2, scene);
+
+    return btn;
 }

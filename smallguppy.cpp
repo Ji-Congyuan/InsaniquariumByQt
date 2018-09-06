@@ -5,6 +5,7 @@ SmallGuppy::SmallGuppy(qreal w, qreal h, const QPointF &pos,
                        QGraphicsItem *parent)
     : Guppy(w, h, pos, pixs2, scene, parent), m_name("smallGuppy")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 const QString & SmallGuppy::name() const

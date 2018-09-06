@@ -2,17 +2,18 @@
 #define INSANIQUARIUM_H
 
 #include "pixmapsmaker.h"
-#include "menubtn.h"
+#include "btn.h"
 #include "factory.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 #include <QColor>
 #include <QPixmap>
 #include <QTime>
 #include <QTimer>
+#include <QPainter>
 
 class Insaniquarium : public QGraphicsView
 {
@@ -21,19 +22,24 @@ class Insaniquarium : public QGraphicsView
 public:
     Insaniquarium(QWidget *parent = nullptr);
     // show start menu
-    void showMenu();
+    void showStartGameMenu();
+    void showRestartMenu();
+    void showNextLevelMenu();
+    void init();
     void mousePressEvent(QMouseEvent *event);
     void addFood(const QPointF &pos);
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
     void addMoney(const QString & name, const QPointF &pos);
     void addPet(const QString & name, const QPointF &pos);
+    void addBtn(const QString & name);
     void alienAttack();
     void gameOver();
 
 public slots:
     void slt_start();
     void slt_nextLevel(int);
+    void slt_choosePets();
     // update scene
     void slt_update();
     void slt_foodReduce();
@@ -47,11 +53,12 @@ public slots:
     void slt_attatckEnd();
     void slt_fishDie();
     void slt_petSkill(const QString &);
-
-
+    void slt_btnClicked(const QString &);
 
 signals:
     void sgn_attackAlien(const QPointF &);
+    void sgn_alienComes(const QString &);
+    void sgn_alienDies();
 
 private:
     QGraphicsScene *m_scene;
@@ -63,6 +70,8 @@ private:
 
     int m_maxFoodCount;
     int m_currentFoodCount;
+
+    int m_eggLevel;
 
     int m_fishCount;
 
@@ -76,14 +85,16 @@ private:
     bool m_alienAttack;
     QString m_alienName;
 
+    bool m_feedable;
+
     bool m_gaming;
 
     int m_step;
 
     int m_money;
 
-    QStringList m_petsName;
-
+    QStringList m_chosenPets;
+    QStringList m_availPets;
 };
 
 #endif // INSANIQUARIUM_H

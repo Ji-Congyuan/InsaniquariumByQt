@@ -17,8 +17,11 @@
 #include "silver.h"
 #include "gold.h"
 #include "diamond.h"
+#include "treasure.h"
 
 #include "stinky.h"
+
+#include "btn.h"
 
 #include <QImage>
 
@@ -41,6 +44,8 @@ public:
     static AbstractPet * createPet(const QString & name,
                                    const QPointF & pos,
                                    QGraphicsScene *scene);
+    static Btn * creatBtn(const QString & name,
+                          QGraphicsScene *scene);
 
 private:
     explicit Factory(){}

@@ -14,7 +14,7 @@ public:
     const int value() const;
 
 protected:
-    int m_value;
+    const int m_value;
     const QString m_name;
 };
 

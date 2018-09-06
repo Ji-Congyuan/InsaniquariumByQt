@@ -6,6 +6,7 @@ Carnivore::Carnivore(qreal w, qreal h, const QPointF &pos,
     : AbstractFish(w, h, pos, pixs2, scene, parent),
       m_name("carnivore")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 void Carnivore::advance(int)

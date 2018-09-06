@@ -6,7 +6,7 @@ int main(int argc, char * argv[]){
     QApplication app(argc, argv);
 
     Insaniquarium insaniquarium;
-    insaniquarium.showMenu();
+    insaniquarium.showStartGameMenu();
     insaniquarium.show();
 
     /*

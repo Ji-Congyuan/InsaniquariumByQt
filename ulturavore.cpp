@@ -6,6 +6,7 @@ Ulturavore::Ulturavore(qreal w, qreal h, const QPointF &pos,
     : AbstractFish(w, h, pos, pixs2, scene, parent),
       m_name("ulturavore")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 void Ulturavore::advance(int)
@@ -67,5 +68,5 @@ void Ulturavore::upgrade()
 
 void Ulturavore::yield()
 {
-    emit sgn_yieldMoney("diamond", scenePos());
+    emit sgn_yieldMoney("treasure", scenePos());
 }

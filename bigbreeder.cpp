@@ -6,6 +6,7 @@ BigBreeder::BigBreeder(qreal w, qreal h, const QPointF &pos,
     : Breeder(w, h, pos, pixs2, scene, parent),
       m_name("bigBreeder")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 const QString &BigBreeder::name() const

@@ -20,16 +20,12 @@ public:
     static const int SCREEN_WIDTH;
     static const int SCREEN_HEIGHT;
 
-    // icons size config
-    static const int MENU_BTN_WIDTH;
-    static const int MENU_BTN_HEIGHT;
-
     // backgrounds path
     static const QString BG_MENU_PATH;
     static const QString BG_GAME_PATH_1;
 
-    // buttons path
-    static const QString BTN_STARTGAME_PATH;
+    // labels path
+    static const QString NEXT_LEVEL_LABEL;
 
     // foods path
     static const QString FOODS_PATH;
@@ -70,9 +66,9 @@ public:
     static const int INIT_MONEY;
 
     // pixs index
-    static const int DEFAULT_MENU_BTN_INDEX;
-    static const int HOVER_MENU_BTN_INDEX;
-    static const int PRESSED_MENU_BTN_INDEX;
+    static const int DEFAULT_BTN_INDEX;
+    static const int HOVER_BTN_INDEX;
+    static const int PRESSED_BTN_INDEX;
     static const int MENU_BTN_COUNT;
 
     static const int NORMAL_SWIM_LEFT_STATE_INDEX;
@@ -111,6 +107,9 @@ public:
     static const int PETS_STATE_COUNT;
     static const int PETS_INDEX_COUNT;
 
+    static const int MORE_FOOD_STATE_COUNT;
+    static const int EGG_STATE_COUNT;
+
     // speed up
     static const qreal HUNGRY_INCREASE;
 
@@ -118,10 +117,6 @@ public:
     static const int BODY_SINK_SPEED;
     static const int FOOD_SINK_SPEED;
     static const int MONEY_SINK_SPEED;
-
-    // threshold
-    static const int HUNGRY_THRESHOLD;
-    static const int FULL_THRESHOLD;
 
     // damage
     static const int ATTACK_ALIEN_DAMAGE;
@@ -141,9 +136,12 @@ public:
     static const QHash<QString, int> FISH_PAINT_WIDTH;
     static const QHash<QString, int> FISH_PAINT_HEIGHT;
     static const QHash<QString, int> FISH_SPEED;
-
     static const QHash<QString, int> FISH_EATEN_EXP;
     static const QHash<QString, int> FISH_UPGRADE_EXP;
+    static const QHash<QString, int> FISH_INIT_HUNGRY;
+    static const QHash<QString, int> FISH_MAX_HUNGRY;
+    static const QHash<QString, int> FISH_HUNGRY_THRESHOLD;
+    static const QHash<QString, int> FISH_FULL_THRESHOLD;
 
     static const QHash<QString, int> FOODS_INDEX;
     static const QHash<int, QString> FOODS_NAME;
@@ -173,6 +171,13 @@ public:
     static const QHash<QString, int> ORIGIN_IMAGE_ROWS;
 
     static const QHash<QString, QStringList> COLLIDABLE_ITEMS;
+
+    static const QHash<QString, QString> BTNS_PATH;
+    static const QHash<QString, int> BTNS_WIDTH;
+    static const QHash<QString, int> BTNS_HEIGHT;
+    static const QHash<QString, QPointF> BTNS_INIT_POS;
+
+    static const QHash<QString, int> BTNS_COST;
 
     // list
     static const QStringList FISH_TYPE;

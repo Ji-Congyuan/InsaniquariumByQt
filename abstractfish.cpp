@@ -5,7 +5,7 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
                            const QPixmaps2 &pixs2,
                            QGraphicsScene *scene, QGraphicsItem *parent)
     : AbstractCreature(w, h, pos, pixs2, scene, parent),
-      m_hungry(Config::INIT_HUNGRY), m_exp(0)
+      m_exp(0)
 {
 }
 
@@ -113,7 +113,7 @@ void AbstractFish::eat(const int exp)
         upgrade();
     }
 
-    m_hungry = 100;
+    m_hungry = Config::FISH_MAX_HUNGRY[name()];
 }
 
 void AbstractFish::gettingHungry()
@@ -132,10 +132,10 @@ void AbstractFish::vanish()
 
 bool AbstractFish::isHungry()
 {
-    return m_hungry <= Config::HUNGRY_THRESHOLD;
+    return m_hungry <= Config::FISH_HUNGRY_THRESHOLD[name()];
 }
 
 bool AbstractFish::isFull()
 {
-    return m_hungry >= Config::FULL_THRESHOLD;
+    return m_hungry >= Config::FISH_FULL_THRESHOLD[name()];
 }

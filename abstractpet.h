@@ -18,6 +18,8 @@ signals:
     void sgn_specialSkill(const QString &);
 
 public slots:
+    virtual void slt_alienComes(const QString &) = 0;
+    virtual void slt_alienDies() = 0;
     virtual void slt_specialSkill() = 0;
 };
 

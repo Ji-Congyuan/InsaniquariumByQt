@@ -90,3 +90,13 @@ void Stinky::slt_specialSkill()
     // do nothing
 }
 
+void Stinky::slt_alienComes(const QString &)
+{
+    // FIXME
+}
+
+void Stinky::slt_alienDies()
+{
+    // FIXME
+}
+
