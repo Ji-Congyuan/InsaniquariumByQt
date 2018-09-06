@@ -121,7 +121,7 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 999999999; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 99999999; // default maybe 2000
 const int Config::FIND_TARGET_STEP        = 3;
 
 // hash

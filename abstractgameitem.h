@@ -4,6 +4,7 @@
 #include "config.h"
 #include "randommaker.h"
 #include "pixmapsmaker.h"
+#include <QVector>
 #include <QWidget>
 #include <QGraphicsObject>
 #include <QGraphicsScene>
@@ -15,6 +16,8 @@
 #include <QMouseEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneHoverEvent>
+#include <QException>
+#include <QTimer>
 
 
 class AbstractGameItem : public QGraphicsObject

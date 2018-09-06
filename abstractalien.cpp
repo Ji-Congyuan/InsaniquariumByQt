@@ -18,7 +18,7 @@ void AbstractAlien::advance(int)
         vanish();
         return;
     }
-
+    qDebug() << "update" << (m_step % Config::UPDATE_PAINT_STEP == 0);
     if (m_step % Config::UPDATE_PAINT_STEP == 0){ // update action, direction and pos
         updateDirection();
 

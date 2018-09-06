@@ -57,8 +57,13 @@ void Insaniquarium::showStartGameMenu()
 
 void Insaniquarium::showRestartMenu()
 {
-    m_timer->stop();
-    m_gaming = false;
+    /*
+    foreach (QGraphicsItem * item, m_scene->items()) {
+        m_scene->removeItem(item);
+        delete item;
+    }
+    */
+    m_scene->clear();
     m_chosenPets.clear();
     QPixmap pix(Config::RESTART_LABEL);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
@@ -69,6 +74,7 @@ void Insaniquarium::showRestartMenu()
 void Insaniquarium::showNextLevelMenu()
 {
     m_timer->stop();
+    m_scene->clear();
     m_gaming = false;
     m_chosenPets.clear();
     QPixmap pix(Config::NEXT_LEVEL_LABEL);
@@ -290,7 +296,15 @@ void Insaniquarium::slt_choosePets()
 
 void Insaniquarium::slt_update()
 {
-    m_scene->advance();
+    if (!m_gaming){
+        return;
+    }
+    try{
+        m_scene->advance();
+    } catch (QException &e) {
+        qDebug() << e.what();
+    }
+
     m_step++;
     if (m_step == 999999){
         m_step = 0;
@@ -355,6 +369,8 @@ void Insaniquarium::slt_fishDie()
 {
     m_fishCount--;
     if (m_fishCount == 0){
+        m_timer->stop();
+        m_gaming = false;
         gameOver();
     }
 }

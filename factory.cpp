@@ -285,45 +285,70 @@ AbstractPet *Factory::createPet(const QString &name,
 {
     QPixmaps2 pixs2;
     QPixmap pic(Config::PETS_PATH[name]);
-    QPixmaps2 origins = PixmapsMaker::createQPixmaps(pic, 10, 2);
-
-    QPixmaps petSwimL;
-    QPixmaps petSwimR;
-    QPixmaps petTurnL;
-    QPixmaps petTurnR;
+    QPixmaps2 origins = PixmapsMaker::createQPixmaps(pic, 10, Config::ORIGIN_IMAGE_ROWS[name]);
 
     int width = Config::PETS_WIDTH;
     int height = Config::PETS_HEIGHT;
 
-    for (int i = 0; i < Config::PETS_INDEX_COUNT; i++){
-        // PET_SWIM_LEFT_STATE
-        petSwimL.append(origins.at(0).at(i)
-                        .scaled(width, height,
-                                Qt::KeepAspectRatioByExpanding));
+    if (Config::ORIGIN_IMAGE_ROWS[name] >= 2){
+        QPixmaps petSwimL;
+        QPixmaps petSwimR;
+        QPixmaps petTurnL;
+        QPixmaps petTurnR;
 
-        // PET_SWIM_RIGHT_STATE
-        QImage originImg = origins.at(0).at(i)
-                .toImage();
-        QImage mirrored = originImg.mirrored(true, false);
-        QPixmap temp = QPixmap::fromImage(mirrored)
-                .scaled(width, height,
-                        Qt::KeepAspectRatioByExpanding);
-        petSwimR.append(temp);
+        for (int i = 0; i < Config::PETS_INDEX_COUNT; i++){
+            // PET_SWIM_LEFT_STATE
+            petSwimL.append(origins.at(0).at(i)
+                            .scaled(width, height,
+                                    Qt::KeepAspectRatioByExpanding));
 
-        // PET_TURN_LEFT_STATE
-        petTurnL.append(origins.at(1).at(Config::PETS_INDEX_COUNT - i - 1)
-                        .scaled(width, height,
-                                Qt::KeepAspectRatioByExpanding));
+            // PET_SWIM_RIGHT_STATE
+            QImage originImg = origins.at(0).at(i)
+                    .toImage();
+            QImage mirrored = originImg.mirrored(true, false);
+            QPixmap temp = QPixmap::fromImage(mirrored)
+                    .scaled(width, height,
+                            Qt::KeepAspectRatioByExpanding);
+            petSwimR.append(temp);
 
-        // PET_TURN_RIGHT_STATE
-        petTurnR.append(origins.at(1).at(i)
-                        .scaled(width, height,
-                                Qt::KeepAspectRatioByExpanding));
+            // PET_TURN_LEFT_STATE
+            petTurnL.append(origins.at(1).at(Config::PETS_INDEX_COUNT - i - 1)
+                            .scaled(width, height,
+                                    Qt::KeepAspectRatioByExpanding));
+
+            // PET_TURN_RIGHT_STATE
+            petTurnR.append(origins.at(1).at(i)
+                            .scaled(width, height,
+                                    Qt::KeepAspectRatioByExpanding));
+        }
+        pixs2.append(petSwimL);
+        pixs2.append(petSwimR);
+        pixs2.append(petTurnL);
+        pixs2.append(petTurnR);
     }
-    pixs2.append(petSwimL);
-    pixs2.append(petSwimR);
-    pixs2.append(petTurnL);
-    pixs2.append(petTurnR);
+
+    if (Config::ORIGIN_IMAGE_ROWS[name] >= 3){
+        QPixmaps petSpecialL;
+        QPixmaps petSpecialR;
+
+        for (int i = 0; i < Config::PETS_INDEX_COUNT; i++){
+            // PET_SPECIAL_LEFT
+            petSpecialL.append(origins.at(2).at(i)
+                               .scaled(width, height,
+                                       Qt::KeepAspectRatioByExpanding));
+
+            // PET_SPECIAL_RIGHT
+            QImage originImg = origins.at(2).at(i)
+                    .toImage();
+            QImage mirrored = originImg.mirrored(true, false);
+            QPixmap temp = QPixmap::fromImage(mirrored)
+                    .scaled(width, height,
+                            Qt::KeepAspectRatioByExpanding);
+            petSpecialR.append(temp);
+        }
+        pixs2.append(petSpecialL);
+        pixs2.append(petSpecialR);
+    }
 
     AbstractPet * pet;
     if (name == "stinky"){

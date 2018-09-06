@@ -28,6 +28,7 @@ signals:
 
 protected:
     const QString m_name;
+    bool m_hiding;
 
 };
 

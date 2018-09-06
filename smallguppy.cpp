@@ -1,4 +1,5 @@
 #include "smallguppy.h"
+#include <QDebug>
 
 SmallGuppy::SmallGuppy(qreal w, qreal h, const QPointF &pos,
                        const QPixmaps2 &pixs2, QGraphicsScene *scene,
@@ -29,11 +30,17 @@ void SmallGuppy::yield()
     // do nothing
 }
 
-void SmallGuppy::advance(int)
+void SmallGuppy::advance(int phase)
 {
     if (!isVisible())
     {
         return;
     }
+    /*
+    qDebug() << "phase: " << phase;
+    if (phase == 0){
+        return;
+    }
+    */
     Guppy::advance(0);
 }

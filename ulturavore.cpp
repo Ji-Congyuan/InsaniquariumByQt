@@ -37,7 +37,7 @@ void Ulturavore::doCollide()
 void Ulturavore::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
-    QList<AbstractMovableItem*> edibleItems;
+    QVector<AbstractMovableItem*> edibleItems;
     foreach (QGraphicsItem * item, items_) {
         AbstractGameItem * gameItem
                 = dynamic_cast<AbstractGameItem *> (item);

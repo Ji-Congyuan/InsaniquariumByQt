@@ -30,6 +30,7 @@ protected:
     int m_hungry;
 
     int m_exp;
+    QTimer * m_timer;
 
 };
 

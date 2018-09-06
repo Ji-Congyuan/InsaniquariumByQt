@@ -10,7 +10,12 @@ Guppy::Guppy(qreal w, qreal h, const QPointF &pos,
 
 void Guppy::advance(int)
 {
-    AbstractFish::advance(0);
+    try {
+        AbstractFish::advance(0);
+    } catch (QException &e){
+        e.what();
+    }
+
 }
 
 void Guppy::doCollide()
@@ -33,7 +38,7 @@ void Guppy::doCollide()
 void Guppy::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
-    QList<AbstractMovableItem*> edibleItems;
+    QVector<AbstractMovableItem*> edibleItems;
     foreach (QGraphicsItem * item, items_) {
         AbstractGameItem * gameItem
                 = dynamic_cast<AbstractGameItem *> (item);

@@ -14,6 +14,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QPainter>
+#include <QException>
 
 class Insaniquarium : public QGraphicsView
 {

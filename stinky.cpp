@@ -1,10 +1,11 @@
 #include "stinky.h"
+#include <QDebug>
 
 Stinky::Stinky(qreal w, qreal h, const QPointF &pos,
                const QPixmaps2 &pixs2, QGraphicsScene *scene,
                QGraphicsItem *parent)
     : AbstractPet(w, h, pos, pixs2, scene, parent),
-      m_name("stinky")
+      m_name("stinky"), m_hiding(false)
 {
 
 }
@@ -61,12 +62,22 @@ void Stinky::advance(int)
             && !m_hasTarget){
         findTarget();
     }
+
+    if (m_hiding){
+        if (left()){
+            m_pixStateIndex = 2;
+        }
+        else if (right()){
+            m_pixStateIndex = 3;
+        }
+        m_pixIndex = 9;
+    }
 }
 
 void Stinky::findTarget()
 {
     QList<QGraphicsItem *> items_ = scene()->items();
-    QList<AbstractMoney *> money;
+    QVector<AbstractMoney *> money;
     foreach (QGraphicsItem * item, items_) {
         AbstractGameItem * gameItem
                 = dynamic_cast<AbstractGameItem *> (item);
@@ -92,11 +103,11 @@ void Stinky::slt_specialSkill()
 
 void Stinky::slt_alienComes(const QString &)
 {
-    // FIXME
+    m_hiding = true;
 }
 
 void Stinky::slt_alienDies()
 {
-    // FIXME
+    m_hiding = false;
 }
 

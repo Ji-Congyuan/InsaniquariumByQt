@@ -15,7 +15,7 @@ public:
     void doCollide();
     void upgrade();
     void yield();
-    void advance(int);
+    void advance(int phase);
 
 protected:
     const QString m_name;

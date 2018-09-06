@@ -7,6 +7,10 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
     : AbstractCreature(w, h, pos, pixs2, scene, parent),
       m_exp(0)
 {
+    m_timer = new QTimer;
+    m_timer->setSingleShot(true);
+    connect(m_timer, SIGNAL(timeout()),
+            this, SIGNAL(sgn_die()));
 }
 
 void AbstractFish::advance(int)
@@ -127,7 +131,7 @@ void AbstractFish::gettingHungry()
 void AbstractFish::vanish()
 {
     AbstractMovableItem::vanish();
-    emit sgn_die();
+    m_timer->start(20);
 }
 
 bool AbstractFish::isHungry()

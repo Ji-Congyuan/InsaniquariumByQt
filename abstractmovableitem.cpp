@@ -57,7 +57,7 @@ EDGE AbstractMovableItem::checkPos()
 }
 
 void AbstractMovableItem::advance(int)
-{
+{    
     doCollide();
     m_step++;
     if (m_step == 999999){
