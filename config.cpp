@@ -13,8 +13,10 @@ const QString Config::BG_MENU_PATH   = ":/backgrounds/images/backgrounds/aquariu
 const QString Config::BG_GAME_PATH_1 = ":/backgrounds/images/backgrounds/aquarium1.png";
 
 // labels path
-const QString Config::NEXT_LEVEL_LABEL = ":/labels/images/labels/92184686600866551.png";
-const QString Config::RESTART_LABEL    = ":/labels/images/labels/168117158668655894.png";
+const QString Config::NEXT_LEVEL_LABEL  = ":/labels/images/labels/92184686600866551.png";
+const QString Config::RESTART_LABEL     = ":/labels/images/labels/168117158668655894.png";
+const QString Config::CHOOSE_PETS_LABEL = ":/labels/images/labels/461148065737624740.png";
+const QString Config::TICK_LABEL        = ":/labels/images/labels/810190804463658840.png";
 
 // foods path
 const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
@@ -39,6 +41,10 @@ const int Config::ALIENS_HEIGHT = 160;
 // money size
 const int Config::MONEY_WIDTH  = 72;
 const int Config::MONEY_HEIGHT = 72;
+
+// tick size
+const int Config::TICK_WIDTH   = 160;
+const int Config::TICK_HEIGHT  = 120;
 
 // init const
 const int Config::INIT_FOODS_RESTRICT = 1;   // defualt 1
@@ -201,8 +207,8 @@ const QHash<QString, int> Config::FISH_INIT_HUNGRY = {
     { "middleGuppy",   125 },
     { "bigGuppy",      170 },
     { "kingGuppy",     210 },
-    { "carnivore",     170 },
-    { "ulturavore",    340 },
+    { "carnivore",     125 },
+    { "ulturavore",    250 },
     { "middleBreeder", 125 },
     { "bigBreeder",    170 }
 };
@@ -369,95 +375,123 @@ const QHash<QString, int> Config::PETS_INIT_POS_Y = {
 };
 
 const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
-    { "smallGuppy",     5 },
-    { "middleGuppy",    5 },
-    { "bigGuppy",       5 },
-    { "kingGuppy",      5 },
-    { "carnivore",      5 },
-    { "ulturavore",     5 },
-    { "middleBreeder",  5 },
-    { "bigBreeder",     5 },
+    { "smallGuppy",       5 },
+    { "middleGuppy",      5 },
+    { "bigGuppy",         5 },
+    { "kingGuppy",        5 },
+    { "carnivore",        5 },
+    { "ulturavore",       5 },
+    { "middleBreeder",    5 },
+    { "bigBreeder",       5 },
 
-    { "stinky",         2 },
+    { "stinky",           2 },
 
-    { "deepBlue",       2 },
+    { "deepBlue",         2 },
 
-    { "startGameBtn",   1 },
-    { "nextLevelBtn",   1 },
-    { "restartBtn",     1 },
-    { "guppyBtn",       1 },
-    { "breederBtn",     1 },
-    { "carnivoreBtn",   1 },
-    { "ulturavoreBtn",  1 },
-    { "foodUpgradeBtn", 1 },
-    { "moreFoodBtn",    6 },
-    { "eggBtn",         3 }
+    { "startGameBtn",     1 },
+    { "nextLevelBtn",     1 },
+    { "restartBtn",       1 },
+    { "confirmBtn",       1 },
+
+    { "smallGuppyBtn",    1 },
+    { "middleBreederBtn", 1 },
+    { "carnivoreBtn",     1 },
+    { "ulturavoreBtn",    1 },
+    { "foodUpgradeBtn",   1 },
+    { "moreFoodBtn",      6 },
+    { "eggBtn",           3 },
+
+    { "stinkyBtn",        1 }
 };
 
 const QHash<QString, QString> Config::BTNS_PATH = {
-    { "startGameBtn",   ":/buttons/images/buttons/startGameBtn.png" },
-    { "nextLevelBtn",   ":/buttons/images/buttons/344947327402287738.png" },
-    { "restartBtn",     ":/buttons/images/buttons/756209509054362040.png" },
-    { "guppyBtn",       ":/buttons/images/buttons/button1.png" },
-    { "breederBtn",     ":/buttons/images/buttons/button2.png" },
-    { "carnivoreBtn",   ":/buttons/images/buttons/button3.png" },
-    { "ulturavoreBtn",  ":/buttons/images/buttons/button4.png" },
-    { "foodUpgradeBtn", ":/buttons/images/buttons/button8.png" },
-    { "moreFoodBtn",    ":/buttons/images/buttons/button9.png" },
-    { "eggBtn",         ":/buttons/images/buttons/362283261707809117.png" }
+    { "startGameBtn",     ":/buttons/images/buttons/startGameBtn.png" },
+    { "nextLevelBtn",     ":/buttons/images/buttons/344947327402287738.png" },
+    { "restartBtn",       ":/buttons/images/buttons/756209509054362040.png" },
+    { "confirmBtn",       ":/buttons/images/buttons/494578962922118304.png" },
+
+    { "smallGuppyBtn",    ":/buttons/images/buttons/button1.png" },
+    { "middleBreederBtn", ":/buttons/images/buttons/button2.png" },
+    { "carnivoreBtn",     ":/buttons/images/buttons/button3.png" },
+    { "ulturavoreBtn",    ":/buttons/images/buttons/button4.png" },
+    { "foodUpgradeBtn",   ":/buttons/images/buttons/button8.png" },
+    { "moreFoodBtn",      ":/buttons/images/buttons/button9.png" },
+    { "eggBtn",           ":/buttons/images/buttons/362283261707809117.png" },
+
+    { "stinkyBtn",        ":/buttons/images/buttons/29204779860393857.png" }
 };
 
 const QHash<QString, int> Config::BTNS_WIDTH = {
-    { "startGameBtn",    288 },
-    { "nextLevelBtn",    288 },
-    { "restartBtn",      288 },
-    { "guppyBtn",        100 },
-    { "breederBtn",      100 },
-    { "carnivoreBtn",    100 },
-    { "ulturavoreBtn",   100 },
-    { "foodUpgradeBtn",  100 },
-    { "moreFoodBtn",     100 },
-    { "eggBtn",          100 }
+    { "startGameBtn",     288 },
+    { "nextLevelBtn",     288 },
+    { "restartBtn",       288 },
+    { "confirmBtn",       288 },
+
+    { "smallGuppyBtn",    100 },
+    { "middleBreederBtn", 100 },
+    { "carnivoreBtn",     100 },
+    { "ulturavoreBtn",    100 },
+    { "foodUpgradeBtn",   100 },
+    { "moreFoodBtn",      100 },
+    { "eggBtn",           100 },
+
+    { "stinkyBtn",        200 }
 };
 
 const QHash<QString, int> Config::BTNS_HEIGHT = {
-    { "startGameBtn",   33 },
-    { "nextLevelBtn",   33 },
-    { "restartBtn",     33 },
-    { "guppyBtn",       75 },
-    { "breederBtn",     75 },
-    { "carnivoreBtn",   75 },
-    { "ulturavoreBtn",  75 },
-    { "foodUpgradeBtn", 75 },
-    { "moreFoodBtn",    75 },
-    { "eggBtn",         75 }
+    { "startGameBtn",     33 },
+    { "nextLevelBtn",     33 },
+    { "restartBtn",       33 },
+    { "confirmBtn",       33 },
+
+    { "smallGuppyBtn",    75 },
+    { "middleBreederBtn", 75 },
+    { "carnivoreBtn",     75 },
+    { "ulturavoreBtn",    75 },
+    { "foodUpgradeBtn",   75 },
+    { "moreFoodBtn",      75 },
+    { "eggBtn",           75 },
+
+    { "stinkyBtn",        150 }
 };
 
 const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
-    { "startGameBtn",   QPointF(336, 480) },   // Config::SCREEN_WIDTH - Config::MENU_BTN_WIDTH) / 2.0,
-                                             // Config::SCREEN_HEIGHT * 2.0 / 3.0
-    { "nextLevelBtn",   QPointF(345, 520) },
-    { "restartBtn",     QPointF(345, 520) },
-    { "guppyBtn",       QPointF(0, 0) },
-    { "breederBtn",     QPointF(100, 0) },
-    { "carnivoreBtn",   QPointF(200, 0) },
-    { "ulturavoreBtn",  QPointF(300, 0) },
-    { "foodUpgradeBtn", QPointF(400, 0) },
-    { "moreFoodBtn",    QPointF(500, 0) },
-    { "eggBtn",         QPointF(600, 0) }
+    { "startGameBtn",     QPointF(336, 480) },   // Config::SCREEN_WIDTH - Config::MENU_BTN_WIDTH) / 2.0,
+                                                 // Config::SCREEN_HEIGHT * 2.0 / 3.0
+    { "nextLevelBtn",     QPointF(345, 520) },
+    { "restartBtn",       QPointF(345, 520) },
+    { "confirmBtn",       QPointF(336, 540) },
+
+    { "smallGuppyBtn",    QPointF(0  , 0) },
+    { "middleBreederBtn", QPointF(100, 0) },
+    { "carnivoreBtn",     QPointF(200, 0) },
+    { "ulturavoreBtn",    QPointF(300, 0) },
+    { "foodUpgradeBtn",   QPointF(400, 0) },
+    { "moreFoodBtn",      QPointF(500, 0) },
+    { "eggBtn",           QPointF(600, 0) },
+
+    { "stinkyBtn",        QPointF(280, 80) }
 };
 
 const QHash<QString, int> Config::BTNS_COST = {
-    { "startGameBtn",   0 },
-    { "nextLevelBtn",   0 },
-    { "restartBtn",     0 },
-    { "guppyBtn",       100 },
-    { "breederBtn",     200 },
-    { "carnivoreBtn",   1000 },
-    { "ulturavoreBtn",  10000 },
-    { "foodUpgradeBtn", 200 },
-    { "moreFoodBtn",    300 },
-    { "eggBtn",         1000 }
+    { "startGameBtn",     0 },
+    { "nextLevelBtn",     0 },
+    { "restartBtn",       0 },
+    { "confirmBtn",       0 },
+
+    { "smallGuppyBtn",    100 },
+    { "middleBreederBtn", 200 },
+    { "carnivoreBtn",     1000 },
+    { "ulturavoreBtn",    10000 },
+    { "foodUpgradeBtn",   200 },
+    { "moreFoodBtn",      300 },
+    { "eggBtn",           1000 },
+
+    { "stinkyBtn",        0 }
+};
+
+const QHash<QString, QPointF> Config::TICK_POS = {
+    { "stinkyBtn", QPointF(340, 120) }
 };
 
 // list
@@ -470,6 +504,10 @@ const QStringList Config::FISH_TYPE = {
     "ulturavore",
     "middleBreeder",
     "bigBreeder"
+};
+
+const QStringList Config::PETS_TYPE = {
+    "stinky"
 };
 
 const QStringList Config::MONEY_TYPE = {

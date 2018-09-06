@@ -15,6 +15,5 @@ int main(int argc, char * argv[]){
     qDebug() << atan2(1, -1) / Config::PI << "pi";
     qDebug() << atan2(-1, -1) / Config::PI << "pi";
     */
-
     return app.exec();
 }

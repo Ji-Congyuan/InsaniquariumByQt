@@ -25,6 +25,7 @@ public:
     void showStartGameMenu();
     void showRestartMenu();
     void showNextLevelMenu();
+    void choosePets();
     void init();
     void mousePressEvent(QMouseEvent *event);
     void addFood(const QPointF &pos);
@@ -38,7 +39,6 @@ public:
 
 public slots:
     void slt_start();
-    void slt_nextLevel(int);
     void slt_choosePets();
     // update scene
     void slt_update();
@@ -66,7 +66,7 @@ private:
     QPixmap m_bgGamePix;
     QPixmap m_bgMenuPix;
 
-    QPixmap m_startGameBtnPix;
+    // QPixmap m_startGameBtnPix;
 
     int m_maxFoodCount;
     int m_currentFoodCount;

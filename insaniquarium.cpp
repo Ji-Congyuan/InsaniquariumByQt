@@ -44,8 +44,6 @@ Insaniquarium::Insaniquarium(QWidget *parent)
     // set random seed
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 
-    // !!! delete later !!!
-    m_chosenPets.append("stinky");
 }
 
 void Insaniquarium::showStartGameMenu()
@@ -61,6 +59,7 @@ void Insaniquarium::showRestartMenu()
 {
     m_timer->stop();
     m_gaming = false;
+    m_chosenPets.clear();
     QPixmap pix(Config::RESTART_LABEL);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
@@ -71,15 +70,87 @@ void Insaniquarium::showNextLevelMenu()
 {
     m_timer->stop();
     m_gaming = false;
+    m_chosenPets.clear();
     QPixmap pix(Config::NEXT_LEVEL_LABEL);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
     addBtn("nextLevelBtn");
 }
 
+void Insaniquarium::choosePets()
+{
+    m_scene->clear();
+    QPixmap pix(Config::CHOOSE_PETS_LABEL);
+    QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
+    pixmapItem->setOffset(230, 0);
+    addBtn("confirmBtn");
+    if (m_gameLevel < Config::PETS_TYPE.size()){
+        m_availPets.append(Config::PETS_TYPE.at(m_gameLevel));
+    }
+    foreach (QString petName, m_availPets) {
+        QString btn = petName.append("Btn");
+        addBtn(btn);
+    }
+}
+
 void Insaniquarium::init()
 {
-    // FIXME init consts
+    m_scene->clear();
+    m_maxFoodCount = Config::INIT_FOODS_RESTRICT;
+    m_currentFoodCount = 0;
+    m_eggLevel = 0;
+    m_fishCount = 0;
+    m_foodLevel = 0;
+    m_alienAttack = false;
+    m_alienName = "";
+    m_feedable = true;
+    m_gaming = true;
+    m_step = 0;
+    m_money = Config::INIT_MONEY;
+
+    // init small Guppy
+    for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
+
+        QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        addFish("smallGuppy", initPos);
+        QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        // addFish("carnivore", initPos1);
+        QPointF initPos2 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        // addFish("ulturavore", initPos2);
+        QPointF initPos3 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                         Config::POOL_UPPER_BOUND,
+                                                         Config::POOL_LOWER_BOUND);
+
+        // addFish("middleBreeder", initPos3);
+    }
+
+    // init pets
+    foreach (QString petName, m_chosenPets) {
+        int x = Config::PETS_INIT_POS_X[petName];
+        int y = Config::PETS_INIT_POS_Y[petName];
+        QPointF pos = QPointF(x, y);
+        addPet(petName, pos);
+    }
+
+    // init buttons
+    addBtn("smallGuppyBtn");
+    addBtn("middleBreederBtn");
+    addBtn("carnivoreBtn");
+    addBtn("ulturavoreBtn");
+    addBtn("moreFoodBtn");
+    addBtn("foodUpgradeBtn");
+    addBtn("eggBtn");
+
+    m_timer->start(20);
 }
 
 void Insaniquarium::mousePressEvent(QMouseEvent *event)
@@ -202,7 +273,6 @@ void Insaniquarium::alienAttack()
 
 void Insaniquarium::gameOver()
 {
-    qDebug() << "gameover";
     showRestartMenu();
 }
 
@@ -210,57 +280,7 @@ void Insaniquarium::slt_start()
 {
     m_scene->clear();
     setBackgroundBrush(m_bgGamePix);
-
-    // init small Guppy
-    for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
-
-        QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        addFish("smallGuppy", initPos);
-        QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("carnivore", initPos1);
-        QPointF initPos2 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("ulturavore", initPos2);
-        QPointF initPos3 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("middleBreeder", initPos3);
-    }
-
-    // init pets
-    foreach (QString petName, m_chosenPets) {
-        int x = Config::PETS_INIT_POS_X[petName];
-        int y = Config::PETS_INIT_POS_Y[petName];
-        QPointF pos = QPointF(x, y);
-        addPet(petName, pos);
-    }
-
-    // init buttons
-    addBtn("guppyBtn");
-    addBtn("breederBtn");
-    addBtn("carnivoreBtn");
-    addBtn("ulturavoreBtn");
-    addBtn("moreFoodBtn");
-    addBtn("foodUpgradeBtn");
-    addBtn("eggBtn");
-
-    m_timer->start(20);
-
-    m_gaming = true;
-}
-
-void Insaniquarium::slt_nextLevel(int level)
-{
-    // FIXME
+    init();
 }
 
 void Insaniquarium::slt_choosePets()
@@ -351,16 +371,32 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     }
     m_money -= Config::BTNS_COST[btnName];
 
-    if (btnName == "startGameBtn"){
+    if (btnName == "startGameBtn"
+            || btnName == "nextLevelBtn"
+            || btnName == "restartBtn"){
+        choosePets();
+    }
+    else if (btnName == "confirmBtn"){
         slt_start();
     }
-    else if (btnName == "guppyBtn"){
+    else if (btnName == "smallGuppyBtn"
+             || btnName == "middleBreederBtn"
+             || btnName == "carnivoreBtn"
+             || btnName == "ulturavoreBtn"){
+        QString name = btnName.mid(0, btnName.size() - 3);
+        int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
+                                         Config::SCREEN_WIDTH * 0.8);
+        int y = Config::POOL_UPPER_BOUND;
+        slt_yieldFish(name, QPointF(x, y));
+    }
+    /*
+    else if (btnName == "smallGuppyBtn"){
         int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
                                          Config::SCREEN_WIDTH * 0.8);
         int y = Config::POOL_UPPER_BOUND;
         slt_yieldFish("smallGuppy", QPointF(x, y));
     }
-    else if (btnName == "breederBtn"){
+    else if (btnName == "middleBreederBtn"){
         int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
                                          Config::SCREEN_WIDTH * 0.8);
         int y = Config::POOL_UPPER_BOUND;
@@ -378,6 +414,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
         int y = Config::POOL_UPPER_BOUND;
         slt_yieldFish("ulturavore", QPointF(x, y));
     }
+    */
     else if (btnName == "foodUpgradeBtn"){
         if (m_foodLevel < m_maxFoodLevel){
             m_foodLevel++;
@@ -392,8 +429,21 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
         if (m_eggLevel < 2){
             m_eggLevel++;
         } else {
-            qDebug() << "next level";
+            m_gameLevel++;
             showNextLevelMenu();
         }
     }
+    else if (btnName == "stinkyBtn"){
+        if (m_chosenPets.size() < 4){
+            QPixmap pix(Config::TICK_LABEL);
+            pix = pix.scaled(Config::TICK_WIDTH,
+                             Config::TICK_HEIGHT,
+                             Qt::KeepAspectRatioByExpanding);
+            QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
+            pixmapItem->setOffset(Config::TICK_POS[btnName]);
+            QString pet = btnName.mid(0, btnName.size() - 3);
+            m_chosenPets.append(pet);
+        }
+    }
+
 }

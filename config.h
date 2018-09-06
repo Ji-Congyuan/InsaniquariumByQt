@@ -27,6 +27,8 @@ public:
     // labels path
     static const QString NEXT_LEVEL_LABEL;
     static const QString RESTART_LABEL;
+    static const QString CHOOSE_PETS_LABEL;
+    static const QString TICK_LABEL;
 
     // foods path
     static const QString FOODS_PATH;
@@ -59,6 +61,10 @@ public:
     // pets size
     static const int PETS_WIDTH;
     static const int PETS_HEIGHT;
+
+    // tick size
+    static const int TICK_WIDTH;
+    static const int TICK_HEIGHT;
 
     // init const
     static const int INIT_FOODS_RESTRICT;
@@ -180,8 +186,11 @@ public:
 
     static const QHash<QString, int> BTNS_COST;
 
+    static const QHash<QString, QPointF> TICK_POS;
+
     // list
     static const QStringList FISH_TYPE;
+    static const QStringList PETS_TYPE;
     static const QStringList MONEY_TYPE;
     static const QStringList GUPPY_TYPE;
 
