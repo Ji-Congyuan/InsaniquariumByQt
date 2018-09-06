@@ -27,7 +27,7 @@ public:
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
 signals:
-    void sgn_btnClicked(const QString &);
+    void sgn_btnReleased(const QString &);
 
 protected:
     // pixs list of the item

@@ -14,6 +14,7 @@ const QString Config::BG_GAME_PATH_1 = ":/backgrounds/images/backgrounds/aquariu
 
 // labels path
 const QString Config::NEXT_LEVEL_LABEL = ":/labels/images/labels/92184686600866551.png";
+const QString Config::RESTART_LABEL    = ":/labels/images/labels/168117158668655894.png";
 
 // foods path
 const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
@@ -168,7 +169,7 @@ const QHash<QString, QString> Config::FISH_PATH = {
     { "bigGuppy",      ":/fish/images/fish/bigGuppy.png" },
     { "kingGuppy",     ":/fish/images/fish/kingGuppy.png" },
     { "carnivore",     ":/fish/images/fish/carnivore.png" },
-    { "ulturavore",    ":/fish/images/fish/ulturavore_converted.png" },
+    { "ulturavore",    ":/fish/images/fish/398405234521987523.png" },
     { "middleBreeder", ":/fish/images/fish/mediumBreeder.png" },
     { "bigBreeder",    ":/fish/images/fish/bigBreeder.png" }
 };
@@ -382,6 +383,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "deepBlue",       2 },
 
     { "startGameBtn",   1 },
+    { "nextLevelBtn",   1 },
+    { "restartBtn",     1 },
     { "guppyBtn",       1 },
     { "breederBtn",     1 },
     { "carnivoreBtn",   1 },
@@ -393,6 +396,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
 
 const QHash<QString, QString> Config::BTNS_PATH = {
     { "startGameBtn",   ":/buttons/images/buttons/startGameBtn.png" },
+    { "nextLevelBtn",   ":/buttons/images/buttons/344947327402287738.png" },
+    { "restartBtn",     ":/buttons/images/buttons/756209509054362040.png" },
     { "guppyBtn",       ":/buttons/images/buttons/button1.png" },
     { "breederBtn",     ":/buttons/images/buttons/button2.png" },
     { "carnivoreBtn",   ":/buttons/images/buttons/button3.png" },
@@ -404,6 +409,8 @@ const QHash<QString, QString> Config::BTNS_PATH = {
 
 const QHash<QString, int> Config::BTNS_WIDTH = {
     { "startGameBtn",    288 },
+    { "nextLevelBtn",    288 },
+    { "restartBtn",      288 },
     { "guppyBtn",        100 },
     { "breederBtn",      100 },
     { "carnivoreBtn",    100 },
@@ -415,6 +422,8 @@ const QHash<QString, int> Config::BTNS_WIDTH = {
 
 const QHash<QString, int> Config::BTNS_HEIGHT = {
     { "startGameBtn",   33 },
+    { "nextLevelBtn",   33 },
+    { "restartBtn",     33 },
     { "guppyBtn",       75 },
     { "breederBtn",     75 },
     { "carnivoreBtn",   75 },
@@ -425,8 +434,10 @@ const QHash<QString, int> Config::BTNS_HEIGHT = {
 };
 
 const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
-    { "startGameBtn", QPointF(336, 480) },   // Config::SCREEN_WIDTH - Config::MENU_BTN_WIDTH) / 2.0,
+    { "startGameBtn",   QPointF(336, 480) },   // Config::SCREEN_WIDTH - Config::MENU_BTN_WIDTH) / 2.0,
                                              // Config::SCREEN_HEIGHT * 2.0 / 3.0
+    { "nextLevelBtn",   QPointF(345, 520) },
+    { "restartBtn",     QPointF(345, 520) },
     { "guppyBtn",       QPointF(0, 0) },
     { "breederBtn",     QPointF(100, 0) },
     { "carnivoreBtn",   QPointF(200, 0) },
@@ -438,6 +449,8 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
 
 const QHash<QString, int> Config::BTNS_COST = {
     { "startGameBtn",   0 },
+    { "nextLevelBtn",   0 },
+    { "restartBtn",     0 },
     { "guppyBtn",       100 },
     { "breederBtn",     200 },
     { "carnivoreBtn",   1000 },

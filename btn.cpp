@@ -63,7 +63,6 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
             }
         }
         update();
-        emit sgn_btnClicked(m_name);
     } else {
         event->ignore();
     }
@@ -74,6 +73,7 @@ void Btn::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
     event->accept();
     m_pixIndex = Config::HOVER_BTN_INDEX;
     update();
+    emit sgn_btnReleased(m_name);
 }
 
 void Btn::hoverEnterEvent(QGraphicsSceneHoverEvent *event)

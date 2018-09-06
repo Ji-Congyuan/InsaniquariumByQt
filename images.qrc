@@ -12,6 +12,8 @@
         <file>images/buttons/button8.png</file>
         <file>images/buttons/button9.png</file>
         <file>images/buttons/362283261707809117.png</file>
+        <file>images/buttons/344947327402287738.png</file>
+        <file>images/buttons/756209509054362040.png</file>
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
@@ -19,9 +21,9 @@
         <file>images/fish/bigGuppy.png</file>
         <file>images/fish/kingGuppy.png</file>
         <file>images/fish/carnivore.png</file>
-        <file>images/fish/ulturavore_converted.png</file>
         <file>images/fish/mediumBreeder.png</file>
         <file>images/fish/bigBreeder.png</file>
+        <file>images/fish/398405234521987523.png</file>
     </qresource>
     <qresource prefix="/foods">
         <file>images/foods/food.png</file>
@@ -37,5 +39,6 @@
     </qresource>
     <qresource prefix="/labels">
         <file>images/labels/92184686600866551.png</file>
+        <file>images/labels/168117158668655894.png</file>
     </qresource>
 </RCC>

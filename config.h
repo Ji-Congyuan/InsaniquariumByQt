@@ -26,6 +26,7 @@ public:
 
     // labels path
     static const QString NEXT_LEVEL_LABEL;
+    static const QString RESTART_LABEL;
 
     // foods path
     static const QString FOODS_PATH;

@@ -59,7 +59,12 @@ void Insaniquarium::showStartGameMenu()
 
 void Insaniquarium::showRestartMenu()
 {
-    // FIXME
+    m_timer->stop();
+    m_gaming = false;
+    QPixmap pix(Config::RESTART_LABEL);
+    QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
+    pixmapItem->setOffset(230, 0);
+    addBtn("restartBtn");
 }
 
 void Insaniquarium::showNextLevelMenu()
@@ -69,6 +74,7 @@ void Insaniquarium::showNextLevelMenu()
     QPixmap pix(Config::NEXT_LEVEL_LABEL);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
+    addBtn("nextLevelBtn");
 }
 
 void Insaniquarium::init()
@@ -167,7 +173,7 @@ void Insaniquarium::addBtn(const QString &name)
 {
     Btn * btn = Factory::creatBtn(name, m_scene);
 
-    connect(btn, SIGNAL(sgn_btnClicked(QString)),
+    connect(btn, SIGNAL(sgn_btnReleased(QString)),
             this, SLOT(slt_btnClicked(QString)));
     m_scene->addItem(btn);
 }
@@ -197,6 +203,7 @@ void Insaniquarium::alienAttack()
 void Insaniquarium::gameOver()
 {
     qDebug() << "gameover";
+    showRestartMenu();
 }
 
 void Insaniquarium::slt_start()
@@ -216,17 +223,17 @@ void Insaniquarium::slt_start()
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        addFish("carnivore", initPos1);
+        // addFish("carnivore", initPos1);
         QPointF initPos2 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        addFish("ulturavore", initPos2);
+        // addFish("ulturavore", initPos2);
         QPointF initPos3 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
 
-        addFish("middleBreeder", initPos3);
+        // addFish("middleBreeder", initPos3);
     }
 
     // init pets
