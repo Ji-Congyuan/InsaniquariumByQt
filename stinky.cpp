@@ -7,7 +7,6 @@ Stinky::Stinky(qreal w, qreal h, const QPointF &pos,
     : AbstractPet(w, h, pos, pixs2, scene, parent),
       m_name("stinky"), m_hiding(false)
 {
-
 }
 
 const QString &Stinky::name() const
@@ -65,12 +64,13 @@ void Stinky::advance(int)
 
     if (m_hiding){
         if (left()){
-            m_pixStateIndex = 2;
+            m_pixStateIndex = Config::PETS_SPECIAL_LEFT_STATE_INDEX;
         }
         else if (right()){
-            m_pixStateIndex = 3;
+            m_pixStateIndex = Config::PETS_SPECIAL_RIGHT_STATE_INDEX;
         }
         m_pixIndex = 9;
+        setSpeed(0);
     }
 }
 
@@ -109,5 +109,6 @@ void Stinky::slt_alienComes(const QString &)
 void Stinky::slt_alienDies()
 {
     m_hiding = false;
+    setSpeed(Config::PETS_SPEED["stinky"]);
 }
 

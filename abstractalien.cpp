@@ -18,7 +18,6 @@ void AbstractAlien::advance(int)
         vanish();
         return;
     }
-    qDebug() << "update" << (m_step % Config::UPDATE_PAINT_STEP == 0);
     if (m_step % Config::UPDATE_PAINT_STEP == 0){ // update action, direction and pos
         updateDirection();
 
@@ -60,6 +59,9 @@ void AbstractAlien::advance(int)
 void AbstractAlien::injured(const int deltaHealth)
 {
     m_health -= deltaHealth;
+    if (m_health <= 0){
+        die();
+    }
 }
 
 void AbstractAlien::move()

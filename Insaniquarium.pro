@@ -31,7 +31,8 @@ HEADERS += \
     middlebreeder.h \
     bigbreeder.h \
     btn.h \
-    treasure.h
+    treasure.h \
+    gus.h
 
 SOURCES += \
     config.cpp \
@@ -65,7 +66,8 @@ SOURCES += \
     middlebreeder.cpp \
     bigbreeder.cpp \
     btn.cpp \
-    treasure.cpp
+    treasure.cpp \
+    gus.cpp
 
 RESOURCES += \
     images.qrc

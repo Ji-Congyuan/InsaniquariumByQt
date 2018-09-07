@@ -1,21 +1,21 @@
-#include "deepblue.h"
+#include "gus.h"
 #include <QDebug>
 
-DeepBlue::DeepBlue(qreal w, qreal h, const QPointF &pos,
-                   const QPixmaps2 &pixs2, QGraphicsScene *scene,
-                   QGraphicsItem *parent)
+Gus::Gus(qreal w, qreal h, const QPointF &pos,
+         const QPixmaps2 &pixs2, QGraphicsScene *scene,
+         QGraphicsItem *parent)
     : AbstractAlien(w, h, pos, pixs2, scene, parent),
-      m_name("deepBlue")
+      m_name("gus")
 {
     m_health = Config::ALIENS_MAX_HEALTH["deepBlue"];
 }
 
-const QString &DeepBlue::name() const
+const QString &Gus::name() const
 {
     return m_name;
 }
 
-void DeepBlue::doCollide()
+void Gus::doCollide()
 {
     foreach (QGraphicsItem * t, collidingItems()){
         AbstractMovableItem * movableItem
@@ -25,14 +25,13 @@ void DeepBlue::doCollide()
             if (!movableItem->isVisible()){
                 continue;
             }
-            AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
-            eat(0);
-            fish->vanish();
+            eat(movableItem->eatenExp());
+            movableItem->vanish();
         }
     }
 }
 
-void DeepBlue::eat(const int)
+void Gus::eat(const int deltaHealth)
 {
-    // do nothing
+    injured(deltaHealth);
 }

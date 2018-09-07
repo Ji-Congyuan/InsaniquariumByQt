@@ -65,44 +65,46 @@ const int Config::HOVER_BTN_INDEX   = 1;
 const int Config::PRESSED_BTN_INDEX = 2;
 const int Config::MENU_BTN_COUNT         = 3;
 
-const int Config::NORMAL_SWIM_LEFT_STATE_INDEX  = 0;
-const int Config::NORMAL_SWIM_RIGHT_STATE_INDEX = 1;
-const int Config::NORMAL_TURN_LEFT_STATE_INDEX  = 2;
-const int Config::NORMAL_TURN_RIGHT_STATE_INDEX = 3;
-const int Config::HUNGRY_SWIM_LEFT_STATE_INDEX  = 4;
-const int Config::HUNGRY_SWIM_RIGHT_STATE_INDEX = 5;
-const int Config::HUNGRY_TURN_LEFT_STATE_INDEX  = 6;
-const int Config::HUNGRY_TURN_RIGHT_STATE_INDEX = 7;
-const int Config::DIE_LEFT_STATE_INDEX          = 8;
-const int Config::DIE_RIGHT_STATE_INDEX         = 9;
+const int Config::NORMAL_SWIM_LEFT_STATE_INDEX   = 0;
+const int Config::NORMAL_SWIM_RIGHT_STATE_INDEX  = 1;
+const int Config::NORMAL_TURN_LEFT_STATE_INDEX   = 2;
+const int Config::NORMAL_TURN_RIGHT_STATE_INDEX  = 3;
+const int Config::HUNGRY_SWIM_LEFT_STATE_INDEX   = 4;
+const int Config::HUNGRY_SWIM_RIGHT_STATE_INDEX  = 5;
+const int Config::HUNGRY_TURN_LEFT_STATE_INDEX   = 6;
+const int Config::HUNGRY_TURN_RIGHT_STATE_INDEX  = 7;
+const int Config::DIE_LEFT_STATE_INDEX           = 8;
+const int Config::DIE_RIGHT_STATE_INDEX          = 9;
 
-const int Config::ALIEN_SWIM_LEFT_STATE_INDEX   = 0;
-const int Config::ALIEN_SWIM_RIGHT_STATE_INDEX  = 1;
-const int Config::ALIEN_TURN_LEFT_STATE_INDEX   = 2;
-const int Config::ALIEN_TURN_RIGHT_STATE_INDEX  = 3;
+const int Config::ALIEN_SWIM_LEFT_STATE_INDEX    = 0;
+const int Config::ALIEN_SWIM_RIGHT_STATE_INDEX   = 1;
+const int Config::ALIEN_TURN_LEFT_STATE_INDEX    = 2;
+const int Config::ALIEN_TURN_RIGHT_STATE_INDEX   = 3;
 
-const int Config::PETS_SWIM_LEFT_STATE_INDEX    = 0;
-const int Config::PETS_SWIM_RIGHT_STATE_INDEX   = 1;
-const int Config::PETS_TURN_LEFT_STATE_INDEX    = 2;
-const int Config::PETS_TURN_RIGHT_STATE_INDEX   = 3;
+const int Config::PETS_SWIM_LEFT_STATE_INDEX     = 0;
+const int Config::PETS_SWIM_RIGHT_STATE_INDEX    = 1;
+const int Config::PETS_TURN_LEFT_STATE_INDEX     = 2;
+const int Config::PETS_TURN_RIGHT_STATE_INDEX    = 3;
+const int Config::PETS_SPECIAL_LEFT_STATE_INDEX  = 4;
+const int Config::PETS_SPECIAL_RIGHT_STATE_INDEX = 5;
 
-const int Config::FISH_STATE_COUNT              = 10;
-const int Config::FISH_INDEX_COUNT              = 10;
+const int Config::FISH_STATE_COUNT               = 10;
+const int Config::FISH_INDEX_COUNT               = 10;
 
-const int Config::ALIEN_STATE_COUNT             = 4;
-const int Config::ALIEN_INDEX_COUNT             = 10;
+const int Config::ALIEN_STATE_COUNT              = 4;
+const int Config::ALIEN_INDEX_COUNT              = 10;
 
-const int Config::FOOD_STATE_COUNT              = 5;
-const int Config::FOOD_INDEX_COUNT              = 10;
+const int Config::FOOD_STATE_COUNT               = 5;
+const int Config::FOOD_INDEX_COUNT               = 10;
 
-const int Config::MONEY_STATE_COUNT             = 7;
-const int Config::MONEY_INDEX_COUNT             = 10;
+const int Config::MONEY_STATE_COUNT              = 7;
+const int Config::MONEY_INDEX_COUNT              = 10;
 
-const int Config::PETS_STATE_COUNT              = 4;
-const int Config::PETS_INDEX_COUNT              = 10;
+const int Config::PETS_STATE_COUNT               = 4;
+const int Config::PETS_INDEX_COUNT               = 10;
 
-const int Config::MORE_FOOD_STATE_COUNT         = 6;
-const int Config::EGG_STATE_COUNT               = 3;
+const int Config::MORE_FOOD_STATE_COUNT          = 6;
+const int Config::EGG_STATE_COUNT                = 3;
 
 // speed up
 const qreal Config::HUNGRY_INCREASE = 1.5;
@@ -121,7 +123,7 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 99999999; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 399; // default maybe 2000
 const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
@@ -287,27 +289,33 @@ const QHash<QString, int> Config::FOODS_EXP = {
 };
 
 const QHash<QString, int> Config::ALIENS_MAX_HEALTH = {
-    { "deepBlue", 100 }
+    { "deepBlue", 100 },
+    { "gus",      50  }
 };
 
 const QHash<QString, QString> Config::ALIENS_PATH = {
-    { "deepBlue",  ":/aliens/images/aliens/sylv.png" }
+    { "deepBlue",  ":/aliens/images/aliens/sylv.png" },
+    { "gus",       ":/aliens/images/aliens/750884456123613082.png" }
 };
 
 const QHash<QString, int> Config::ALIENS_PAINT_WIDTH = {
-    { "deepBlue", 120 }
+    { "deepBlue", 120 },
+    { "gus",      120 }
 };
 
 const QHash<QString, int> Config::ALIENS_PAINT_HEIGHT = {
-    { "deepBlue", 160 }
+    { "deepBlue", 160 },
+    { "gus",      150 }
 };
 
 const QHash<QString, int> Config::ALIENS_SPEED = {
-    { "deepBlue",  5 }
+    { "deepBlue",  7 },
+    { "gus",       7 }
 };
 
 const QHash<int, QString> Config::ALIENS_NAME = {
-    { 0, "deepBlue" }
+    { 0, "deepBlue" },
+    { 1, "gus" }
 };
 
 const QHash<QString, int> Config::MONEY_VALUE = {
@@ -351,7 +359,7 @@ const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
 };
 
 const QHash<QString, QString> Config::PETS_PATH = {
-    { "stinky",  ":/pets/images/pets/stinky_converted.png" }
+    { "stinky",  ":/pets/images/pets/884088821102378968.png" }
 };
 
 const QHash<QString, int> Config::PETS_SPEED = {
@@ -384,9 +392,10 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "middleBreeder",    5 },
     { "bigBreeder",       5 },
 
-    { "stinky",           2 },
+    { "stinky",           3 },
 
     { "deepBlue",         2 },
+    { "gus",              2 },
 
     { "startGameBtn",     1 },
     { "nextLevelBtn",     1 },
@@ -526,6 +535,18 @@ const QStringList Config::GUPPY_TYPE = {
     "kingGuppy"
 };
 
+const QStringList Config::EDIBLE_TYPE = {
+    "smallGuppy",
+    "middleGuppy",
+    "bigGuppy",
+    "kingGuppy",
+    "carnivore",
+    "ulturavore",
+    "middleBreeder",
+    "bigBreeder",
+    "food"
+};
+
 const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "smallGuppy",    QStringList("food") },
     { "middleGuppy",   QStringList("food") },
@@ -537,6 +558,7 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "bigBreeder",    QStringList("food") },
 
     { "deepBlue",      Config::FISH_TYPE },
+    { "gus",           Config::EDIBLE_TYPE },
 
     { "stinky",        Config::MONEY_TYPE }
 };

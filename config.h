@@ -98,6 +98,8 @@ public:
     static const int PETS_SWIM_RIGHT_STATE_INDEX;
     static const int PETS_TURN_LEFT_STATE_INDEX;
     static const int PETS_TURN_RIGHT_STATE_INDEX;
+    static const int PETS_SPECIAL_LEFT_STATE_INDEX;
+    static const int PETS_SPECIAL_RIGHT_STATE_INDEX;
 
     static const int FISH_STATE_COUNT;
     static const int FISH_INDEX_COUNT;
@@ -193,6 +195,7 @@ public:
     static const QStringList PETS_TYPE;
     static const QStringList MONEY_TYPE;
     static const QStringList GUPPY_TYPE;
+    static const QStringList EDIBLE_TYPE;
 
 private:
     explicit Config() {}

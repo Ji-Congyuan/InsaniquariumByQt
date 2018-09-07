@@ -30,17 +30,11 @@ void SmallGuppy::yield()
     // do nothing
 }
 
-void SmallGuppy::advance(int phase)
+void SmallGuppy::advance(int)
 {
     if (!isVisible())
     {
         return;
     }
-    /*
-    qDebug() << "phase: " << phase;
-    if (phase == 0){
-        return;
-    }
-    */
     Guppy::advance(0);
 }

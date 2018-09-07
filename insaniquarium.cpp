@@ -57,12 +57,6 @@ void Insaniquarium::showStartGameMenu()
 
 void Insaniquarium::showRestartMenu()
 {
-    /*
-    foreach (QGraphicsItem * item, m_scene->items()) {
-        m_scene->removeItem(item);
-        delete item;
-    }
-    */
     m_scene->clear();
     m_chosenPets.clear();
     QPixmap pix(Config::RESTART_LABEL);
@@ -275,6 +269,7 @@ void Insaniquarium::alienAttack()
     connect(this, SIGNAL(sgn_attackAlien(QPointF)),
             alien, SLOT(slt_attacked(QPointF)));
     m_scene->addItem(alien);
+    emit sgn_alienComes(alien->name());
 }
 
 void Insaniquarium::gameOver()
@@ -361,6 +356,7 @@ void Insaniquarium::slt_yieldFood(const QPointF & pos)
 void Insaniquarium::slt_attatckEnd()
 {
     m_alienAttack = false;
+    m_feedable = true;
     m_alienName = "";
     emit sgn_alienDies();
 }

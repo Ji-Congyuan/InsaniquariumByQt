@@ -2,6 +2,7 @@
 #define FACTORY_H
 
 #include "deepblue.h"
+#include "gus.h"
 
 #include "smallguppy.h"
 #include "middleguppy.h"

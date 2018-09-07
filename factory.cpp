@@ -1,4 +1,5 @@
 #include "factory.h"
+#include <QDebug>
 
 AbstractAlien *Factory::createAlien(const QString &name,
                                     const QPointF &pos,
@@ -51,6 +52,11 @@ AbstractAlien *Factory::createAlien(const QString &name,
         alien = new DeepBlue(Config::ALIENS_WIDTH,
                              Config::ALIENS_HEIGHT,
                              pos, pixs2, scene);
+    }
+    else if (name == "gus"){
+        alien = new Gus(Config::ALIENS_WIDTH,
+                        Config::ALIENS_HEIGHT,
+                        pos, pixs2, scene);
     }
 
     alien->setSpeed(Config::ALIENS_SPEED[name]);

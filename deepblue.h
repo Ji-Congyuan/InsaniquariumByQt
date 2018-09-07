@@ -5,6 +5,7 @@
 
 class DeepBlue : public AbstractAlien
 {
+    Q_OBJECT
 public:
     DeepBlue(qreal w, qreal h, const QPointF &pos,
              const QPixmaps2 &pixs2, QGraphicsScene *scene,
@@ -13,9 +14,6 @@ public:
     const QString & name() const;
     void doCollide();
     void eat(const int);
-
-public slots:
-    void slt_attacked(const QPointF &);
 
 protected:
     const QString m_name;
