@@ -10,12 +10,7 @@ Guppy::Guppy(qreal w, qreal h, const QPointF &pos,
 
 void Guppy::advance(int)
 {
-    try {
-        AbstractFish::advance(0);
-    } catch (QException &e){
-        e.what();
-    }
-
+    AbstractFish::advance(0);
 }
 
 void Guppy::doCollide()
@@ -24,11 +19,11 @@ void Guppy::doCollide()
         return;
     }
     foreach (QGraphicsItem * t, collidingItems()) {
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
-            Food * food = dynamic_cast<Food *> (movableItem);
+                .contains(gameItem->name())){
+            Food * food = dynamic_cast<Food *> (gameItem);
             eat(food->eatenExp());
             food->vanish();
         }

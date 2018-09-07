@@ -130,7 +130,6 @@ void AbstractFish::gettingHungry()
 void AbstractFish::vanish()
 {
     AbstractMovableItem::vanish();
-    qDebug() << "AbstractFish::vanish";
     m_timer->start(20);
 }
 

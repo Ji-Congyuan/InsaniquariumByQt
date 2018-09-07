@@ -1,0 +1,25 @@
+#ifndef MONEYDISPLAY_H
+#define MONEYDISPLAY_H
+
+#include "abstractgameitem.h"
+
+
+class MoneyDisplay : public AbstractGameItem
+{
+public:
+    MoneyDisplay(qreal w, qreal h,
+                 QGraphicsScene *scene,
+                 QGraphicsItem * parent = 0);
+    ~MoneyDisplay(){}
+    QRectF boundingRect() const;
+    void paint(QPainter *painter,
+               const QStyleOptionGraphicsItem *option,
+               QWidget *widget = Q_NULLPTR);
+
+    const QString & name() const;
+
+protected:
+    const QString m_name;
+};
+
+#endif // MONEYDISPLAY_H

@@ -16,7 +16,6 @@
 #include <QMouseEvent>
 #include <QGraphicsSceneMouseEvent>
 #include <QGraphicsSceneHoverEvent>
-#include <QException>
 #include <QTimer>
 
 

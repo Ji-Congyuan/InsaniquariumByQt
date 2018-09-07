@@ -16,6 +16,8 @@
         <file>images/buttons/756209509054362040.png</file>
         <file>images/buttons/29204779860393857.png</file>
         <file>images/buttons/494578962922118304.png</file>
+        <file>images/buttons/display.png</file>
+        <file>images/buttons/168117158668655894.png</file>
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
@@ -34,16 +36,29 @@
         <file>images/money/money.png</file>
     </qresource>
     <qresource prefix="/aliens">
-        <file>images/aliens/sylv.png</file>
         <file>images/aliens/750884456123613082.png</file>
+        <file>images/aliens/sylv.png</file>
     </qresource>
     <qresource prefix="/pets">
         <file>images/pets/884088821102378968.png</file>
     </qresource>
     <qresource prefix="/labels">
         <file>images/labels/92184686600866551.png</file>
-        <file>images/labels/168117158668655894.png</file>
         <file>images/labels/461148065737624740.png</file>
         <file>images/labels/810190804463658840.png</file>
+        <file>images/labels/168117158668655894.png</file>
+    </qresource>
+    <qresource prefix="/numbers">
+        <file>images/num/0.png</file>
+        <file>images/num/1.png</file>
+        <file>images/num/2.png</file>
+        <file>images/num/3.png</file>
+        <file>images/num/4.png</file>
+        <file>images/num/5.png</file>
+        <file>images/num/6.png</file>
+        <file>images/num/7.png</file>
+        <file>images/num/8.png</file>
+        <file>images/num/9.png</file>
+        <file>images/num/10.png</file>
     </qresource>
 </RCC>

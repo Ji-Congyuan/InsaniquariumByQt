@@ -23,6 +23,7 @@
 #include "stinky.h"
 
 #include "btn.h"
+#include "moneydisplayer.h"
 
 #include <QImage>
 
@@ -47,7 +48,10 @@ public:
                                    QGraphicsScene *scene);
     static Btn * creatBtn(const QString & name,
                           QGraphicsScene *scene);
-
+    /*
+    static MoneyDisplayer * createDisplayer(const int digital,
+                                            QGraphicsScene *scene);
+    */
 private:
     explicit Factory(){}
 };

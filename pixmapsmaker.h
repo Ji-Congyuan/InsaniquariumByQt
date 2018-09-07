@@ -11,6 +11,8 @@ public:
                                    int count);
     static QPixmaps2 createQPixmaps(const QPixmap &pix,
                                    int count_x, int count_y);
+    static QPixmaps createNumberPixs();
+
 private:
     explicit PixmapsMaker() {}
 };

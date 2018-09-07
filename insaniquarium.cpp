@@ -8,7 +8,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
       m_maxFoodCount(Config::INIT_FOODS_RESTRICT),
       m_currentFoodCount(0), m_alienName(""),
       m_maxFoodLevel(2), m_foodLevel(0),
-      m_step(0), m_money(Config::INIT_MONEY),
+      m_step(0), m_money(0),
       m_fishCount(0), m_gameLevel(0), m_eggLevel(0),
       m_feedable(true)
 {
@@ -59,7 +59,7 @@ void Insaniquarium::showRestartMenu()
 {
     m_scene->clear();
     m_chosenPets.clear();
-    QPixmap pix(Config::RESTART_LABEL);
+    QPixmap pix(Config::LABELS_PATH["restartLabel"]);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
     addBtn("restartBtn");
@@ -71,7 +71,7 @@ void Insaniquarium::showNextLevelMenu()
     m_scene->clear();
     m_gaming = false;
     m_chosenPets.clear();
-    QPixmap pix(Config::NEXT_LEVEL_LABEL);
+    QPixmap pix(Config::LABELS_PATH["nextLevelLabel"]);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
     addBtn("nextLevelBtn");
@@ -80,7 +80,7 @@ void Insaniquarium::showNextLevelMenu()
 void Insaniquarium::choosePets()
 {
     m_scene->clear();
-    QPixmap pix(Config::CHOOSE_PETS_LABEL);
+    QPixmap pix(Config::LABELS_PATH["choosePetLabel"]);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
     addBtn("confirmBtn");
@@ -106,7 +106,11 @@ void Insaniquarium::init()
     m_feedable = true;
     m_gaming = true;
     m_step = 0;
-    m_money = Config::INIT_MONEY;
+
+    // init money
+    addDisplayer();
+
+    slt_moneyPicked(Config::INIT_MONEY);
 
     // init small Guppy
     for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
@@ -114,23 +118,7 @@ void Insaniquarium::init()
         QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
                                                          Config::POOL_UPPER_BOUND,
                                                          Config::POOL_LOWER_BOUND);
-
         addFish("smallGuppy", initPos);
-        QPointF initPos1 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("carnivore", initPos1);
-        QPointF initPos2 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("ulturavore", initPos2);
-        QPointF initPos3 = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                         Config::POOL_UPPER_BOUND,
-                                                         Config::POOL_LOWER_BOUND);
-
-        // addFish("middleBreeder", initPos3);
     }
 
     // init pets
@@ -150,6 +138,7 @@ void Insaniquarium::init()
     addBtn("foodUpgradeBtn");
     addBtn("eggBtn");
 
+
     m_timer->start(20);
 }
 
@@ -160,7 +149,9 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
             event->accept();
             if (m_feedable){ // feed fish
                 if ((m_scene->items(event->pos())).size() == 0){ // if not press on other item
-                    if (m_currentFoodCount < m_maxFoodCount){
+                    if (m_currentFoodCount < m_maxFoodCount
+                            && m_money >= 5){
+                        slt_moneyPicked(-5);
                         slt_yieldFood(event->pos());
                     }
                 }
@@ -249,6 +240,36 @@ void Insaniquarium::addBtn(const QString &name)
     m_scene->addItem(btn);
 }
 
+void Insaniquarium::addTick(const QString &btn)
+{
+    QPixmap pix(Config::LABELS_PATH["tickLabel"]);
+    pix = pix.scaled(Config::TICK_WIDTH,
+                     Config::TICK_HEIGHT,
+                     Qt::KeepAspectRatioByExpanding);
+    QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
+    pixmapItem->setOffset(Config::TICK_POS[btn]);
+}
+
+void Insaniquarium::addDisplayer()
+{
+    for ( int i = 0; i < 6; i++){
+        MoneyDisplayer * displayer = new MoneyDisplayer(m_scene);
+        if (i != 0){
+            displayer->setIndex(0);
+        } else {
+            displayer->setIndex(10);
+        }
+        displayer->setDigital(i);
+        displayer->setPos(Config::NUMBERS_INIT_POS[i]);
+
+        connect(this, SIGNAL(sgn_moneyChanged(int)),
+                displayer, SLOT(slt_moneyChanged(int)));
+
+        m_scene->addItem(displayer);
+    }
+
+}
+
 void Insaniquarium::alienAttack()
 {
     int alienIndex = RandomMaker::creatRandom(Config::ALIENS_NAME.size());
@@ -294,17 +315,12 @@ void Insaniquarium::slt_update()
     if (!m_gaming){
         return;
     }
-    try{
-        m_scene->advance();
-    } catch (QException &e) {
-        qDebug() << e.what();
-    }
-
+    m_scene->advance();
     m_step++;
     if (m_step == 999999){
         m_step = 0;
     }
-    if (m_step % 100 == 0){
+    if (m_step % 500 == 0){
         foreach (QGraphicsItem * item, m_scene->items()) {
             if (!item->isVisible()){
                 m_scene->removeItem(item);
@@ -330,7 +346,10 @@ void Insaniquarium::slt_fishUpgrade(const QString & name, const QPointF & pos, c
 void Insaniquarium::slt_moneyPicked(int value)
 {
     m_money += value;
-    qDebug() << "money: " << m_money;
+    if (m_money > 99999){
+        m_money = 99999;
+    }
+    emit sgn_moneyChanged(m_money);
 }
 
 void Insaniquarium::slt_yieldFish(const QString & name, const QPointF & pos)
@@ -381,7 +400,6 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     if (m_money < Config::BTNS_COST[btnName]){
         return;
     }
-    m_money -= Config::BTNS_COST[btnName];
 
     if (btnName == "startGameBtn"
             || btnName == "nextLevelBtn"
@@ -400,15 +418,21 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
                                          Config::SCREEN_WIDTH * 0.8);
         int y = Config::POOL_UPPER_BOUND;
         slt_yieldFish(name, QPointF(x, y));
+        m_money -= Config::BTNS_COST[btnName];
+        emit sgn_moneyChanged(m_money);
     }
     else if (btnName == "foodUpgradeBtn"){
         if (m_foodLevel < m_maxFoodLevel){
             m_foodLevel++;
+            m_money -= Config::BTNS_COST[btnName];
+            emit sgn_moneyChanged(m_money);
         }
     }
     else if (btnName == "moreFoodBtn"){
         if (m_maxFoodCount < 6){
             m_maxFoodCount++;
+            m_money -= Config::BTNS_COST[btnName];
+            emit sgn_moneyChanged(m_money);
         }
     }
     else if (btnName == "eggBtn") {
@@ -421,14 +445,9 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     }
     else if (btnName == "stinkyBtn"){
         if (m_chosenPets.size() < 4){
-            QPixmap pix(Config::TICK_LABEL);
-            pix = pix.scaled(Config::TICK_WIDTH,
-                             Config::TICK_HEIGHT,
-                             Qt::KeepAspectRatioByExpanding);
-            QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
-            pixmapItem->setOffset(Config::TICK_POS[btnName]);
+            addTick(btnName);
             QString pet = btnName.mid(0, btnName.size() - 3);
-            m_chosenPets.append(pet);
+            m_chosenPets.insert(pet);
         }
     }
 

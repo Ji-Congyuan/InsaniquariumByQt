@@ -23,11 +23,11 @@ void Carnivore::doCollide()
         return;
     }
     foreach (QGraphicsItem * t, collidingItems()) {
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
-            AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
+                .contains(gameItem->name())){
+            AbstractFish * fish = dynamic_cast<AbstractFish *> (gameItem);
             eat(fish->eatenExp());
             fish->vanish();
         }

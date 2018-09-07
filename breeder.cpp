@@ -18,11 +18,11 @@ void Breeder::doCollide()
         return;
     }
     foreach (QGraphicsItem * t, collidingItems()) {
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
-            Food * food = dynamic_cast<Food *> (movableItem);
+                .contains(gameItem->name())){
+            Food * food = dynamic_cast<Food *> (gameItem);
             eat(food->eatenExp());
             food->vanish();
         }

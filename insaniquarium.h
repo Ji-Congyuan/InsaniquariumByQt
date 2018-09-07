@@ -4,6 +4,7 @@
 #include "pixmapsmaker.h"
 #include "btn.h"
 #include "factory.h"
+#include "moneydisplayer.h"
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -13,8 +14,7 @@
 #include <QPixmap>
 #include <QTime>
 #include <QTimer>
-#include <QPainter>
-#include <QException>
+#include <QSet>
 
 class Insaniquarium : public QGraphicsView
 {
@@ -29,12 +29,15 @@ public:
     void choosePets();
     void init();
     void mousePressEvent(QMouseEvent *event);
+    // void paintEvent(QPaintEvent *event);
     void addFood(const QPointF &pos);
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
     void addMoney(const QString & name, const QPointF &pos);
     void addPet(const QString & name, const QPointF &pos);
     void addBtn(const QString & name);
+    void addTick(const QString & btn);
+    void addDisplayer();
     void alienAttack();
     void gameOver();
 
@@ -60,6 +63,7 @@ signals:
     void sgn_attackAlien(const QPointF &);
     void sgn_alienComes(const QString &);
     void sgn_alienDies();
+    void sgn_moneyChanged(const int);
 
 private:
     QGraphicsScene *m_scene;
@@ -94,8 +98,11 @@ private:
 
     int m_money;
 
-    QStringList m_chosenPets;
+    QSet<QString> m_chosenPets;
     QStringList m_availPets;
+
+    // MoneyManager *m_manager;
+
 };
 
 #endif // INSANIQUARIUM_H

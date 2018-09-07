@@ -12,12 +12,6 @@ const int Config::SCREEN_HEIGHT = 720;
 const QString Config::BG_MENU_PATH   = ":/backgrounds/images/backgrounds/aquarium3.png";
 const QString Config::BG_GAME_PATH_1 = ":/backgrounds/images/backgrounds/aquarium1.png";
 
-// labels path
-const QString Config::NEXT_LEVEL_LABEL  = ":/labels/images/labels/92184686600866551.png";
-const QString Config::RESTART_LABEL     = ":/labels/images/labels/168117158668655894.png";
-const QString Config::CHOOSE_PETS_LABEL = ":/labels/images/labels/461148065737624740.png";
-const QString Config::TICK_LABEL        = ":/labels/images/labels/810190804463658840.png";
-
 // foods path
 const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
 
@@ -25,31 +19,39 @@ const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
 const QString Config::MONEY_PATH = ":/money/images/money/money.png";
 
 // pool size
-const int Config::POOL_UPPER_BOUND = 120;
-const int Config::POOL_LOWER_BOUND = 660;
+const int Config::POOL_UPPER_BOUND     = 120;
+const int Config::POOL_LOWER_BOUND     = 660;
 
 // fish size
-const int Config::FISH_WIDTH        = 80;
-const int Config::FISH_HEIGHT       = 80;
-const int Config::ULTURAVORE_WIDTH  = 160;
-const int Config::ULTURAVORE_HEIGHT = 160;
+const int Config::FISH_WIDTH           = 80;
+const int Config::FISH_HEIGHT          = 80;
+const int Config::ULTURAVORE_WIDTH     = 160;
+const int Config::ULTURAVORE_HEIGHT    = 160;
 
 // aliens size
-const int Config::ALIENS_WIDTH  = 160;
-const int Config::ALIENS_HEIGHT = 160;
+const int Config::ALIENS_WIDTH         = 160;
+const int Config::ALIENS_HEIGHT        = 160;
 
 // money size
-const int Config::MONEY_WIDTH  = 72;
-const int Config::MONEY_HEIGHT = 72;
+const int Config::MONEY_WIDTH          = 72;
+const int Config::MONEY_HEIGHT         = 72;
 
 // tick size
-const int Config::TICK_WIDTH   = 160;
-const int Config::TICK_HEIGHT  = 120;
+const int Config::TICK_WIDTH           = 160;
+const int Config::TICK_HEIGHT          = 120;
+
+// money display size
+const int Config::MONEY_DISPLAY_WIDTH  = 80;
+const int Config::MONEY_DISPLAY_HEIGHT = 60;
+
+// numbers size
+const int Config::NUMBERS_WIDTH        = 20;
+const int Config::NUMBERS_HEIGHT       = 13;
 
 // init const
 const int Config::INIT_FOODS_RESTRICT = 1;   // defualt 1
 const int Config::INIT_FISH_COUNT     = 1;   // default 2
-const int Config::INIT_MONEY          = 9999999;   // default 0
+const int Config::INIT_MONEY          = 99999;   // default 0
 
 // foods size
 const int Config::FOODS_WIDTH  = 40;
@@ -501,6 +503,36 @@ const QHash<QString, int> Config::BTNS_COST = {
 
 const QHash<QString, QPointF> Config::TICK_POS = {
     { "stinkyBtn", QPointF(340, 120) }
+};
+
+const QHash<QString, QString> Config::LABELS_PATH = {
+    { "nextLevelLabel", ":/labels/images/labels/92184686600866551.png" },
+    { "restartLabel",   ":/labels/images/labels/168117158668655894.png" },
+    { "choosePetLabel", ":/labels/images/labels/461148065737624740.png" },
+    { "tickLabel",      ":/labels/images/labels/810190804463658840.png" }
+};
+
+const QHash<int, QString> Config::NUMBERS_PATH = {
+    { 0,  ":/numbers/images/num/0.png" },
+    { 1,  ":/numbers/images/num/1.png" },
+    { 2,  ":/numbers/images/num/2.png" },
+    { 3,  ":/numbers/images/num/3.png" },
+    { 4,  ":/numbers/images/num/4.png" },
+    { 5,  ":/numbers/images/num/5.png" },
+    { 6,  ":/numbers/images/num/6.png" },
+    { 7,  ":/numbers/images/num/7.png" },
+    { 8,  ":/numbers/images/num/8.png" },
+    { 9,  ":/numbers/images/num/9.png" },
+    { 10, ":/numbers/images/num/10.png" }
+};
+
+const QHash<int, QPointF> Config::NUMBERS_INIT_POS = {
+    { 0, QPointF(0  , 77) },
+    { 1, QPointF(22 , 77) },
+    { 2, QPointF(44 , 77) },
+    { 3, QPointF(66 , 77) },
+    { 4, QPointF(88 , 77) },
+    { 5, QPointF(110, 77) }
 };
 
 // list

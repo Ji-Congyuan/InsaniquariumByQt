@@ -1,0 +1,26 @@
+#include "moneydisplay.h"
+
+MoneyDisplay::MoneyDisplay(qreal w, qreal h,
+                           QGraphicsScene *scene,
+                           QGraphicsItem *parent)
+    : AbstractGameItem(w, h, scene, parent),
+      m_name("moneyDisplay")
+{
+}
+
+QRectF MoneyDisplay::boundingRect() const
+{
+    return QRectF(700, 0, 80, 60);
+}
+
+void MoneyDisplay::paint(QPainter *painter,
+                         const QStyleOptionGraphicsItem *option,
+                         QWidget *widget)
+{
+
+}
+
+const QString &MoneyDisplay::name() const
+{
+    return m_name;
+}

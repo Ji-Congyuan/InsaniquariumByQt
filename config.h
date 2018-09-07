@@ -24,12 +24,6 @@ public:
     static const QString BG_MENU_PATH;
     static const QString BG_GAME_PATH_1;
 
-    // labels path
-    static const QString NEXT_LEVEL_LABEL;
-    static const QString RESTART_LABEL;
-    static const QString CHOOSE_PETS_LABEL;
-    static const QString TICK_LABEL;
-
     // foods path
     static const QString FOODS_PATH;
 
@@ -65,6 +59,14 @@ public:
     // tick size
     static const int TICK_WIDTH;
     static const int TICK_HEIGHT;
+
+    // numbers size
+    static const int NUMBERS_WIDTH;
+    static const int NUMBERS_HEIGHT;
+
+    // money display size
+    static const int MONEY_DISPLAY_WIDTH;
+    static const int MONEY_DISPLAY_HEIGHT;
 
     // init const
     static const int INIT_FOODS_RESTRICT;
@@ -189,6 +191,11 @@ public:
     static const QHash<QString, int> BTNS_COST;
 
     static const QHash<QString, QPointF> TICK_POS;
+
+    static const QHash<QString, QString> LABELS_PATH;
+
+    static const QHash<int, QString> NUMBERS_PATH;
+    static const QHash<int, QPointF> NUMBERS_INIT_POS;
 
     // list
     static const QStringList FISH_TYPE;

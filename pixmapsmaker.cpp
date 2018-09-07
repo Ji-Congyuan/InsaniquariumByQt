@@ -32,3 +32,13 @@ QPixmaps2 PixmapsMaker::createQPixmaps(const QPixmap & pix,
     }
     return pixs2;
 }
+
+QPixmaps PixmapsMaker::createNumberPixs()
+{
+    QPixmaps pixs;
+    for (int i = 0; i <=10; i++){
+        QPixmap temp(Config::NUMBERS_PATH[i]);
+        pixs.append(temp);
+    }
+    return pixs;
+}

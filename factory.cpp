@@ -376,8 +376,11 @@ AbstractPet *Factory::createPet(const QString &name,
 Btn *Factory::creatBtn(const QString &name, QGraphicsScene *scene)
 {
     QPixmap pic(Config::BTNS_PATH[name]);
-    QPixmaps2 pixs2 = PixmapsMaker::createQPixmaps(pic, 3,
-                                                   Config::ORIGIN_IMAGE_ROWS[name]);
+    QPixmaps2 pixs2;
+
+    pixs2 = PixmapsMaker::createQPixmaps(pic, 3,
+                                         Config::ORIGIN_IMAGE_ROWS[name]);
+
     Btn * btn = new Btn(name, Config::BTNS_INIT_POS[name],
                         Config::BTNS_WIDTH[name],
                         Config::BTNS_HEIGHT[name],
@@ -385,3 +388,12 @@ Btn *Factory::creatBtn(const QString &name, QGraphicsScene *scene)
 
     return btn;
 }
+/*
+MoneyDisplayer *Factory::createDisplayer(const int digital, QGraphicsScene *scene)
+{
+    MoneyDisplayer * displayer = new MoneyDisplayer(scene);
+    displayer->setDigital(digital);
+
+    return displayer;
+}
+*/
