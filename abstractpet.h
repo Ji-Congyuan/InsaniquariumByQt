@@ -13,9 +13,10 @@ public:
     ~AbstractPet(){}
     virtual void findTarget() = 0;
     void advance(int);
+    virtual void yield() = 0;
 
 signals:
-    void sgn_specialSkill(const QString &);
+    void sgn_specialSkill(const QString &, const QPointF &);
 
 public slots:
     virtual void slt_alienComes(const QString &) = 0;

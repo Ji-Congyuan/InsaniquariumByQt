@@ -119,7 +119,7 @@ const int Config::EGG_STATE_COUNT                = 3;
 const qreal Config::HUNGRY_INCREASE = 1.5;
 
 // sink speed
-const int Config::BODY_SINK_SPEED   = 8;
+const int Config::BODY_SINK_SPEED   = 4;
 const int Config::FOOD_SINK_SPEED   = 2;
 const int Config::MONEY_SINK_SPEED  = 5;
 
@@ -368,27 +368,37 @@ const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
 };
 
 const QHash<QString, QString> Config::PETS_PATH = {
-    { "stinky",  ":/pets/images/pets/884088821102378968.png" }
+    { "stinky",  ":/pets/images/pets/884088821102378968.png" },
+    { "vert",    ":/pets/images/pets/vert.png" }
 };
 
 const QHash<QString, int> Config::PETS_SPEED = {
-    { "stinky", 2 }
+    { "stinky", 2 },
+    { "vert",   5 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
-    { "stinky", 80 }
+    { "stinky", 80 },
+    { "vert",   80 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
-    { "stinky", 60 }
+    { "stinky", 60 },
+    { "vert",   60 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_X = {
-    { "stinky", 480 }   // Config::SCREEN_WIDTH / 2
+    { "stinky", 480 },   // Config::SCREEN_WIDTH / 2
+    { "vert",   320 }    // chosen casually
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_Y = {
-    { "stinky", 579 }    // Config::POOL_LOWER_BOUND - Config::PETS_HEIGHT - 1
+    { "stinky", 579 },    // Config::POOL_LOWER_BOUND - Config::PETS_HEIGHT - 1
+    { "vert",   480 }
+};
+
+const QHash<QString, int> Config::PETS_YIELD_STEP = {
+    { "vert",  500 }
 };
 
 const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
@@ -402,6 +412,7 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "bigBreeder",       5 },
 
     { "stinky",           3 },
+    { "vert",             2 },
 
     { "deepBlue",         2 },
     { "gus",              2 },
@@ -419,7 +430,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "moreFoodBtn",      6 },
     { "eggBtn",           3 },
 
-    { "stinkyBtn",        1 }
+    { "stinkyBtn",        1 },
+    { "vertBtn",          1 }
 };
 
 const QHash<QString, QString> Config::BTNS_PATH = {
@@ -436,7 +448,8 @@ const QHash<QString, QString> Config::BTNS_PATH = {
     { "moreFoodBtn",      ":/buttons/images/buttons/button9.png" },
     { "eggBtn",           ":/buttons/images/buttons/362283261707809117.png" },
 
-    { "stinkyBtn",        ":/buttons/images/buttons/29204779860393857.png" }
+    { "stinkyBtn",        ":/buttons/images/buttons/29204779860393857.png" },
+    { "vertBtn",          ":/buttons/images/buttons/269280215658910314.png" }
 };
 
 const QHash<QString, int> Config::BTNS_WIDTH = {
@@ -453,7 +466,8 @@ const QHash<QString, int> Config::BTNS_WIDTH = {
     { "moreFoodBtn",      100 },
     { "eggBtn",           100 },
 
-    { "stinkyBtn",        200 }
+    { "stinkyBtn",        200 },
+    { "vertBtn",          200 }
 };
 
 const QHash<QString, int> Config::BTNS_HEIGHT = {
@@ -470,7 +484,8 @@ const QHash<QString, int> Config::BTNS_HEIGHT = {
     { "moreFoodBtn",      75 },
     { "eggBtn",           75 },
 
-    { "stinkyBtn",        150 }
+    { "stinkyBtn",        150 },
+    { "vertBtn",          150 }
 };
 
 const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
@@ -488,7 +503,8 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
     { "moreFoodBtn",      QPointF(500, 0) },
     { "eggBtn",           QPointF(600, 0) },
 
-    { "stinkyBtn",        QPointF(280, 80) }
+    { "stinkyBtn",        QPointF(280, 80) },
+    { "vertBtn",          QPointF(480, 80) }
 };
 
 const QHash<QString, int> Config::BTNS_COST = {
@@ -505,11 +521,13 @@ const QHash<QString, int> Config::BTNS_COST = {
     { "moreFoodBtn",      300 },
     { "eggBtn",           1000 },
 
-    { "stinkyBtn",        0 }
+    { "stinkyBtn",        0 },
+    { "vertBtn",          0 }
 };
 
 const QHash<QString, QPointF> Config::TICK_POS = {
-    { "stinkyBtn", QPointF(340, 120) }
+    { "stinkyBtn", QPointF(340, 120) },
+    { "vertBtn",   QPointF(540, 120) }
 };
 
 const QHash<QString, QString> Config::LABELS_PATH = {
@@ -555,7 +573,8 @@ const QStringList Config::FISH_TYPE = {
 };
 
 const QStringList Config::PETS_TYPE = {
-    "stinky"
+    "stinky",
+    "vert"
 };
 
 const QStringList Config::MONEY_TYPE = {
@@ -599,5 +618,6 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "deepBlue",      Config::FISH_TYPE },
     { "gus",           Config::EDIBLE_TYPE },
 
-    { "stinky",        Config::MONEY_TYPE }
+    { "stinky",        Config::MONEY_TYPE },
+    { "vert",          QStringList("")}
 };

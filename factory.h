@@ -21,6 +21,7 @@
 #include "treasure.h"
 
 #include "stinky.h"
+#include "vert.h"
 
 #include "btn.h"
 #include "moneydisplayer.h"

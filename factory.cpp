@@ -362,6 +362,11 @@ AbstractPet *Factory::createPet(const QString &name,
                          Config::PETS_HEIGHT,
                          pos, pixs2, scene);
     }
+    else if (name == "vert"){
+        pet = new Vert(Config::PETS_WIDTH,
+                       Config::PETS_HEIGHT,
+                       pos, pixs2, scene);
+    }
 
     pet->setSpeed(Config::PETS_SPEED[name]);
     pet->setDirection(RandomMaker::creatRandom(2) * Config::PI);
@@ -388,12 +393,3 @@ Btn *Factory::creatBtn(const QString &name, QGraphicsScene *scene)
 
     return btn;
 }
-/*
-MoneyDisplayer *Factory::createDisplayer(const int digital, QGraphicsScene *scene)
-{
-    MoneyDisplayer * displayer = new MoneyDisplayer(scene);
-    displayer->setDigital(digital);
-
-    return displayer;
-}
-*/

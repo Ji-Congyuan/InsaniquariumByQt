@@ -93,8 +93,10 @@ void Insaniquarium::choosePets()
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(230, 0);
     addBtn("confirmBtn");
-    if (m_gameLevel < Config::PETS_TYPE.size()){
-        m_availPets.append(Config::PETS_TYPE.at(m_gameLevel));
+    int petCount = Config::PETS_TYPE.size();
+    if (m_gameLevel < petCount + 1
+            && m_gameLevel > 0){
+        m_availPets.append(Config::PETS_TYPE.at(m_gameLevel - 1));
     }
     foreach (QString petName, m_availPets) {
         QString btn = petName.append("Btn");
@@ -131,6 +133,9 @@ void Insaniquarium::init()
     }
 
     // init pets
+
+    // m_chosenPets.insert("vert");
+
     foreach (QString petName, m_chosenPets) {
         int x = Config::PETS_INIT_POS_X[petName];
         int y = Config::PETS_INIT_POS_Y[petName];
@@ -231,8 +236,8 @@ void Insaniquarium::addMoney(const QString &name, const QPointF &pos)
 void Insaniquarium::addPet(const QString &name, const QPointF &pos)
 {
     AbstractPet * pet = Factory::createPet(name, pos, m_scene);
-    connect(pet, SIGNAL(sgn_specialSkill(QString)),
-            this, SLOT(slt_petSkill(QString)));
+    connect(pet, SIGNAL(sgn_specialSkill(QString, QPointF)),
+            this, SLOT(slt_petSkill(QString, QPointF)));
     connect(this, SIGNAL(sgn_alienComes(QString)),
             pet, SLOT(slt_alienComes(QString)));
     connect(this, SIGNAL(sgn_alienDies()),
@@ -399,9 +404,11 @@ void Insaniquarium::slt_fishDie()
     }
 }
 
-void Insaniquarium::slt_petSkill(const QString & name)
+void Insaniquarium::slt_petSkill(const QString & name, const QPointF & pos)
 {
-    // FIXME
+    if (name == "vert"){
+        addMoney("silver", pos);
+    }
 }
 
 void Insaniquarium::slt_btnClicked(const QString & btnName)
@@ -454,12 +461,12 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
             showNextLevelMenu();
         }
     }
-    else if (btnName == "stinkyBtn"){
+    else if (btnName == "stinkyBtn"
+             || "vertBtn"){
         if (m_chosenPets.size() < 4){
             addTick(btnName);
             QString pet = btnName.mid(0, btnName.size() - 3);
             m_chosenPets.insert(pet);
         }
     }
-
 }

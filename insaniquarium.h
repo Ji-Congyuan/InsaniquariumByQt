@@ -57,7 +57,7 @@ public slots:
     // alien attack ends
     void slt_attatckEnd();
     void slt_fishDie();
-    void slt_petSkill(const QString &);
+    void slt_petSkill(const QString &, const QPointF &);
     void slt_btnClicked(const QString &);
 
 signals:

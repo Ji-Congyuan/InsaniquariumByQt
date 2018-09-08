@@ -96,6 +96,11 @@ void Stinky::findTarget()
     }
 }
 
+void Stinky::yield()
+{
+    // do nothing
+}
+
 void Stinky::slt_specialSkill()
 {
     // do nothing

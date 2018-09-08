@@ -1,17 +1,16 @@
-#ifndef STINKY_H
-#define STINKY_H
+#ifndef VERT_H
+#define VERT_H
 
 #include "abstractpet.h"
-#include "abstractmoney.h"
 
-class Stinky : public AbstractPet
+class Vert : public AbstractPet
 {
     Q_OBJECT
 public:
-    Stinky(qreal w, qreal h, const QPointF &pos,
-           const QPixmaps2 &pixs2, QGraphicsScene *scene,
-           QGraphicsItem *parent = nullptr);
-    ~Stinky(){}
+    Vert(qreal w, qreal h, const QPointF &pos,
+         const QPixmaps2 &pixs2, QGraphicsScene *scene,
+         QGraphicsItem *parent = nullptr);
+    ~Vert(){}
     const QString & name() const;
     void move();
     void doCollide();
@@ -25,12 +24,9 @@ public slots:
     void slt_alienDies();
 
 signals:
-    void sgn_pickMoney(int);
 
 protected:
     const QString m_name;
-    bool m_hiding;
-
 };
 
-#endif // STINKY_H
+#endif // VERT_H

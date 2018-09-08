@@ -185,6 +185,7 @@ public:
     static const QHash<QString, int> PETS_PAINT_HEIGHT;
     static const QHash<QString, int> PETS_INIT_POS_X;
     static const QHash<QString, int> PETS_INIT_POS_Y;
+    static const QHash<QString, int> PETS_YIELD_STEP;
 
     static const QHash<QString, int> ORIGIN_IMAGE_ROWS;
 
