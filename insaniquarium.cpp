@@ -134,7 +134,7 @@ void Insaniquarium::init()
 
     // init pets
 
-    // m_chosenPets.insert("prego");
+    // m_chosenPets.insert("niko");
 
     foreach (QString petName, m_chosenPets) {
         int x = Config::PETS_INIT_POS_X[petName];
@@ -412,6 +412,9 @@ void Insaniquarium::slt_petSkill(const QString & name, const QPointF & pos)
     else if (name == "prego"){
         addFish("smallGuppy", pos);
     }
+    else if (name == "niko"){
+        slt_moneyPicked(300);
+    }
 }
 
 void Insaniquarium::slt_btnClicked(const QString & btnName)
@@ -466,7 +469,9 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     }
     else if (btnName == "stinkyBtn"
              || "vertBtn"
-             || "clydeBtn"){
+             || "clydeBtn"
+             || "pregoBtn"
+             || "nikoBtn"){
         if (m_chosenPets.size() < 3){
             addTick(btnName);
             QString pet = btnName.mid(0, btnName.size() - 3);

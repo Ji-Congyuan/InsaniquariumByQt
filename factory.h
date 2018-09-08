@@ -24,6 +24,7 @@
 #include "vert.h"
 #include "clyde.h"
 #include "prego.h"
+#include "niko.h"
 
 #include "btn.h"
 #include "moneydisplayer.h"

@@ -37,7 +37,8 @@ HEADERS += \
     loading.h \
     vert.h \
     clyde.h \
-    prego.h
+    prego.h \
+    niko.h
 
 SOURCES += \
     config.cpp \
@@ -77,7 +78,8 @@ SOURCES += \
     loading.cpp \
     vert.cpp \
     clyde.cpp \
-    prego.cpp
+    prego.cpp \
+    niko.cpp
 
 RESOURCES += \
     images.qrc

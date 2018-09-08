@@ -296,11 +296,31 @@ AbstractPet *Factory::createPet(const QString &name,
     int width = Config::PETS_WIDTH;
     int height = Config::PETS_HEIGHT;
 
+    if (name == "niko"){
+        QPixmaps opening;
+        QPixmaps closing;
+
+        for (int i = 0; i < Config::PETS_INDEX_COUNT; i++){
+            // OPENING_STATE
+            opening.append(origins.at(0).at(i)
+                           .scaled(width, height,
+                                   Qt::KeepAspectRatioByExpanding));
+
+            // CLOSING_STATE
+            closing.append(origins.at(1).at(Config::PETS_INDEX_COUNT - i - 1)
+                           .scaled(width, height,
+                                   Qt::KeepAspectRatioByExpanding));
+        }
+        pixs2.append(opening);
+        pixs2.append(closing);
+    }
+
     if (Config::ORIGIN_IMAGE_ROWS[name] == 1){
         pixs2.append(origins.at(0));
     }
 
-    else if (Config::ORIGIN_IMAGE_ROWS[name] >= 2){
+    if (Config::ORIGIN_IMAGE_ROWS[name] >= 2
+            && name != "niko"){
         QPixmaps petSwimL;
         QPixmaps petSwimR;
         QPixmaps petTurnL;
@@ -380,6 +400,11 @@ AbstractPet *Factory::createPet(const QString &name,
         pet = new Prego(Config::PETS_WIDTH,
                         Config::PETS_HEIGHT,
                         pos, pixs2, scene);
+    }
+    else if (name == "niko"){
+        pet = new Niko(Config::PETS_WIDTH,
+                       Config::PETS_HEIGHT,
+                       pos, pixs2, scene);
     }
 
     pet->setSpeed(Config::PETS_SPEED[name]);
