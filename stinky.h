@@ -20,7 +20,6 @@ public:
     void yield();
 
 public slots:
-    void slt_specialSkill();
     void slt_alienComes(const QString &);
     void slt_alienDies();
 

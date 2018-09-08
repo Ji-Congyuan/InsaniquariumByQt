@@ -20,6 +20,7 @@
         <file>images/buttons/168117158668655894.png</file>
         <file>images/buttons/269280215658910314.png</file>
         <file>images/buttons/566282524902953530.png</file>
+        <file>images/buttons/722550347237888875.png</file>
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
@@ -45,6 +46,7 @@
         <file>images/pets/884088821102378968.png</file>
         <file>images/pets/vert.png</file>
         <file>images/pets/clyde.png</file>
+        <file>images/pets/prego.png</file>
     </qresource>
     <qresource prefix="/labels">
         <file>images/labels/92184686600866551.png</file>

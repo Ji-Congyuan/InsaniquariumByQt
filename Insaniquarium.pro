@@ -36,7 +36,8 @@ HEADERS += \
     moneydisplayer.h \
     loading.h \
     vert.h \
-    clyde.h
+    clyde.h \
+    prego.h
 
 SOURCES += \
     config.cpp \
@@ -75,7 +76,8 @@ SOURCES += \
     moneydisplayer.cpp \
     loading.cpp \
     vert.cpp \
-    clyde.cpp
+    clyde.cpp \
+    prego.cpp
 
 RESOURCES += \
     images.qrc

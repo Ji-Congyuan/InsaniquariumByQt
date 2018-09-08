@@ -370,41 +370,50 @@ const QHash<QString, int> Config::MONEY_PAINT_HEIGHT = {
 const QHash<QString, QString> Config::PETS_PATH = {
     { "stinky",  ":/pets/images/pets/884088821102378968.png" },
     { "vert",    ":/pets/images/pets/vert.png" },
-    { "clyde",   ":/pets/images/pets/clyde.png" }
+    { "clyde",   ":/pets/images/pets/clyde.png" },
+    { "prego",   ":/pets/images/pets/prego.png" }
 };
 
 const QHash<QString, int> Config::PETS_SPEED = {
     { "stinky", 2 },
     { "vert",   5 },
-    { "clyde",  5 }
+    { "clyde",  5 },
+    { "prego",  5 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
     { "stinky", 80 },
     { "vert",   80 },
-    { "clyde",  80 }
+    { "clyde",  80 },
+    { "prego",  80 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
     { "stinky", 60 },
     { "vert",   60 },
-    { "clyde",  75 }
+    { "clyde",  75 },
+    { "prego",  75 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_X = {
     { "stinky", 480 },   // Config::SCREEN_WIDTH / 2
     { "vert",   320 },   // chosen casually
-    { "clyde",  720 }
+    { "clyde",  720 },
+    { "prego",  360 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_Y = {
     { "stinky", 579 },    // Config::POOL_LOWER_BOUND - Config::PETS_HEIGHT - 1
     { "vert",   480 },
-    { "clyde",  240 }
+    { "clyde",  240 },
+    { "prego",  180 }
 };
 
 const QHash<QString, int> Config::PETS_YIELD_STEP = {
-    { "vert",  500 }
+    { "stinky", 9999 },
+    { "vert",   500 },
+    { "clyde",  9999 },
+    { "prego",  500 }
 };
 
 const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
@@ -420,6 +429,7 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "stinky",           3 },
     { "vert",             2 },
     { "clyde",            1 },
+    { "prego",            2 },
 
     { "deepBlue",         2 },
     { "gus",              2 },
@@ -439,7 +449,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
 
     { "stinkyBtn",        1 },
     { "vertBtn",          1 },
-    { "clydeBtn",         1 }
+    { "clydeBtn",         1 },
+    { "pregoBtn",         1 }
 };
 
 const QHash<QString, QString> Config::BTNS_PATH = {
@@ -458,7 +469,8 @@ const QHash<QString, QString> Config::BTNS_PATH = {
 
     { "stinkyBtn",        ":/buttons/images/buttons/29204779860393857.png" },
     { "vertBtn",          ":/buttons/images/buttons/269280215658910314.png" },
-    { "clydeBtn",         ":/buttons/images/buttons/566282524902953530.png" }
+    { "clydeBtn",         ":/buttons/images/buttons/566282524902953530.png" },
+    { "pregoBtn",         ":/buttons/images/buttons/722550347237888875.png" }
 };
 
 const QHash<QString, int> Config::BTNS_WIDTH = {
@@ -477,7 +489,8 @@ const QHash<QString, int> Config::BTNS_WIDTH = {
 
     { "stinkyBtn",        200 },
     { "vertBtn",          200 },
-    { "clydeBtn",         200 }
+    { "clydeBtn",         200 },
+    { "pregoBtn",         200 }
 };
 
 const QHash<QString, int> Config::BTNS_HEIGHT = {
@@ -496,7 +509,8 @@ const QHash<QString, int> Config::BTNS_HEIGHT = {
 
     { "stinkyBtn",        150 },
     { "vertBtn",          150 },
-    { "clydeBtn",         150 }
+    { "clydeBtn",         150 },
+    { "pregoBtn",         150 }
 };
 
 const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
@@ -516,7 +530,8 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
 
     { "stinkyBtn",        QPointF(280, 80 ) },
     { "vertBtn",          QPointF(480, 80 ) },
-    { "clydeBtn",         QPointF(280, 230) }
+    { "clydeBtn",         QPointF(280, 230) },
+    { "pregoBtn",         QPointF(480, 230) }
 };
 
 const QHash<QString, int> Config::BTNS_COST = {
@@ -535,13 +550,15 @@ const QHash<QString, int> Config::BTNS_COST = {
 
     { "stinkyBtn",        0 },
     { "vertBtn",          0 },
-    { "clydeBtn",         0 }
+    { "clydeBtn",         0 },
+    { "pregoBtn",         0 }
 };
 
 const QHash<QString, QPointF> Config::TICK_POS = {
     { "stinkyBtn", QPointF(340, 120) },
     { "vertBtn",   QPointF(540, 120) },
-    { "clydeBtn",  QPointF(340, 270) }
+    { "clydeBtn",  QPointF(340, 270) },
+    { "pregoBtn",  QPointF(540, 270) }
 };
 
 const QHash<QString, QString> Config::LABELS_PATH = {
@@ -589,7 +606,8 @@ const QStringList Config::FISH_TYPE = {
 const QStringList Config::PETS_TYPE = {
     "stinky",
     "vert",
-    "clyde"
+    "clyde",
+    "prego"
 };
 
 const QStringList Config::MONEY_TYPE = {
@@ -635,5 +653,6 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
 
     { "stinky",        Config::MONEY_TYPE },
     { "vert",          QStringList("")},
-    { "clyde",         Config::MONEY_TYPE }
+    { "clyde",         Config::MONEY_TYPE },
+    { "prego",         QStringList("food") }
 };

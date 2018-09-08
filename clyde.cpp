@@ -95,18 +95,3 @@ void Clyde::yield()
 {
     // do nothing
 }
-
-void Clyde::slt_specialSkill()
-{
-    // do nothing
-}
-
-void Clyde::slt_alienComes(const QString &)
-{
-    // do nothing
-}
-
-void Clyde::slt_alienDies()
-{
-    // do nothing
-}

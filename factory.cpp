@@ -376,6 +376,11 @@ AbstractPet *Factory::createPet(const QString &name,
                         Config::PETS_HEIGHT,
                         pos, pixs2, scene);
     }
+    else if (name == "prego"){
+        pet = new Prego(Config::PETS_WIDTH,
+                        Config::PETS_HEIGHT,
+                        pos, pixs2, scene);
+    }
 
     pet->setSpeed(Config::PETS_SPEED[name]);
     pet->setDirection(RandomMaker::creatRandom(2) * Config::PI);

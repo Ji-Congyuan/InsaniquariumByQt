@@ -1,19 +1,19 @@
-#include "vert.h"
+#include "prego.h"
 
-Vert::Vert(qreal w, qreal h, const QPointF &pos,
-           const QPixmaps2 &pixs2, QGraphicsScene *scene,
-           QGraphicsItem *parent)
+Prego::Prego(qreal w, qreal h, const QPointF &pos,
+             const QPixmaps2 &pixs2, QGraphicsScene *scene,
+             QGraphicsItem *parent)
     : AbstractPet(w, h, pos, pixs2, scene, parent),
-      m_name("vert")
+      m_name("prego")
 {
 }
 
-const QString &Vert::name() const
+const QString &Prego::name() const
 {
     return m_name;
 }
 
-void Vert::move()
+void Prego::move()
 {
     if (!m_hasTarget && !turning()){
         if (m_step % Config::CHANGE_DIRECTION_STEP == 0){
@@ -30,12 +30,12 @@ void Vert::move()
     keepInScene();
 }
 
-void Vert::doCollide()
+void Prego::doCollide()
 {
     // do nothing
 }
 
-void Vert::advance(int)
+void Prego::advance(int)
 {
     AbstractMovableItem::advance(0);
     if (m_step % Config::UPDATE_PAINT_STEP == 0){
@@ -67,17 +67,17 @@ void Vert::advance(int)
 
         move();
     }
-    if (m_step % Config::PETS_YIELD_STEP["vert"] == 0){
+    if (m_step % Config::PETS_YIELD_STEP["prego"] == 0){
         yield();
     }
 }
 
-void Vert::findTarget()
+void Prego::findTarget()
 {
     // do nothing
 }
 
-void Vert::yield()
+void Prego::yield()
 {
     emit sgn_specialSkill(m_name, scenePos());
 }

@@ -1,16 +1,16 @@
-#ifndef CLYDE_H
-#define CLYDE_H
+#ifndef PREGO_H
+#define PREGO_H
 
 #include "abstractpet.h"
 
-class Clyde : public AbstractPet
+class Prego : public AbstractPet
 {
     Q_OBJECT
 public:
-    Clyde(qreal w, qreal h, const QPointF &pos,
+    Prego(qreal w, qreal h, const QPointF &pos,
           const QPixmaps2 &pixs2, QGraphicsScene *scene,
           QGraphicsItem *parent = nullptr);
-    ~Clyde(){}
+    ~Prego(){}
     const QString & name() const;
     void move();
     void doCollide();
@@ -18,11 +18,8 @@ public:
     void findTarget();
     void yield();
 
-signals:
-    void sgn_pickMoney(int);
-
 protected:
     const QString m_name;
 };
 
-#endif // CLYDE_H
+#endif // PREGO_H

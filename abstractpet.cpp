@@ -41,3 +41,18 @@ void AbstractPet::advance(int)
         move();
     }
 }
+
+void AbstractPet::slt_alienComes(const QString &)
+{
+    // do nothing
+}
+
+void AbstractPet::slt_alienDies()
+{
+    // do nothing
+}
+
+void AbstractPet::slt_specialSkill()
+{
+    // do nothing
+}
