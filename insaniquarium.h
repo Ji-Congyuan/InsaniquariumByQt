@@ -65,6 +65,7 @@ signals:
     void sgn_alienComes(const QString &);
     void sgn_alienDies();
     void sgn_moneyChanged(const int);
+    void sgn_yieldMoney();
 
 private:
     QGraphicsScene *m_scene;

@@ -23,7 +23,7 @@ void Loading::loading()
     label->show();
     QTime t;
     t.start();
-    while (t.elapsed() < 3000){
+    while (t.elapsed() < 2000){
         QApplication::processEvents();
     }
     label->close();

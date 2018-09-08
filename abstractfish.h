@@ -22,6 +22,9 @@ public:
     bool isHungry();
     bool isFull();
 
+public slots:
+    virtual void slt_yieldMoney();
+
 signals:
     void sgn_die();
 

@@ -16,6 +16,9 @@ public:
     void doCollide();
     void findFood();
 
+public slots:
+    void slt_yieldMoney();
+
 };
 
 #endif // GUPPY_H

@@ -17,7 +17,7 @@ public:
     void advance(int);
     void findTarget();
     void yield();
-    void mousePressEvent(QGraphicsSceneMouseEvent * event);
+    void mousePressEvent(QGraphicsSceneMouseEvent *);
 
 protected:
     const QString m_name;

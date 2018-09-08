@@ -406,6 +406,11 @@ AbstractPet *Factory::createPet(const QString &name,
                        Config::PETS_HEIGHT,
                        pos, pixs2, scene);
     }
+    else if (name == "meryl"){
+        pet = new Meryl(Config::PETS_WIDTH,
+                        Config::PETS_HEIGHT,
+                        pos, pixs2, scene);
+    }
 
     pet->setSpeed(Config::PETS_SPEED[name]);
     pet->setDirection(RandomMaker::creatRandom(2) * Config::PI);

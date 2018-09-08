@@ -38,7 +38,8 @@ HEADERS += \
     vert.h \
     clyde.h \
     prego.h \
-    niko.h
+    niko.h \
+    meryl.h
 
 SOURCES += \
     config.cpp \
@@ -79,7 +80,8 @@ SOURCES += \
     vert.cpp \
     clyde.cpp \
     prego.cpp \
-    niko.cpp
+    niko.cpp \
+    meryl.cpp
 
 RESOURCES += \
     images.qrc

@@ -51,3 +51,8 @@ void Guppy::findFood()
                 this, SLOT(slt_lostAim()));
     }
 }
+
+void Guppy::slt_yieldMoney()
+{
+    yield();
+}

@@ -30,6 +30,7 @@ void Niko::advance(int)
     if (m_step % Config::PETS_YIELD_STEP["niko"] == 0){
         m_mature = true;
         m_pixStateIndex = 0;
+        m_pixIndex = 0;
     }
     if (m_step % Config::UPDATE_PAINT_STEP == 0){
         if (m_mature || m_harvested){
@@ -60,12 +61,13 @@ void Niko::yield()
     // do nothing
 }
 
-void Niko::mousePressEvent(QGraphicsSceneMouseEvent *event)
+void Niko::mousePressEvent(QGraphicsSceneMouseEvent *)
 {
     if (m_gainable){
         m_gainable = false;
         m_harvested = true;
         m_pixStateIndex = 1;
+        m_pixIndex = 0;
         m_step = 0;
         emit sgn_specialSkill("niko", scenePos());
     }

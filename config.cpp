@@ -372,7 +372,8 @@ const QHash<QString, QString> Config::PETS_PATH = {
     { "vert",    ":/pets/images/pets/vert.png" },
     { "clyde",   ":/pets/images/pets/clyde.png" },
     { "prego",   ":/pets/images/pets/prego.png" },
-    { "niko",    ":/pets/images/pets/niko.png" }
+    { "niko",    ":/pets/images/pets/niko.png" },
+    { "meryl",   ":/pets/images/pets/meryl.png" }
 };
 
 const QHash<QString, int> Config::PETS_SPEED = {
@@ -380,7 +381,8 @@ const QHash<QString, int> Config::PETS_SPEED = {
     { "vert",   5 },
     { "clyde",  5 },
     { "prego",  5 },
-    { "niko",   0 }
+    { "niko",   0 },
+    { "meryl",  5 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
@@ -388,7 +390,8 @@ const QHash<QString, int> Config::PETS_PAINT_WIDTH = {
     { "vert",   80 },
     { "clyde",  80 },
     { "prego",  80 },
-    { "niko",   80 }
+    { "niko",   80 },
+    { "meryl",  80 }
 };
 
 const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
@@ -396,7 +399,8 @@ const QHash<QString, int> Config::PETS_PAINT_HEIGHT = {
     { "vert",   60 },
     { "clyde",  75 },
     { "prego",  75 },
-    { "niko",   80 }
+    { "niko",   80 },
+    { "meryl",  75 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_X = {
@@ -404,7 +408,8 @@ const QHash<QString, int> Config::PETS_INIT_POS_X = {
     { "vert",   320 },   // chosen casually
     { "clyde",  720 },
     { "prego",  360 },
-    { "niko",   640 }
+    { "niko",   640 },
+    { "meryl",  320 }
 };
 
 const QHash<QString, int> Config::PETS_INIT_POS_Y = {
@@ -412,7 +417,8 @@ const QHash<QString, int> Config::PETS_INIT_POS_Y = {
     { "vert",   480 },
     { "clyde",  240 },
     { "prego",  180 },
-    { "niko",   540 }
+    { "niko",   540 },
+    { "meryl",  240 }
 };
 
 const QHash<QString, int> Config::PETS_YIELD_STEP = {
@@ -420,7 +426,8 @@ const QHash<QString, int> Config::PETS_YIELD_STEP = {
     { "vert",   500 },
     { "clyde",  9999 },
     { "prego",  500 },
-    { "niko",   200 }
+    { "niko",   500 },
+    { "meryl",  500 }
 };
 
 const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
@@ -438,6 +445,7 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "clyde",            1 },
     { "prego",            2 },
     { "niko",             2 },
+    { "meryl",            2 },
 
     { "deepBlue",         2 },
     { "gus",              2 },
@@ -459,7 +467,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "vertBtn",          1 },
     { "clydeBtn",         1 },
     { "pregoBtn",         1 },
-    { "nikoBtn",          1 }
+    { "nikoBtn",          1 },
+    { "merylBtn",         1 }
 };
 
 const QHash<QString, QString> Config::BTNS_PATH = {
@@ -480,7 +489,8 @@ const QHash<QString, QString> Config::BTNS_PATH = {
     { "vertBtn",          ":/buttons/images/buttons/269280215658910314.png" },
     { "clydeBtn",         ":/buttons/images/buttons/566282524902953530.png" },
     { "pregoBtn",         ":/buttons/images/buttons/722550347237888875.png" },
-    { "nikoBtn",          ":/buttons/images/buttons/215038652394933910.png" }
+    { "nikoBtn",          ":/buttons/images/buttons/215038652394933910.png" },
+    { "merylBtn",         ":/buttons/images/buttons/610390542174633425.png" }
 };
 
 const QHash<QString, int> Config::BTNS_WIDTH = {
@@ -501,7 +511,8 @@ const QHash<QString, int> Config::BTNS_WIDTH = {
     { "vertBtn",          200 },
     { "clydeBtn",         200 },
     { "pregoBtn",         200 },
-    { "nikoBtn",          200 }
+    { "nikoBtn",          200 },
+    { "merylBtn",         200 }
 };
 
 const QHash<QString, int> Config::BTNS_HEIGHT = {
@@ -522,15 +533,16 @@ const QHash<QString, int> Config::BTNS_HEIGHT = {
     { "vertBtn",          150 },
     { "clydeBtn",         150 },
     { "pregoBtn",         150 },
-    { "nikoBtn",          150 }
+    { "nikoBtn",          150 },
+    { "merylBtn",         150 }
 };
 
 const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
     { "startGameBtn",     QPointF(336, 480) },   // Config::SCREEN_WIDTH - Config::MENU_BTN_WIDTH) / 2.0,
                                                  // Config::SCREEN_HEIGHT * 2.0 / 3.0
-    { "nextLevelBtn",     QPointF(345, 520) },
-    { "restartBtn",       QPointF(345, 520) },
-    { "confirmBtn",       QPointF(336, 540) },
+    { "nextLevelBtn",     QPointF(345, 540) },
+    { "restartBtn",       QPointF(345, 540) },
+    { "confirmBtn",       QPointF(345, 540) },
 
     { "smallGuppyBtn",    QPointF(0  , 0  ) },
     { "middleBreederBtn", QPointF(100, 0  ) },
@@ -544,7 +556,8 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
     { "vertBtn",          QPointF(480, 80 ) },
     { "clydeBtn",         QPointF(280, 230) },
     { "pregoBtn",         QPointF(480, 230) },
-    { "nikoBtn",          QPointF(280, 380) }
+    { "nikoBtn",          QPointF(280, 380) },
+    { "merylBtn",         QPointF(480, 380) }
 };
 
 const QHash<QString, int> Config::BTNS_COST = {
@@ -565,7 +578,8 @@ const QHash<QString, int> Config::BTNS_COST = {
     { "vertBtn",          0 },
     { "clydeBtn",         0 },
     { "pregoBtn",         0 },
-    { "nikoBtn",          0 }
+    { "nikoBtn",          0 },
+    { "merylBtn",         0 }
 };
 
 const QHash<QString, QPointF> Config::TICK_POS = {
@@ -573,7 +587,8 @@ const QHash<QString, QPointF> Config::TICK_POS = {
     { "vertBtn",   QPointF(540, 120) },
     { "clydeBtn",  QPointF(340, 270) },
     { "pregoBtn",  QPointF(540, 270) },
-    { "nikoBtn",   QPointF(340, 420) }
+    { "nikoBtn",   QPointF(340, 420) },
+    { "merylBtn",  QPointF(540, 420) }
 };
 
 const QHash<QString, QString> Config::LABELS_PATH = {
@@ -623,7 +638,8 @@ const QStringList Config::PETS_TYPE = {
     "vert",
     "clyde",
     "prego",
-    "niko"
+    "niko",
+    "meryl"
 };
 
 const QStringList Config::MONEY_TYPE = {
@@ -671,5 +687,6 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "vert",          QStringList("")},
     { "clyde",         Config::MONEY_TYPE },
     { "prego",         QStringList("food") },
-    { "niko",          QStringList("")}
+    { "niko",          QStringList("") },
+    { "meryl",         QStringList("") }
 };

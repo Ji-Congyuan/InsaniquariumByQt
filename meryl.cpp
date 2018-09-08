@@ -1,19 +1,19 @@
-#include "prego.h"
+#include "meryl.h"
 
-Prego::Prego(qreal w, qreal h, const QPointF &pos,
+Meryl::Meryl(qreal w, qreal h, const QPointF &pos,
              const QPixmaps2 &pixs2, QGraphicsScene *scene,
              QGraphicsItem *parent)
     : AbstractPet(w, h, pos, pixs2, scene, parent),
-      m_name("prego")
+      m_name("meryl")
 {
 }
 
-const QString &Prego::name() const
+const QString &Meryl::name() const
 {
     return m_name;
 }
 
-void Prego::move()
+void Meryl::move()
 {
     if (!turning()){
         if (m_step % Config::CHANGE_DIRECTION_STEP == 0){
@@ -25,12 +25,12 @@ void Prego::move()
     keepInScene();
 }
 
-void Prego::doCollide()
+void Meryl::doCollide()
 {
     // do nothing
 }
 
-void Prego::advance(int)
+void Meryl::advance(int)
 {
     AbstractMovableItem::advance(0);
     if (m_step % Config::UPDATE_PAINT_STEP == 0){
@@ -62,17 +62,17 @@ void Prego::advance(int)
 
         move();
     }
-    if (m_step % Config::PETS_YIELD_STEP["prego"] == 0){
+    if (m_step % Config::PETS_YIELD_STEP["meryl"] == 0){
         yield();
     }
 }
 
-void Prego::findTarget()
+void Meryl::findTarget()
 {
     // do nothing
 }
 
-void Prego::yield()
+void Meryl::yield()
 {
     emit sgn_specialSkill(m_name, scenePos());
 }

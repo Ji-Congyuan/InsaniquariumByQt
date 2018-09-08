@@ -15,14 +15,9 @@ const QString &Vert::name() const
 
 void Vert::move()
 {
-    if (!m_hasTarget && !turning()){
+    if (!turning()){
         if (m_step % Config::CHANGE_DIRECTION_STEP == 0){
             setDirection(direction() + RandomMaker::creatRandom(-5, 6) / 40.0);
-        }
-    }
-    else if (m_hasTarget){
-        if (m_step % Config::CHASE_STEP == 0){
-            aimAt(m_target);
         }
     }
 

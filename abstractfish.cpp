@@ -142,3 +142,7 @@ bool AbstractFish::isFull()
 {
     return m_hungry >= Config::FISH_FULL_THRESHOLD[name()];
 }
+
+void AbstractFish::slt_yieldMoney()
+{
+}

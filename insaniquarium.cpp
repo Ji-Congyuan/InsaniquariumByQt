@@ -134,8 +134,6 @@ void Insaniquarium::init()
 
     // init pets
 
-    // m_chosenPets.insert("niko");
-
     foreach (QString petName, m_chosenPets) {
         int x = Config::PETS_INIT_POS_X[petName];
         int y = Config::PETS_INIT_POS_Y[petName];
@@ -203,6 +201,10 @@ void Insaniquarium::addFish(const QString &name, const QPointF &pos)
             this, SLOT(slt_yieldFood(QPointF)));
     connect(fish, SIGNAL(sgn_die()),
             this, SLOT(slt_fishDie()));
+    if (Config::GUPPY_TYPE.contains(name)){
+        connect(this, SIGNAL(sgn_yieldMoney()),
+                fish, SLOT(slt_yieldMoney()));
+    }
     m_scene->addItem(fish);
     m_fishCount++;
 }
@@ -221,6 +223,10 @@ void Insaniquarium::addFish(const QString &name, const QPointF &pos, const qreal
             this, SLOT(slt_yieldFood(QPointF)));
     connect(fish, SIGNAL(sgn_die()),
             this, SLOT(slt_fishDie()));
+    if (Config::GUPPY_TYPE.contains(name)){
+        connect(this, SIGNAL(sgn_yieldMoney()),
+                fish, SLOT(slt_yieldMoney()));
+    }
     m_scene->addItem(fish);
     m_fishCount++;
 }
@@ -414,6 +420,9 @@ void Insaniquarium::slt_petSkill(const QString & name, const QPointF & pos)
     }
     else if (name == "niko"){
         slt_moneyPicked(300);
+    }
+    else if (name == "meryl"){
+        emit sgn_yieldMoney();
     }
 }
 
