@@ -8,15 +8,22 @@ const qreal Config::SCALE_RATIO = 1.5;
 const int Config::SCREEN_WIDTH  = 960;
 const int Config::SCREEN_HEIGHT = 720;
 
+// loading path
+const QString Config::LOADING_PATH   = ":/labels/images/labels/2.gif";
+
 // background path
 const QString Config::BG_MENU_PATH   = ":/backgrounds/images/backgrounds/aquarium3.png";
 const QString Config::BG_GAME_PATH_1 = ":/backgrounds/images/backgrounds/aquarium1.png";
 
 // foods path
-const QString Config::FOODS_PATH = ":/foods/images/foods/food.png";
+const QString Config::FOODS_PATH     = ":/foods/images/foods/food.png";
 
 // money path
-const QString Config::MONEY_PATH = ":/money/images/money/money.png";
+const QString Config::MONEY_PATH     = ":/money/images/money/money.png";
+
+// loading size
+const int Config::LOADING_WIDth        = 256;
+const int Config::LOADING_HEIGHT       = 256;
 
 // pool size
 const int Config::POOL_UPPER_BOUND     = 120;

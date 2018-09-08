@@ -33,7 +33,8 @@ HEADERS += \
     btn.h \
     treasure.h \
     gus.h \
-    moneydisplayer.h
+    moneydisplayer.h \
+    loading.h
 
 SOURCES += \
     config.cpp \
@@ -69,7 +70,8 @@ SOURCES += \
     btn.cpp \
     treasure.cpp \
     gus.cpp \
-    moneydisplayer.cpp
+    moneydisplayer.cpp \
+    loading.cpp
 
 RESOURCES += \
     images.qrc

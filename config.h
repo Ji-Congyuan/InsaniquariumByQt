@@ -20,6 +20,9 @@ public:
     static const int SCREEN_WIDTH;
     static const int SCREEN_HEIGHT;
 
+    // loading path
+    static const QString LOADING_PATH;
+
     // backgrounds path
     static const QString BG_MENU_PATH;
     static const QString BG_GAME_PATH_1;
@@ -29,6 +32,10 @@ public:
 
     // money path
     static const QString MONEY_PATH;
+
+    // loading size
+    static const int LOADING_WIDth;
+    static const int LOADING_HEIGHT;
 
     // pool size
     static const int POOL_UPPER_BOUND;

@@ -15,6 +15,7 @@
 #include <QTime>
 #include <QTimer>
 #include <QSet>
+#include <QDesktopWidget>
 
 class Insaniquarium : public QGraphicsView
 {

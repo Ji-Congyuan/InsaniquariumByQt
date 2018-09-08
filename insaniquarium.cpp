@@ -15,6 +15,13 @@ Insaniquarium::Insaniquarium(QWidget *parent)
     // set screen sizes
     setFixedSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
 
+    // set geometry
+    QDesktopWidget w;
+    setGeometry((w.width() - Config::SCREEN_WIDTH) / 2,
+                (w.height() - Config::SCREEN_HEIGHT) / 2,
+                Config::SCREEN_WIDTH,
+                Config::SCREEN_HEIGHT);
+
     // add scene
     m_scene = new QGraphicsScene;
     m_scene->setSceneRect(0, 0, Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -43,6 +50,8 @@ Insaniquarium::Insaniquarium(QWidget *parent)
 
     // set random seed
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
+
+    showStartGameMenu();
 
 }
 
@@ -438,6 +447,8 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     else if (btnName == "eggBtn") {
         if (m_eggLevel < 2){
             m_eggLevel++;
+            m_money -= Config::BTNS_COST[btnName];
+            emit sgn_moneyChanged(m_money);
         } else {
             m_gameLevel++;
             showNextLevelMenu();
