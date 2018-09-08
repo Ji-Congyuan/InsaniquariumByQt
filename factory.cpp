@@ -296,7 +296,11 @@ AbstractPet *Factory::createPet(const QString &name,
     int width = Config::PETS_WIDTH;
     int height = Config::PETS_HEIGHT;
 
-    if (Config::ORIGIN_IMAGE_ROWS[name] >= 2){
+    if (Config::ORIGIN_IMAGE_ROWS[name] == 1){
+        pixs2.append(origins.at(0));
+    }
+
+    else if (Config::ORIGIN_IMAGE_ROWS[name] >= 2){
         QPixmaps petSwimL;
         QPixmaps petSwimR;
         QPixmaps petTurnL;
@@ -366,6 +370,11 @@ AbstractPet *Factory::createPet(const QString &name,
         pet = new Vert(Config::PETS_WIDTH,
                        Config::PETS_HEIGHT,
                        pos, pixs2, scene);
+    }
+    else if (name == "clyde"){
+        pet = new Clyde(Config::PETS_WIDTH,
+                        Config::PETS_HEIGHT,
+                        pos, pixs2, scene);
     }
 
     pet->setSpeed(Config::PETS_SPEED[name]);

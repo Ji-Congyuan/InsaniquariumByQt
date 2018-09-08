@@ -1,16 +1,16 @@
-#ifndef VERT_H
-#define VERT_H
+#ifndef CLYDE_H
+#define CLYDE_H
 
 #include "abstractpet.h"
 
-class Vert : public AbstractPet
+class Clyde : public AbstractPet
 {
     Q_OBJECT
 public:
-    Vert(qreal w, qreal h, const QPointF &pos,
-         const QPixmaps2 &pixs2, QGraphicsScene *scene,
-         QGraphicsItem *parent = nullptr);
-    ~Vert(){}
+    Clyde(qreal w, qreal h, const QPointF &pos,
+          const QPixmaps2 &pixs2, QGraphicsScene *scene,
+          QGraphicsItem *parent = nullptr);
+    ~Clyde(){}
     const QString & name() const;
     void move();
     void doCollide();
@@ -23,8 +23,11 @@ public slots:
     void slt_alienComes(const QString &);
     void slt_alienDies();
 
+signals:
+    void sgn_pickMoney(int);
+
 protected:
     const QString m_name;
 };
 
-#endif // VERT_H
+#endif // CLYDE_H

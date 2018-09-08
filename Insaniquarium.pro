@@ -35,7 +35,8 @@ HEADERS += \
     gus.h \
     moneydisplayer.h \
     loading.h \
-    vert.h
+    vert.h \
+    clyde.h
 
 SOURCES += \
     config.cpp \
@@ -73,7 +74,8 @@ SOURCES += \
     gus.cpp \
     moneydisplayer.cpp \
     loading.cpp \
-    vert.cpp
+    vert.cpp \
+    clyde.cpp
 
 RESOURCES += \
     images.qrc

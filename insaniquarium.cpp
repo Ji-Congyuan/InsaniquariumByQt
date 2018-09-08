@@ -134,7 +134,7 @@ void Insaniquarium::init()
 
     // init pets
 
-    // m_chosenPets.insert("vert");
+    // m_chosenPets.insert("clyde");
 
     foreach (QString petName, m_chosenPets) {
         int x = Config::PETS_INIT_POS_X[petName];
@@ -462,7 +462,8 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
         }
     }
     else if (btnName == "stinkyBtn"
-             || "vertBtn"){
+             || "vertBtn"
+             || "clydeBtn"){
         if (m_chosenPets.size() < 4){
             addTick(btnName);
             QString pet = btnName.mid(0, btnName.size() - 3);

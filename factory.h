@@ -22,6 +22,7 @@
 
 #include "stinky.h"
 #include "vert.h"
+#include "clyde.h"
 
 #include "btn.h"
 #include "moneydisplayer.h"
