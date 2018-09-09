@@ -7,45 +7,85 @@ AbstractAlien *Factory::createAlien(const QString &name,
 {
     QPixmaps2 pixs2;
     QPixmap pic(Config::ALIENS_PATH[name]);
-    QPixmaps2 origins = PixmapsMaker::createQPixmaps(pic, 10, 2);
-
-    QPixmaps alienSwimL;
-    QPixmaps alienSwimR;
-    QPixmaps alienTurnL;
-    QPixmaps alienTurnR;
+    QPixmaps2 origins = PixmapsMaker::createQPixmaps(pic, 10,
+                                                     Config::ORIGIN_IMAGE_ROWS[name]);
 
     int width = Config::ALIENS_WIDTH;
     int height = Config::ALIENS_HEIGHT;
 
-    for (int i = 0; i < Config::ALIEN_INDEX_COUNT; i++){
-        // ALIEN_SWIM_LEFT_STATE
-        alienSwimL.append(origins.at(0).at(i)
-                          .scaled(width, height,
-                                  Qt::KeepAspectRatioByExpanding));
+    if (Config::ORIGIN_IMAGE_ROWS[name] >= 2){
+        QPixmaps alienSwimL;
+        QPixmaps alienSwimR;
+        QPixmaps alienTurnL;
+        QPixmaps alienTurnR;
 
-        // ALIEN_SWIM_RIGHT_STATE
-        QImage originImg = origins.at(0).at(i)
-                .toImage();
-        QImage mirrored = originImg.mirrored(true, false);
-        QPixmap temp = QPixmap::fromImage(mirrored)
-                .scaled(width, height,
-                        Qt::KeepAspectRatioByExpanding);
-        alienSwimR.append(temp);
+        for (int i = 0; i < Config::ALIEN_INDEX_COUNT; i++){
+            // ALIEN_SWIM_LEFT_STATE
+            alienSwimL.append(origins.at(0).at(i)
+                              .scaled(width, height,
+                                      Qt::KeepAspectRatioByExpanding));
 
-        // ALIEN_TURN_LEFT_STATE
-        alienTurnL.append(origins.at(1).at(Config::ALIEN_INDEX_COUNT - i - 1)
-                          .scaled(width, height,
-                                  Qt::KeepAspectRatioByExpanding));
+            // ALIEN_SWIM_RIGHT_STATE
+            QImage originImg = origins.at(0).at(i)
+                    .toImage();
+            QImage mirrored = originImg.mirrored(true, false);
+            QPixmap temp = QPixmap::fromImage(mirrored)
+                    .scaled(width, height,
+                            Qt::KeepAspectRatioByExpanding);
+            alienSwimR.append(temp);
 
-        // ALIEN_TURN_RIGHT_STATE
-        alienTurnR.append(origins.at(1).at(i)
-                          .scaled(width, height,
-                                  Qt::KeepAspectRatioByExpanding));
+            // ALIEN_TURN_LEFT_STATE
+            alienTurnL.append(origins.at(1).at(Config::ALIEN_INDEX_COUNT - i - 1)
+                              .scaled(width, height,
+                                      Qt::KeepAspectRatioByExpanding));
+
+            // ALIEN_TURN_RIGHT_STATE
+            alienTurnR.append(origins.at(1).at(i)
+                              .scaled(width, height,
+                                      Qt::KeepAspectRatioByExpanding));
+        }
+        pixs2.append(alienSwimL);
+        pixs2.append(alienSwimR);
+        pixs2.append(alienTurnL);
+        pixs2.append(alienTurnR);
     }
-    pixs2.append(alienSwimL);
-    pixs2.append(alienSwimR);
-    pixs2.append(alienTurnL);
-    pixs2.append(alienTurnR);
+
+    if (Config::ORIGIN_IMAGE_ROWS[name] >= 4){
+        QPixmaps specialSL;
+        QPixmaps specialSR;
+        QPixmaps specialTL;
+        QPixmaps specialTR;
+
+        for (int i = 0; i < Config::ALIEN_INDEX_COUNT; i++){
+            // SPECIAL_SWIM_LEFT
+            specialSL.append(origins.at(2).at(i)
+                             .scaled(width, height,
+                                     Qt::KeepAspectRatioByExpanding));
+
+            // SPECIAL_SWIM_RIGHT
+            QImage originImg = origins.at(2).at(i)
+                    .toImage();
+            QImage mirrored = originImg.mirrored(true, false);
+            QPixmap temp = QPixmap::fromImage(mirrored)
+                    .scaled(width, height,
+                            Qt::KeepAspectRatioByExpanding);
+            specialSR.append(temp);
+
+            // SPECIAL_TURN_LEFT
+            specialTL.append(origins.at(3).at(Config::ALIEN_INDEX_COUNT - i - 1)
+                             .scaled(width, height,
+                                     Qt::KeepAspectRatioByExpanding));
+
+            // SPECIAL_TURN_RIGHT
+            specialTR.append(origins.at(3).at(i)
+                             .scaled(width, height,
+                                     Qt::KeepAspectRatioByExpanding));
+        }
+        pixs2.append(specialSL);
+        pixs2.append(specialSR);
+        pixs2.append(specialTL);
+        pixs2.append(specialTR);
+    }
 
     AbstractAlien * alien;
     if (name == "deepBlue"){
@@ -62,6 +102,12 @@ AbstractAlien *Factory::createAlien(const QString &name,
         alien = new Balrog(Config::ALIENS_WIDTH,
                            Config::ALIENS_HEIGHT,
                            pos, pixs2, scene);
+    }
+    else if (name == "psychosquid"){
+        alien = new Psychosquid(Config::ALIENS_WIDTH,
+                                Config::ALIENS_HEIGHT,
+                                pos, pixs2, scene);
+        qDebug() << "pixs2.size" << pixs2.size();
     }
 
     alien->setSpeed(Config::ALIENS_SPEED[name]);

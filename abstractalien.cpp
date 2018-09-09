@@ -1,4 +1,5 @@
 #include "abstractalien.h"
+#include "abstractfish.h"
 #include <QDebug>
 
 AbstractAlien::AbstractAlien(qreal w, qreal h, const QPointF &pos,

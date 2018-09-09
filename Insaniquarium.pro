@@ -44,7 +44,8 @@ HEADERS += \
     grubber.h \
     pearl.h \
     gekko.h \
-    balrog.h
+    balrog.h \
+    psychosquid.h
 
 SOURCES += \
     config.cpp \
@@ -91,7 +92,8 @@ SOURCES += \
     grubber.cpp \
     pearl.cpp \
     gekko.cpp \
-    balrog.cpp
+    balrog.cpp \
+    psychosquid.cpp
 
 RESOURCES += \
     images.qrc

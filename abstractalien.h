@@ -2,7 +2,6 @@
 #define ABSTRACTALIEN_H
 
 #include "abstractcreature.h"
-#include "abstractfish.h"
 
 class AbstractAlien : public AbstractCreature
 {

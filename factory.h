@@ -4,6 +4,7 @@
 #include "deepblue.h"
 #include "gus.h"
 #include "balrog.h"
+#include "psychosquid.h"
 
 #include "smallguppy.h"
 #include "middleguppy.h"

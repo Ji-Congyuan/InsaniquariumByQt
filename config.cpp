@@ -129,7 +129,6 @@ const int Config::MONEY_SINK_SPEED  = 4;
 
 // attack alien
 const int Config::ATTACK_ALIEN_DAMAGE = 10;
-const int Config::ATTACK_ALIEN_OFFSET = 5;
 
 // grubber
 const int Config::GRUBBER_JUMP_MAX_HEIGHT = 360;
@@ -330,39 +329,45 @@ const QHash<QString, int> Config::FOODS_EXP = {
 };
 
 const QHash<QString, int> Config::ALIENS_MAX_HEALTH = {
-    { "deepBlue", 50 },
-    { "gus",      50 },
-    { "balrog",   50 }
+    { "deepBlue",    50 },
+    { "gus",         50 },
+    { "balrog",      50 },
+    { "psychosquid", 99 }
 };
 
 const QHash<QString, QString> Config::ALIENS_PATH = {
-    { "deepBlue",  ":/aliens/images/aliens/sylv.png" },
-    { "gus",       ":/aliens/images/aliens/750884456123613082.png" },
-    { "balrog",    ":/aliens/images/aliens/balrog.png"}
+    { "deepBlue",    ":/aliens/images/aliens/sylv.png" },
+    { "gus",         ":/aliens/images/aliens/750884456123613082.png" },
+    { "balrog",      ":/aliens/images/aliens/balrog.png" },
+    { "psychosquid", ":/aliens/images/aliens/psychosquid.png" }
 };
 
 const QHash<QString, int> Config::ALIENS_PAINT_WIDTH = {
-    { "deepBlue", 120 },
-    { "gus",      120 },
-    { "balrog",   135 }
+    { "deepBlue",    120 },
+    { "gus",         120 },
+    { "balrog",      135 },
+    { "psychosquid", 155 }
 };
 
 const QHash<QString, int> Config::ALIENS_PAINT_HEIGHT = {
-    { "deepBlue", 160 },
-    { "gus",      150 },
-    { "balrog",   150 }
+    { "deepBlue",    160 },
+    { "gus",         150 },
+    { "balrog",      150 },
+    { "psychosquid", 160 }
 };
 
 const QHash<QString, int> Config::ALIENS_SPEED = {
-    { "deepBlue",  6 },
-    { "gus",       6 },
-    { "balrog",    6 }
+    { "deepBlue",    6 },
+    { "gus",         6 },
+    { "balrog",      6 },
+    { "psychosquid", 6 }
 };
 
 const QHash<int, QString> Config::ALIENS_NAME = {
-    { 0, "deepBlue" },
-    { 1, "gus"      },
-    { 2, "balrog"   }
+    { 0, "deepBlue"    },
+    { 1, "gus"         },
+    { 2, "balrog"      },
+    { 3, "psychosquid" }
 };
 
 const QHash<QString, int> Config::MONEY_VALUE = {
@@ -490,6 +495,7 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "deepBlue",         2 },
     { "gus",              2 },
     { "balrog",           2 },
+    { "psychosquid",      4 },
 
     { "startGameBtn",     1 },
     { "nextLevelBtn",     1 },
@@ -744,6 +750,7 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "deepBlue",      Config::FISH_TYPE         },
     { "gus",           Config::EDIBLE_TYPE       },
     { "balrog",        Config::FISH_TYPE         },
+    { "psychosquid",   Config::FISH_TYPE         },
 
     { "stinky",        Config::MONEY_TYPE        },
     { "vert",          QStringList("")           },

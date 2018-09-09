@@ -142,7 +142,6 @@ public:
 
     // attack alien
     static const int ATTACK_ALIEN_DAMAGE;
-    static const int ATTACK_ALIEN_OFFSET;
 
     // grubber
     static const int GRUBBER_JUMP_MAX_HEIGHT;
