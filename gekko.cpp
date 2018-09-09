@@ -1,15 +1,15 @@
-#include "carnivore.h"
+#include "gekko.h"
 
-Carnivore::Carnivore(qreal w, qreal h, const QPointF &pos,
-                     const QPixmaps2 &pixs2, QGraphicsScene *scene,
-                     QGraphicsItem *parent)
+Gekko::Gekko(qreal w, qreal h, const QPointF &pos,
+             const QPixmaps2 &pixs2, QGraphicsScene *scene,
+             QGraphicsItem *parent)
     : AbstractFish(w, h, pos, pixs2, scene, parent),
-      m_name("carnivore")
+      m_name("gekko")
 {
     m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
-void Carnivore::advance(int)
+void Gekko::advance(int)
 {
     if (!isVisible()){
         return;
@@ -17,24 +17,24 @@ void Carnivore::advance(int)
     AbstractFish::advance(0);
 }
 
-void Carnivore::doCollide()
+void Gekko::doCollide()
 {
     if (!m_hasTarget){
         return;
     }
-    foreach (QGraphicsItem * t, collidingItems()) {
+    foreach (QGraphicsItem * t, collidingItems()){
         AbstractGameItem * gameItem
                 = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
                 .contains(gameItem->name())){
-            AbstractFish * fish = dynamic_cast<AbstractFish *> (gameItem);
+            AbstractMovableItem * movable = dynamic_cast<AbstractMovableItem *> (gameItem);
             eat(0);
-            fish->vanish();
+            movable->vanish();
         }
     }
 }
 
-void Carnivore::findFood()
+void Gekko::findFood()
 {
     QList<QGraphicsItem*> items_ = scene()->items();
     QVector<AbstractMovableItem*> edibleItems;
@@ -56,17 +56,17 @@ void Carnivore::findFood()
     }
 }
 
-const QString &Carnivore::name() const
+const QString &Gekko::name() const
 {
     return m_name;
 }
 
-void Carnivore::upgrade()
+void Gekko::upgrade()
 {
     // do nothing
 }
 
-void Carnivore::yield()
+void Gekko::yield()
 {
-    emit sgn_yieldMoney("diamond", scenePos());
+    emit sgn_yieldMoney("pearl", scenePos());
 }

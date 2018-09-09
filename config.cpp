@@ -125,7 +125,7 @@ const qreal Config::HUNGRY_INCREASE = 1.5;
 // sink speed
 const int Config::BODY_SINK_SPEED   = 4;
 const int Config::FOOD_SINK_SPEED   = 2;
-const int Config::MONEY_SINK_SPEED  = 5;
+const int Config::MONEY_SINK_SPEED  = 4;
 
 // damage
 const int Config::ATTACK_ALIEN_DAMAGE = 10;
@@ -154,7 +154,8 @@ const QHash<QString, int> Config::FISH_YIELD_STEP = {
     { "ulturavore",    1000 },
     { "middleBreeder", 1000 },
     { "bigBreeder",    1000 },
-    { "grubber",       1000 }
+    { "grubber",       1000 },
+    { "gekko",         1000 }
 };
 
 const QHash<QString, int> Config::FISH_SPEED = {
@@ -166,31 +167,34 @@ const QHash<QString, int> Config::FISH_SPEED = {
     { "ulturavore",    8 },
     { "middleBreeder", 5 },
     { "bigBreeder",    5 },
-    { "grubber",       6 }
+    { "grubber",       6 },
+    { "gekko",         6 }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_WIDTH = {
-    { "smallGuppy",    40 },
-    { "middleGuppy",   50 },
-    { "bigGuppy",      70 },
-    { "kingGuppy",     75 },
-    { "carnivore",     75 },
+    { "smallGuppy",    40  },
+    { "middleGuppy",   50  },
+    { "bigGuppy",      70  },
+    { "kingGuppy",     75  },
+    { "carnivore",     75  },
     { "ulturavore",    150 },
-    { "middleBreeder", 55 },
-    { "bigBreeder",    70 },
-    { "grubber",       65 }
+    { "middleBreeder", 55  },
+    { "bigBreeder",    70  },
+    { "grubber",       65  },
+    { "gekko",         70  }
 };
 
 const QHash<QString, int> Config::FISH_PAINT_HEIGHT = {
-    { "smallGuppy",    40 },
-    { "middleGuppy",   45 },
-    { "bigGuppy",      65 },
-    { "kingGuppy",     70 },
-    { "carnivore",     70 },
+    { "smallGuppy",    40  },
+    { "middleGuppy",   45  },
+    { "bigGuppy",      65  },
+    { "kingGuppy",     70  },
+    { "carnivore",     70  },
     { "ulturavore",    135 },
-    { "middleBreeder", 50 },
-    { "bigBreeder",    60 },
-    { "grubber",       70 }
+    { "middleBreeder", 50  },
+    { "bigBreeder",    60  },
+    { "grubber",       70  },
+    { "gekko",         75  }
 };
 
 const QHash<QString, QString> Config::FISH_PATH = {
@@ -202,7 +206,8 @@ const QHash<QString, QString> Config::FISH_PATH = {
     { "ulturavore",    ":/fish/images/fish/398405234521987523.png" },
     { "middleBreeder", ":/fish/images/fish/mediumBreeder.png" },
     { "bigBreeder",    ":/fish/images/fish/bigBreeder.png" },
-    { "grubber",       ":/fish/images/fish/grubgrubber.png" }
+    { "grubber",       ":/fish/images/fish/grubgrubber.png" },
+    { "gekko",         ":/fish/images/fish/gekko.png" }
 };
 
 const QHash<QString, int> Config::FISH_EATEN_EXP = {
@@ -214,7 +219,8 @@ const QHash<QString, int> Config::FISH_EATEN_EXP = {
     { "ulturavore",    45 },
     { "middleBreeder", 15 },
     { "bigBreeder",    20 },
-    { "grubber",       25 }
+    { "grubber",       25 },
+    { "gekko",         40 }
 };
 
 const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
@@ -226,7 +232,8 @@ const QHash<QString, int> Config::FISH_UPGRADE_EXP = {
     { "ulturavore",    9999 },
     { "middleBreeder", 45   },
     { "bigBreeder",    60   },
-    { "grubber",       9999 }
+    { "grubber",       9999 },
+    { "gekko",         9999 }
 };
 
 const QHash<QString, int> Config::FISH_INIT_HUNGRY = {
@@ -238,7 +245,8 @@ const QHash<QString, int> Config::FISH_INIT_HUNGRY = {
     { "ulturavore",    250 },
     { "middleBreeder", 125 },
     { "bigBreeder",    170 },
-    { "grubber",       170 }
+    { "grubber",       170 },
+    { "gekko",         150 }
 };
 
 const QHash<QString, int> Config::FISH_MAX_HUNGRY = {
@@ -250,7 +258,8 @@ const QHash<QString, int> Config::FISH_MAX_HUNGRY = {
     { "ulturavore",    400 },
     { "middleBreeder", 150 },
     { "bigBreeder",    200 },
-    { "grubber",       200 }
+    { "grubber",       200 },
+    { "gekko",         200 }
 };
 
 const QHash<QString, int> Config::FISH_HUNGRY_THRESHOLD = {
@@ -262,7 +271,8 @@ const QHash<QString, int> Config::FISH_HUNGRY_THRESHOLD = {
     { "ulturavore",    200 },
     { "middleBreeder", 75  },
     { "bigBreeder",    100 },
-    { "grubber",       110 }
+    { "grubber",       110 },
+    { "gekko",         80  }
 };
 
 const QHash<QString, int> Config::FISH_FULL_THRESHOLD = {
@@ -274,7 +284,8 @@ const QHash<QString, int> Config::FISH_FULL_THRESHOLD = {
     { "ulturavore",    250 },
     { "middleBreeder", 125 },
     { "bigBreeder",    170 },
-    { "grubber",       180 }
+    { "grubber",       180 },
+    { "gekko",         180 }
 };
 
 const QHash<QString, int> Config::FOODS_INDEX = {
@@ -460,6 +471,7 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "middleBreeder",    5 },
     { "bigBreeder",       5 },
     { "grubber",          3 },
+    { "gekko",            5 },
 
     { "stinky",           3 },
     { "vert",             2 },
@@ -490,7 +502,8 @@ const QHash<QString, int> Config::ORIGIN_IMAGE_ROWS = {
     { "clydeBtn",         1 },
     { "pregoBtn",         1 },
     { "nikoBtn",          1 },
-    { "merylBtn",         1 }
+    { "merylBtn",         1 },
+    { "gekkoBtn",         1 }
 };
 
 const QHash<QString, QString> Config::BTNS_PATH = {
@@ -500,10 +513,11 @@ const QHash<QString, QString> Config::BTNS_PATH = {
     { "confirmBtn",       ":/buttons/images/buttons/494578962922118304.png" },
 
     { "smallGuppyBtn",    ":/buttons/images/buttons/button1.png" },
-    { "middleBreederBtn", ":/buttons/images/buttons/button2.png" },
-    { "grubberBtn",       ":/buttons/images/buttons/button6.png" },
+    { "middleBreederBtn", ":/buttons/images/buttons/button2.png" },   
     { "carnivoreBtn",     ":/buttons/images/buttons/button3.png" },
     { "ulturavoreBtn",    ":/buttons/images/buttons/button4.png" },
+    { "grubberBtn",       ":/buttons/images/buttons/button6.png" },
+    { "gekkoBtn",         ":/buttons/images/buttons/button7.png" },
     { "foodUpgradeBtn",   ":/buttons/images/buttons/button8.png" },
     { "moreFoodBtn",      ":/buttons/images/buttons/button9.png" },
     { "eggBtn",           ":/buttons/images/buttons/362283261707809117.png" },
@@ -523,10 +537,11 @@ const QHash<QString, int> Config::BTNS_WIDTH = {
     { "confirmBtn",       288 },
 
     { "smallGuppyBtn",    100 },
-    { "middleBreederBtn", 100 },
-    { "grubberBtn",       100 },
+    { "middleBreederBtn", 100 },  
     { "carnivoreBtn",     100 },
     { "ulturavoreBtn",    100 },
+    { "grubberBtn",       100 },
+    { "gekkoBtn",         100 },
     { "foodUpgradeBtn",   100 },
     { "moreFoodBtn",      100 },
     { "eggBtn",           100 },
@@ -546,10 +561,11 @@ const QHash<QString, int> Config::BTNS_HEIGHT = {
     { "confirmBtn",       33 },
 
     { "smallGuppyBtn",    75 },
-    { "middleBreederBtn", 75 },
-    { "grubberBtn",       75 },
+    { "middleBreederBtn", 75 },    
     { "carnivoreBtn",     75 },
     { "ulturavoreBtn",    75 },
+    { "grubberBtn",       75 },
+    { "gekkoBtn",         75 },
     { "foodUpgradeBtn",   75 },
     { "moreFoodBtn",      75 },
     { "eggBtn",           75 },
@@ -571,9 +587,10 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
 
     { "smallGuppyBtn",    QPointF(0  , 0  ) },
     { "middleBreederBtn", QPointF(100, 0  ) },
-    { "grubberBtn",       QPointF(200, 0  ) },
-    { "carnivoreBtn",     QPointF(400, 0  ) },
-    { "ulturavoreBtn",    QPointF(500, 0  ) },
+    { "carnivoreBtn",     QPointF(200, 0  ) },
+    { "ulturavoreBtn",    QPointF(300, 0  ) },
+    { "grubberBtn",       QPointF(400, 0  ) },
+    { "gekkoBtn",         QPointF(500, 0  ) },
     { "foodUpgradeBtn",   QPointF(600, 0  ) },
     { "moreFoodBtn",      QPointF(700, 0  ) },
     { "eggBtn",           QPointF(800, 0  ) },
@@ -587,26 +604,27 @@ const QHash<QString, QPointF> Config::BTNS_INIT_POS = {
 };
 
 const QHash<QString, int> Config::BTNS_COST = {
-    { "startGameBtn",     0 },
-    { "nextLevelBtn",     0 },
-    { "restartBtn",       0 },
-    { "confirmBtn",       0 },
+    { "startGameBtn",     0     },
+    { "nextLevelBtn",     0     },
+    { "restartBtn",       0     },
+    { "confirmBtn",       0     },
 
-    { "smallGuppyBtn",    100 },
-    { "middleBreederBtn", 200 },
-    { "grubberBtn",       750 },
-    { "carnivoreBtn",     1000 },
+    { "smallGuppyBtn",    100   },
+    { "middleBreederBtn", 200   },
+    { "carnivoreBtn",     1000  },
     { "ulturavoreBtn",    10000 },
-    { "foodUpgradeBtn",   200 },
-    { "moreFoodBtn",      300 },
-    { "eggBtn",           1000 },
+    { "grubberBtn",       750   },
+    { "gekkoBtn",         2000  },
+    { "foodUpgradeBtn",   200   },
+    { "moreFoodBtn",      300   },
+    { "eggBtn",           1000  },
 
-    { "stinkyBtn",        0 },
-    { "vertBtn",          0 },
-    { "clydeBtn",         0 },
-    { "pregoBtn",         0 },
-    { "nikoBtn",          0 },
-    { "merylBtn",         0 }
+    { "stinkyBtn",        0     },
+    { "vertBtn",          0     },
+    { "clydeBtn",         0     },
+    { "pregoBtn",         0     },
+    { "nikoBtn",          0     },
+    { "merylBtn",         0     }
 };
 
 const QHash<QString, QPointF> Config::TICK_POS = {
@@ -658,7 +676,8 @@ const QStringList Config::FISH_TYPE = {
     "ulturavore",
     "middleBreeder",
     "bigBreeder",
-    "grubber"
+    "grubber",
+    "gekko"
 };
 
 const QStringList Config::PETS_TYPE = {
@@ -697,6 +716,7 @@ const QStringList Config::EDIBLE_TYPE = {
     "middleBreeder",
     "bigBreeder",
     "grubber",
+    "gekko",
 
     "food"
 };
@@ -711,6 +731,7 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "middleBreeder", QStringList("food") },
     { "bigBreeder",    QStringList("food") },
     { "grubber",       QStringList("smallGuppy") },
+    { "gekko",         QStringList("insect") },
 
     { "deepBlue",      Config::FISH_TYPE },
     { "gus",           Config::EDIBLE_TYPE },

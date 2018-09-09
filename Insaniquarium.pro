@@ -41,7 +41,9 @@ HEADERS += \
     niko.h \
     meryl.h \
     insect.h \
-    grubber.h
+    grubber.h \
+    pearl.h \
+    gekko.h
 
 SOURCES += \
     config.cpp \
@@ -85,7 +87,9 @@ SOURCES += \
     niko.cpp \
     meryl.cpp \
     insect.cpp \
-    grubber.cpp
+    grubber.cpp \
+    pearl.cpp \
+    gekko.cpp
 
 RESOURCES += \
     images.qrc

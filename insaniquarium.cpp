@@ -123,7 +123,7 @@ void Insaniquarium::init()
 
     slt_moneyPicked(Config::INIT_MONEY);
 
-    // init small Guppy
+    // init fish
     for (int i = 0; i < Config::INIT_FISH_COUNT; i++){
 
         QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
@@ -144,9 +144,10 @@ void Insaniquarium::init()
     // init buttons
     addBtn("smallGuppyBtn");
     addBtn("middleBreederBtn");
-    addBtn("grubberBtn");
     addBtn("carnivoreBtn");
     addBtn("ulturavoreBtn");
+    addBtn("grubberBtn");
+    addBtn("gekkoBtn");
     addBtn("moreFoodBtn");
     addBtn("foodUpgradeBtn");
     addBtn("eggBtn");
@@ -443,9 +444,10 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     }
     else if (btnName == "smallGuppyBtn"
              || btnName == "middleBreederBtn"
-             || btnName == "grubberBtn"
              || btnName == "carnivoreBtn"
-             || btnName == "ulturavoreBtn"){
+             || btnName == "ulturavoreBtn"
+             || btnName == "grubberBtn"
+             || btnName == "gekkoBtn"){
         QString name = btnName.mid(0, btnName.size() - 3);
         int x = RandomMaker::creatRandom(Config::SCREEN_WIDTH * 0.2,
                                          Config::SCREEN_WIDTH * 0.8);

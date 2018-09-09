@@ -13,6 +13,7 @@
 #include "middlebreeder.h"
 #include "bigbreeder.h"
 #include "grubber.h"
+#include "gekko.h"
 
 #include "food.h"
 
@@ -21,6 +22,7 @@
 #include "diamond.h"
 #include "treasure.h"
 #include "insect.h"
+#include "pearl.h"
 
 #include "stinky.h"
 #include "vert.h"

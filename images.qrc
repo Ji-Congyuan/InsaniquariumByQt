@@ -24,6 +24,7 @@
         <file>images/buttons/215038652394933910.png</file>
         <file>images/buttons/610390542174633425.png</file>
         <file>images/buttons/button6.png</file>
+        <file>images/buttons/button7.png</file>
     </qresource>
     <qresource prefix="/fish">
         <file>images/fish/smallGuppy.png</file>
@@ -35,6 +36,7 @@
         <file>images/fish/bigBreeder.png</file>
         <file>images/fish/398405234521987523.png</file>
         <file>images/fish/grubgrubber.png</file>
+        <file>images/fish/gekko.png</file>
     </qresource>
     <qresource prefix="/foods">
         <file>images/foods/food.png</file>

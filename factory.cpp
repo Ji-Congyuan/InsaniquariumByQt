@@ -243,6 +243,11 @@ AbstractFish *Factory::creatFish(const QString &name,
                            Config::FISH_HEIGHT,
                            pos, pixs2, scene);
     }
+    else if (name == "gekko"){
+        fish = new Gekko(Config::FISH_WIDTH,
+                         Config::FISH_HEIGHT,
+                         pos, pixs2, scene);
+    }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
@@ -313,6 +318,11 @@ AbstractMoney *Factory::createMoney(const QString &name,
         money = new Insect(Config::MONEY_WIDTH,
                            Config::MONEY_HEIGHT,
                            pos, pixs2, scene);
+    }
+    else if (name == "pearl"){
+        money = new Pearl(Config::MONEY_WIDTH,
+                          Config::MONEY_HEIGHT,
+                          pos, pixs2, scene);
     }
 
     money->setSpeed(Config::MONEY_SINK_SPEED);

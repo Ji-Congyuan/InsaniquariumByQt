@@ -28,7 +28,7 @@ void Ulturavore::doCollide()
         if (Config::COLLIDABLE_ITEMS[name()]
                 .contains(gameItem->name())){
             AbstractFish * fish = dynamic_cast<AbstractFish *> (gameItem);
-            eat(fish->eatenExp());
+            eat(0);
             fish->vanish();
         }
     }
