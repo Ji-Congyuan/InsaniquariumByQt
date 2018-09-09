@@ -3,6 +3,7 @@
 
 #include "deepblue.h"
 #include "gus.h"
+#include "balrog.h"
 
 #include "smallguppy.h"
 #include "middleguppy.h"
@@ -32,6 +33,7 @@
 #include "meryl.h"
 
 #include "btn.h"
+
 #include "moneydisplayer.h"
 
 #include <QImage>

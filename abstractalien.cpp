@@ -56,6 +56,23 @@ void AbstractAlien::advance(int)
     }
 }
 
+void AbstractAlien::doCollide()
+{
+    foreach (QGraphicsItem * t, collidingItems()){
+        AbstractMovableItem * movableItem
+                = dynamic_cast<AbstractMovableItem *> (t);
+        if (Config::COLLIDABLE_ITEMS[name()]
+                .contains(movableItem->name())){
+            if (!movableItem->isVisible()){
+                continue;
+            }
+            AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
+            eat(0);
+            fish->vanish();
+        }
+    }
+}
+
 void AbstractAlien::injured(const int deltaHealth)
 {
     m_health -= deltaHealth;
@@ -121,7 +138,7 @@ void AbstractAlien::yield()
 
 void AbstractAlien::slt_attacked(const QPointF & pos)
 {
-    QPointF mPos = centrePos();
+    QPointF mPos = centrePos();   
     setDirection(atan2(mPos.y() - pos.y(),
                        mPos.x() - pos.x()));
     injured(Config::ATTACK_ALIEN_DAMAGE);

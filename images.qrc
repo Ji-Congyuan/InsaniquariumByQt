@@ -47,6 +47,7 @@
     <qresource prefix="/aliens">
         <file>images/aliens/750884456123613082.png</file>
         <file>images/aliens/sylv.png</file>
+        <file>images/aliens/balrog.png</file>
     </qresource>
     <qresource prefix="/pets">
         <file>images/pets/884088821102378968.png</file>

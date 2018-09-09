@@ -12,7 +12,7 @@ public:
              QGraphicsItem *parent = nullptr);
     ~DeepBlue(){}
     const QString & name() const;
-    void doCollide();
+    // void doCollide();
     void eat(const int);
 
 protected:

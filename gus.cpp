@@ -18,13 +18,15 @@ const QString &Gus::name() const
 void Gus::doCollide()
 {
     foreach (QGraphicsItem * t, collidingItems()){
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
-            if (!movableItem->isVisible()){
+                .contains(gameItem->name())){
+            if (!gameItem->isVisible()){
                 continue;
             }
+            AbstractMovableItem * movableItem
+                    = dynamic_cast<AbstractMovableItem *> (gameItem);
             eat(movableItem->eatenExp());
             movableItem->vanish();
         }

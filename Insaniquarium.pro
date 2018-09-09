@@ -43,7 +43,8 @@ HEADERS += \
     insect.h \
     grubber.h \
     pearl.h \
-    gekko.h
+    gekko.h \
+    balrog.h
 
 SOURCES += \
     config.cpp \
@@ -89,7 +90,8 @@ SOURCES += \
     insect.cpp \
     grubber.cpp \
     pearl.cpp \
-    gekko.cpp
+    gekko.cpp \
+    balrog.cpp
 
 RESOURCES += \
     images.qrc

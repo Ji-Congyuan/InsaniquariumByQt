@@ -140,8 +140,9 @@ public:
     static const int FOOD_SINK_SPEED;
     static const int MONEY_SINK_SPEED;
 
-    // damage
+    // attack alien
     static const int ATTACK_ALIEN_DAMAGE;
+    static const int ATTACK_ALIEN_OFFSET;
 
     // grubber
     static const int GRUBBER_JUMP_MAX_HEIGHT;

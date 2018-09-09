@@ -14,6 +14,7 @@ public:
     ~AbstractAlien(){}
 
     void advance(int);
+    void doCollide();
     virtual void eat(const int exp) = 0;
     void injured(const int deltaHealth);
     void move();

@@ -1,22 +1,21 @@
-#include "deepblue.h"
-#include <QDebug>
+#include "balrog.h"
 
-DeepBlue::DeepBlue(qreal w, qreal h, const QPointF &pos,
-                   const QPixmaps2 &pixs2, QGraphicsScene *scene,
-                   QGraphicsItem *parent)
+Balrog::Balrog(qreal w, qreal h, const QPointF &pos,
+               const QPixmaps2 &pixs2, QGraphicsScene *scene,
+               QGraphicsItem *parent)
     : AbstractAlien(w, h, pos, pixs2, scene, parent),
-      m_name("deepBlue")
+      m_name("balrog")
 {
-    m_health = Config::ALIENS_MAX_HEALTH["deepBlue"];
+    m_health = Config::ALIENS_MAX_HEALTH["balrog"];
 }
 
-const QString &DeepBlue::name() const
+const QString &Balrog::name() const
 {
     return m_name;
 }
 
 /*
-void DeepBlue::doCollide()
+void Balrog::doCollide()
 {
     foreach (QGraphicsItem * t, collidingItems()){
         AbstractGameItem * gameItem
@@ -34,7 +33,7 @@ void DeepBlue::doCollide()
 }
 */
 
-void DeepBlue::eat(const int)
+void Balrog::eat(const int)
 {
     // do nothing
 }

@@ -58,6 +58,11 @@ AbstractAlien *Factory::createAlien(const QString &name,
                         Config::ALIENS_HEIGHT,
                         pos, pixs2, scene);
     }
+    else if (name == "balrog"){
+        alien = new Balrog(Config::ALIENS_WIDTH,
+                           Config::ALIENS_HEIGHT,
+                           pos, pixs2, scene);
+    }
 
     alien->setSpeed(Config::ALIENS_SPEED[name]);
     alien->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
