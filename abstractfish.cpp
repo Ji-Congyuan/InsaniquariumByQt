@@ -93,9 +93,6 @@ void AbstractFish::advance(int)
             && isAlive()){
         yield();
     }
-
-    // FIXME with other action
-
 }
 
 void AbstractFish::move()
@@ -115,8 +112,9 @@ void AbstractFish::eat(const int exp)
     if (m_exp >= Config::FISH_UPGRADE_EXP[name()]){
         upgrade();
     }
-
     m_hungry = Config::FISH_MAX_HUNGRY[name()];
+    m_hasTarget = false;
+    m_target = nullptr;
 }
 
 void AbstractFish::gettingHungry()

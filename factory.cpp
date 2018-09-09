@@ -75,9 +75,40 @@ AbstractFish *Factory::creatFish(const QString &name,
 {
     QPixmaps2 pixs2;
     QPixmap pic(Config::FISH_PATH[name]);
+
     QPixmaps2 origins = PixmapsMaker::createQPixmaps(pic, 10, Config::ORIGIN_IMAGE_ROWS[name]);
 
-    if (Config::ORIGIN_IMAGE_ROWS[name] == 5){
+    int width = Config::FISH_WIDTH;
+    int height = Config::FISH_HEIGHT;
+
+    if (Config::ORIGIN_IMAGE_ROWS[name] == 3){
+        QPixmaps normalMove;
+        QPixmaps hungryMove;
+        QPixmaps die;
+
+        for (int i = 0; i < Config::FISH_INDEX_COUNT; ++i){
+            // NORMAL_MOVE
+            normalMove.append(origins.at(0).at(i)
+                              .scaled(width, height,
+                                      Qt::KeepAspectRatioByExpanding));
+
+            // HUNGRY_MOVE
+            hungryMove.append(origins.at(1).at(i)
+                              .scaled(width, height,
+                                      Qt::KeepAspectRatioByExpanding));
+
+            // DIE
+            die.append(origins.at(2).at(i)
+                       .scaled(width, height,
+                               Qt::KeepAspectRatioByExpanding));
+        }
+        pixs2.append(normalMove);
+        pixs2.append(hungryMove);
+        pixs2.append(die);
+        qDebug() << "pixs2.size" << pixs2.size();
+    }
+
+    else if (Config::ORIGIN_IMAGE_ROWS[name] == 5){
         QPixmaps normalSwimL;
         QPixmaps normalSwimR;
         QPixmaps normalTurnL;
@@ -89,14 +120,11 @@ AbstractFish *Factory::creatFish(const QString &name,
         QPixmaps dieL;
         QPixmaps dieR;
 
-        int width = Config::FISH_WIDTH;
-        int height = Config::FISH_HEIGHT;
-
         for (int i = 0; i < Config::FISH_INDEX_COUNT; ++i){
             // NORMAL_SWIM_LEFT_STATE
             normalSwimL.append(origins.at(0).at(i)
-                         .scaled(width, height,
-                                 Qt::KeepAspectRatioByExpanding));
+                               .scaled(width, height,
+                                       Qt::KeepAspectRatioByExpanding));
 
             // NORMAL_SWIM_RIGHT_STATE
             QImage originImg = origins.at(0).at(i)
@@ -210,6 +238,11 @@ AbstractFish *Factory::creatFish(const QString &name,
                               Config::FISH_HEIGHT,
                               pos, pixs2, scene);
     }
+    else if (name == "grubber"){
+        fish = new Grubber(Config::FISH_WIDTH,
+                           Config::FISH_HEIGHT,
+                           pos, pixs2, scene);
+    }
 
     fish->setSpeed(Config::FISH_SPEED[name]);
     fish->setDirection(RandomMaker::creatRandom(-314, 314) / 100.0);
@@ -276,9 +309,18 @@ AbstractMoney *Factory::createMoney(const QString &name,
                              Config::MONEY_HEIGHT,
                              pos, pixs2, scene);
     }
+    else if (name == "insect"){
+        money = new Insect(Config::MONEY_WIDTH,
+                           Config::MONEY_HEIGHT,
+                           pos, pixs2, scene);
+    }
 
     money->setSpeed(Config::MONEY_SINK_SPEED);
-    money->setDirection(Config::PI / 2);
+    if (name != "insect"){
+        money->setDirection(Config::PI / 2);
+    } else {
+        money->setDirection(Config::PI * 3 / 2);
+    }
     money->setPaintWidth(Config::MONEY_PAINT_WIDTH[name]);
     money->setPaintHeight(Config::MONEY_PAINT_HEIGHT[name]);
 

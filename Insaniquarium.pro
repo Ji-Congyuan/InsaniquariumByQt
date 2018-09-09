@@ -39,7 +39,9 @@ HEADERS += \
     clyde.h \
     prego.h \
     niko.h \
-    meryl.h
+    meryl.h \
+    insect.h \
+    grubber.h
 
 SOURCES += \
     config.cpp \
@@ -81,7 +83,9 @@ SOURCES += \
     clyde.cpp \
     prego.cpp \
     niko.cpp \
-    meryl.cpp
+    meryl.cpp \
+    insect.cpp \
+    grubber.cpp
 
 RESOURCES += \
     images.qrc

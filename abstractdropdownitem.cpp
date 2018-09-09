@@ -34,6 +34,9 @@ void AbstractDropdownItem::move()
         m_timer->start(500);
         setSpeed(0);
     }
+    else if (checkPos() == UPEDGE){
+        vanish();
+    }
 }
 
 void AbstractDropdownItem::doCollide()

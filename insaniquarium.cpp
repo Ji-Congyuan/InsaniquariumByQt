@@ -144,6 +144,7 @@ void Insaniquarium::init()
     // init buttons
     addBtn("smallGuppyBtn");
     addBtn("middleBreederBtn");
+    addBtn("grubberBtn");
     addBtn("carnivoreBtn");
     addBtn("ulturavoreBtn");
     addBtn("moreFoodBtn");
@@ -442,6 +443,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
     }
     else if (btnName == "smallGuppyBtn"
              || btnName == "middleBreederBtn"
+             || btnName == "grubberBtn"
              || btnName == "carnivoreBtn"
              || btnName == "ulturavoreBtn"){
         QString name = btnName.mid(0, btnName.size() - 3);
@@ -480,7 +482,8 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
              || "vertBtn"
              || "clydeBtn"
              || "pregoBtn"
-             || "nikoBtn"){
+             || "nikoBtn"
+             || "merylBtn"){
         if (m_chosenPets.size() < 3){
             addTick(btnName);
             QString pet = btnName.mid(0, btnName.size() - 3);

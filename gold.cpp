@@ -7,7 +7,6 @@ Gold::Gold(qreal w, qreal h, const QPointF &pos,
       m_name("gold"),
       m_value(Config::MONEY_VALUE["gold"])
 {
-
 }
 
 const QString &Gold::name() const

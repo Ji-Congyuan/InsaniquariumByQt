@@ -12,6 +12,7 @@
 #include "ulturavore.h"
 #include "middlebreeder.h"
 #include "bigbreeder.h"
+#include "grubber.h"
 
 #include "food.h"
 
@@ -19,6 +20,7 @@
 #include "gold.h"
 #include "diamond.h"
 #include "treasure.h"
+#include "insect.h"
 
 #include "stinky.h"
 #include "vert.h"

@@ -98,6 +98,10 @@ public:
     static const int DIE_LEFT_STATE_INDEX;
     static const int DIE_RIGHT_STATE_INDEX;
 
+    static const int GRUBBER_MOVE_STATE_INDEX;
+    static const int GRUBBER_HUNGRY_STATE_INDEX;
+    static const int GRUBBER_DIE_STATE_INDEX;
+
     static const int ALIEN_SWIM_LEFT_STATE_INDEX;
     static const int ALIEN_SWIM_RIGHT_STATE_INDEX;
     static const int ALIEN_TURN_LEFT_STATE_INDEX;
@@ -138,6 +142,11 @@ public:
 
     // damage
     static const int ATTACK_ALIEN_DAMAGE;
+
+    // grubber
+    static const int GRUBBER_JUMP_MAX_HEIGHT;
+    static const int GRUBBER_JUMP_SPEED;
+    static const int GRUBBER_POS_Y;
 
     // steps
     static const int HUNGRY_STEP;
