@@ -52,7 +52,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
                     Qt::KeepAspectRatioByExpanding);
 
     // init sounds effect
-    initSound();
+    initSounds();
 
     // set random seed
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
@@ -158,11 +158,10 @@ void Insaniquarium::init()
     addBtn("foodUpgradeBtn");
     addBtn("eggBtn");
 
-
     m_timer->start(20);
 }
 
-void Insaniquarium::initSound()
+void Insaniquarium::initSounds()
 {
     m_nextLevelSound = new QSoundEffect;
     m_nextLevelSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["nextLevelSound"]));
@@ -171,10 +170,6 @@ void Insaniquarium::initSound()
     m_buySound = new QSoundEffect;
     m_buySound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["buySound"]));
     m_buySound->setLoopCount(1);
-
-    m_dropFoodSound = new QSoundEffect;
-    m_dropFoodSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["dropFoodSound"]));
-    m_dropFoodSound->setLoopCount(1);
 
     m_hitAlienSound = new QSoundEffect;
     m_hitAlienSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["hitAlienSound"]));
@@ -200,7 +195,6 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
                             && m_money >= 5){
                         slt_moneyPicked(-5);
                         slt_yieldFood(event->pos());
-                        m_dropFoodSound->play();
                     }
                 }
             } else { // aliens attack

@@ -57,7 +57,7 @@ const int Config::NUMBERS_HEIGHT       = 13;
 
 // init const
 const int Config::INIT_FOODS_RESTRICT = 1;   // defualt 1
-const int Config::INIT_FISH_COUNT     = 1;   // default 2
+const int Config::INIT_FISH_COUNT     = 2;   // default 2
 const int Config::INIT_MONEY          = 99999;   // default 0
 
 // foods size
@@ -141,7 +141,7 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 399; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 599; // default maybe 2000
 const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
@@ -765,11 +765,9 @@ const QHash<QString, QString> Config::SOUNDS_PATH = {
     { "nextLevelSound", ":/sounds/sounds/applause.wav"  },
     { "buySound",       ":/sounds/sounds/buy.wav"       },
     { "kingGuppySound", ":/sounds/sounds/crowned1.wav"  },
-    { "dropFoodSound",  ":/sounds/sounds/dropfood.wav"  },
     { "hitAlienSound",  ":/sounds/sounds/hit.wav"       },
     { "nikoCloseSound", ":/sounds/sounds/nikoclose.wav" },
     { "nikoOpenSound",  ":/sounds/sounds/nikoopen.wav"  },
-    { "slurpSound",     ":/sounds/sounds/slurp.wav"     },
     { "splashSound",    ":/sounds/sounds/SPLASH.wav"    },
     { "warningSound",   ":/sounds/sounds/warning.wav"   }
 };

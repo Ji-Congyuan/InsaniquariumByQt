@@ -30,7 +30,7 @@ public:
     void showNextLevelMenu();
     void choosePets();
     void init();
-    void initSound();
+    void initSounds();
     void mousePressEvent(QMouseEvent *event);
     // void paintEvent(QPaintEvent *event);
     void addFood(const QPointF &pos);
@@ -108,7 +108,6 @@ private:
 
     QSoundEffect * m_nextLevelSound;
     QSoundEffect * m_buySound;
-    QSoundEffect * m_dropFoodSound;
     QSoundEffect * m_hitAlienSound;
     QSoundEffect * m_splashSound;
     QSoundEffect * m_warningSound;

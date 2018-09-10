@@ -11,10 +11,6 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
     m_timer->setSingleShot(true);
     connect(m_timer, SIGNAL(timeout()),
             this, SIGNAL(sgn_die()));
-
-    m_slurpSound = new QSoundEffect;
-    m_slurpSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["slurpSound"]));
-    m_slurpSound->setLoopCount(1);
 }
 
 void AbstractFish::advance(int)
@@ -119,7 +115,6 @@ void AbstractFish::eat(const int exp)
     m_hungry = Config::FISH_MAX_HUNGRY[name()];
     m_hasTarget = false;
     m_target = nullptr;
-    m_slurpSound->play();
 }
 
 void AbstractFish::gettingHungry()

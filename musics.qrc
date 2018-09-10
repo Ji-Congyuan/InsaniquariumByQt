@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/musics">
+        <file>musics/Insaniq2.mp3</file>
+    </qresource>
+</RCC>
