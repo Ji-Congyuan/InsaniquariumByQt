@@ -59,7 +59,7 @@ void Psychosquid::advance(int)
             && !m_recovering){
         m_secRec = true;
         m_recovering = true;
-        m_timer->start(5000);
+        m_timer->start(2000);
         m_hasTarget = false;
         m_target = nullptr;
     }

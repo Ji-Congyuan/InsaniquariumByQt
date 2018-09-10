@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>sounds/applause.wav</file>
+        <file>sounds/buy.wav</file>
+        <file>sounds/crowned1.wav</file>
+        <file>sounds/dropfood.wav</file>
+        <file>sounds/hit.wav</file>
+        <file>sounds/nikoclose.wav</file>
+        <file>sounds/nikoopen.wav</file>
+        <file>sounds/slurp.wav</file>
+        <file>sounds/SPLASH.wav</file>
+        <file>sounds/warning.wav</file>
+    </qresource>
+</RCC>

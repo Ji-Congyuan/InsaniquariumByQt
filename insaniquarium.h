@@ -16,6 +16,7 @@
 #include <QTimer>
 #include <QSet>
 #include <QDesktopWidget>
+#include <QSoundEffect>
 
 class Insaniquarium : public QGraphicsView
 {
@@ -29,6 +30,7 @@ public:
     void showNextLevelMenu();
     void choosePets();
     void init();
+    void initSound();
     void mousePressEvent(QMouseEvent *event);
     // void paintEvent(QPaintEvent *event);
     void addFood(const QPointF &pos);
@@ -39,7 +41,6 @@ public:
     void addBtn(const QString & name);
     void addTick(const QString & btn);
     void addDisplayer();
-    void alienAttack();
     void gameOver();
 
 public slots:
@@ -54,6 +55,7 @@ public slots:
     void slt_yieldFish(const QString &, const QPointF &);
     void slt_yieldMoney(const QString &, const QPointF &);
     void slt_yieldFood(const QPointF &);
+    void slt_alienAttack();
     // alien attack ends
     void slt_attatckEnd();
     void slt_fishDie();
@@ -88,6 +90,7 @@ private:
     int m_gameLevel;
 
     QTimer * m_timer;
+    QTimer * m_alienAttackTimer;
 
     bool m_alienAttack;
     QString m_alienName;
@@ -103,8 +106,12 @@ private:
     QSet<QString> m_chosenPets;
     QStringList m_availPets;
 
-    // MoneyManager *m_manager;
-
+    QSoundEffect * m_nextLevelSound;
+    QSoundEffect * m_buySound;
+    QSoundEffect * m_dropFoodSound;
+    QSoundEffect * m_hitAlienSound;
+    QSoundEffect * m_splashSound;
+    QSoundEffect * m_warningSound;
 };
 
 #endif // INSANIQUARIUM_H

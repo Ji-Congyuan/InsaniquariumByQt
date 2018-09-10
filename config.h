@@ -221,6 +221,9 @@ public:
     static const QStringList GUPPY_TYPE;
     static const QStringList EDIBLE_TYPE;
 
+    // sounds path
+    static const QHash<QString, QString> SOUNDS_PATH;
+
 private:
     explicit Config() {}
 };

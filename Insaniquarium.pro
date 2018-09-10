@@ -1,4 +1,4 @@
-QT += widgets
+QT += widgets core gui multimedia
 
 HEADERS += \
     config.h \
@@ -96,4 +96,5 @@ SOURCES += \
     psychosquid.cpp
 
 RESOURCES += \
-    images.qrc
+    images.qrc \
+    sounds.qrc

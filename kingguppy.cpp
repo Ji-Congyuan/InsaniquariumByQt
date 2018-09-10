@@ -1,4 +1,5 @@
 #include "kingguppy.h"
+#include <QSoundEffect>
 
 KingGuppy::KingGuppy(qreal w, qreal h, const QPointF &pos,
                      const QPixmaps2 &pixs2, QGraphicsScene *scene,
@@ -7,6 +8,10 @@ KingGuppy::KingGuppy(qreal w, qreal h, const QPointF &pos,
       m_name("kingGuppy")
 {
     m_hungry = Config::FISH_INIT_HUNGRY[m_name];
+    QSoundEffect *bornSound = new QSoundEffect;
+    bornSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["kingGuppySound"]));
+    bornSound->setLoopCount(1);
+    bornSound->play();
 }
 
 const QString &KingGuppy::name() const

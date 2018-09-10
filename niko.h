@@ -2,6 +2,7 @@
 #define NIKO_H
 
 #include "abstractpet.h"
+#include <QSoundEffect>
 
 class Niko : public AbstractPet
 {
@@ -24,6 +25,8 @@ protected:
     bool m_mature;
     bool m_harvested;
     bool m_gainable;
+    QSoundEffect * m_openSound;
+    QSoundEffect * m_closeSound;
 };
 
 #endif // NIKO_H

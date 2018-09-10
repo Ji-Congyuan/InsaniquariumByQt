@@ -2,6 +2,7 @@
 #define ABSTRACTFISH_H
 
 #include "abstractcreature.h"
+#include <QSoundEffect>
 
 class AbstractFish : public AbstractCreature
 {
@@ -35,6 +36,7 @@ protected:
     int m_exp;
     QTimer * m_timer;
 
+    QSoundEffect * m_slurpSound;
 };
 
 #endif // ABSTRACTFISH_H

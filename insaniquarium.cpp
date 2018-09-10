@@ -32,6 +32,9 @@ Insaniquarium::Insaniquarium(QWidget *parent)
     m_timer = new QTimer;
     connect(m_timer, SIGNAL(timeout()),
             this, SLOT(slt_update()));
+    m_alienAttackTimer = new QTimer;
+    connect(m_alienAttackTimer, SIGNAL(timeout()),
+            this, SLOT(slt_alienAttack()));
 
     // cache
     setCacheMode(QGraphicsView::CacheBackground);
@@ -48,11 +51,13 @@ Insaniquarium::Insaniquarium(QWidget *parent)
             .scaled(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT,
                     Qt::KeepAspectRatioByExpanding);
 
+    // init sounds effect
+    initSound();
+
     // set random seed
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 
     showStartGameMenu();
-
 }
 
 void Insaniquarium::showStartGameMenu()
@@ -76,6 +81,7 @@ void Insaniquarium::showRestartMenu()
 
 void Insaniquarium::showNextLevelMenu()
 {
+    m_nextLevelSound->play();
     m_timer->stop();
     m_scene->clear();
     m_gaming = false;
@@ -156,6 +162,33 @@ void Insaniquarium::init()
     m_timer->start(20);
 }
 
+void Insaniquarium::initSound()
+{
+    m_nextLevelSound = new QSoundEffect;
+    m_nextLevelSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["nextLevelSound"]));
+    m_nextLevelSound->setLoopCount(1);
+
+    m_buySound = new QSoundEffect;
+    m_buySound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["buySound"]));
+    m_buySound->setLoopCount(1);
+
+    m_dropFoodSound = new QSoundEffect;
+    m_dropFoodSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["dropFoodSound"]));
+    m_dropFoodSound->setLoopCount(1);
+
+    m_hitAlienSound = new QSoundEffect;
+    m_hitAlienSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["hitAlienSound"]));
+    m_hitAlienSound->setLoopCount(1);
+
+    m_splashSound = new QSoundEffect;
+    m_splashSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["splashSound"]));
+    m_splashSound->setLoopCount(1);
+
+    m_warningSound = new QSoundEffect;
+    m_warningSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["warningSound"]));
+    m_warningSound->setLoopCount(1);
+}
+
 void Insaniquarium::mousePressEvent(QMouseEvent *event)
 {
     if (m_gaming){
@@ -167,10 +200,12 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
                             && m_money >= 5){
                         slt_moneyPicked(-5);
                         slt_yieldFood(event->pos());
+                        m_dropFoodSound->play();
                     }
                 }
             } else { // aliens attack
                 emit sgn_attackAlien(event->pos());
+                m_hitAlienSound->play();
             }
         } else {
             event->ignore();
@@ -292,7 +327,7 @@ void Insaniquarium::addDisplayer()
 
 }
 
-void Insaniquarium::alienAttack()
+void Insaniquarium::slt_alienAttack()
 {
     int alienIndex = RandomMaker::creatRandom(Config::ALIENS_NAME.size());
     m_alienName = Config::ALIENS_NAME[alienIndex];
@@ -351,7 +386,9 @@ void Insaniquarium::slt_update()
         }
     }
     if (m_step % Config::ALIENS_ATTACK_BASE_STEP == 0){
-        alienAttack();
+        m_warningSound->play();
+        m_alienAttackTimer->setSingleShot(true);
+        m_alienAttackTimer->start(2000);
     }
 }
 
@@ -455,12 +492,14 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
         slt_yieldFish(name, QPointF(x, y));
         m_money -= Config::BTNS_COST[btnName];
         emit sgn_moneyChanged(m_money);
+        m_splashSound->play();
     }
     else if (btnName == "foodUpgradeBtn"){
         if (m_foodLevel < m_maxFoodLevel){
             m_foodLevel++;
             m_money -= Config::BTNS_COST[btnName];
             emit sgn_moneyChanged(m_money);
+            m_buySound->play();
         }
     }
     else if (btnName == "moreFoodBtn"){
@@ -468,6 +507,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
             m_maxFoodCount++;
             m_money -= Config::BTNS_COST[btnName];
             emit sgn_moneyChanged(m_money);
+            m_buySound->play();
         }
     }
     else if (btnName == "eggBtn") {
@@ -475,6 +515,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
             m_eggLevel++;
             m_money -= Config::BTNS_COST[btnName];
             emit sgn_moneyChanged(m_money);
+            m_buySound->play();
         } else {
             m_gameLevel++;
             showNextLevelMenu();

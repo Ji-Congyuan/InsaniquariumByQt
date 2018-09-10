@@ -18,7 +18,7 @@ public:
     void advance(int);
 
 protected:
-    const QString m_name;
+    const QString m_name; 
 };
 
 #endif // KINGGUPPY_H

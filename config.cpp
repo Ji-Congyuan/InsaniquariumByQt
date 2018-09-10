@@ -332,7 +332,7 @@ const QHash<QString, int> Config::ALIENS_MAX_HEALTH = {
     { "deepBlue",    50 },
     { "gus",         50 },
     { "balrog",      50 },
-    { "psychosquid", 99 }
+    { "psychosquid", 60 }
 };
 
 const QHash<QString, QString> Config::ALIENS_PATH = {
@@ -758,4 +758,18 @@ const QHash<QString, QStringList> Config::COLLIDABLE_ITEMS = {
     { "prego",         QStringList("food")       },
     { "niko",          QStringList("")           },
     { "meryl",         QStringList("")           }
+};
+
+// sounds path
+const QHash<QString, QString> Config::SOUNDS_PATH = {
+    { "nextLevelSound", ":/sounds/sounds/applause.wav"  },
+    { "buySound",       ":/sounds/sounds/buy.wav"       },
+    { "kingGuppySound", ":/sounds/sounds/crowned1.wav"  },
+    { "dropFoodSound",  ":/sounds/sounds/dropfood.wav"  },
+    { "hitAlienSound",  ":/sounds/sounds/hit.wav"       },
+    { "nikoCloseSound", ":/sounds/sounds/nikoclose.wav" },
+    { "nikoOpenSound",  ":/sounds/sounds/nikoopen.wav"  },
+    { "slurpSound",     ":/sounds/sounds/slurp.wav"     },
+    { "splashSound",    ":/sounds/sounds/SPLASH.wav"    },
+    { "warningSound",   ":/sounds/sounds/warning.wav"   }
 };

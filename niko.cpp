@@ -7,6 +7,13 @@ Niko::Niko(qreal w, qreal h, const QPointF &pos,
       m_name("niko"), m_mature(false), m_harvested(false),
       m_gainable(false)
 {
+    m_openSound = new QSoundEffect;
+    m_openSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["nikoOpenSound"]));
+    m_openSound->setLoopCount(1);
+
+    m_closeSound = new QSoundEffect;
+    m_closeSound->setSource(QUrl::fromLocalFile(Config::SOUNDS_PATH["nikoCloseSound"]));
+    m_closeSound->setLoopCount(1);
 }
 
 const QString &Niko::name() const
@@ -31,6 +38,7 @@ void Niko::advance(int)
         m_mature = true;
         m_pixStateIndex = 0;
         m_pixIndex = 0;
+        m_openSound->play();
     }
     if (m_step % Config::UPDATE_PAINT_STEP == 0){
         if (m_mature || m_harvested){
@@ -70,5 +78,6 @@ void Niko::mousePressEvent(QGraphicsSceneMouseEvent *)
         m_pixIndex = 0;
         m_step = 0;
         emit sgn_specialSkill("niko", scenePos());
+        m_closeSound->play();
     }
 }

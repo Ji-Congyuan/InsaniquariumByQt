@@ -1,8 +1,6 @@
 #include "insaniquarium.h"
 #include "loading.h"
 #include <QApplication>
-#include <QMovie>
-#include <QLabel>
 #include <QDebug>
 
 int main(int argc, char * argv[]){
