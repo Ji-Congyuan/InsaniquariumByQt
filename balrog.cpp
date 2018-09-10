@@ -14,25 +14,6 @@ const QString &Balrog::name() const
     return m_name;
 }
 
-/*
-void Balrog::doCollide()
-{
-    foreach (QGraphicsItem * t, collidingItems()){
-        AbstractGameItem * gameItem
-                = dynamic_cast<AbstractMovableItem *> (t);
-        if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(gameItem->name())){
-            if (!gameItem->isVisible()){
-                continue;
-            }
-            AbstractFish * fish = dynamic_cast<AbstractFish *> (gameItem);
-            eat(0);
-            fish->vanish();
-        }
-    }
-}
-*/
-
 void Balrog::eat(const int)
 {
     // do nothing

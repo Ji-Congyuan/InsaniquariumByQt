@@ -1,4 +1,5 @@
 #include "factory.h"
+#include <QImage>
 #include <QDebug>
 
 AbstractAlien *Factory::createAlien(const QString &name,

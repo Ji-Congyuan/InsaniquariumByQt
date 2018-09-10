@@ -12,7 +12,6 @@ public:
            QGraphicsItem *parent = nullptr);
     ~Balrog(){}
     const QString & name() const;
-    // void doCollide();
     void eat(const int);
 
 protected:

@@ -17,7 +17,10 @@ public:
     void move();
     void eat(const int exp);
     virtual void upgrade() = 0;
+
+    // constantly getting hungry
     virtual void gettingHungry();
+
     void vanish();
 
     bool isHungry();
@@ -33,6 +36,7 @@ protected:
     // hungry: 0 will die and 100 is full
     int m_hungry;
 
+    // related to upgrade
     int m_exp;
     QTimer * m_timer;
 };

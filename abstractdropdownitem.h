@@ -12,6 +12,7 @@ public:
                          const QPixmaps2 &pixs2, QGraphicsScene *scene,
                          QGraphicsItem *parent = nullptr);
     ~AbstractDropdownItem(){}
+
     void advance(int);
     void move();
     void doCollide();

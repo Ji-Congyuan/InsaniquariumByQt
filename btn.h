@@ -14,24 +14,32 @@ public:
         QGraphicsScene *scene,
         QGraphicsObject *parent = nullptr);
     ~Btn() {}
+
+    // return the collide rect of the item
     QRectF boundingRect() const;
+
+    // return the paint path of the pixmap
     QPainterPath shape() const;
+
     void paint(QPainter *painter,
                const QStyleOptionGraphicsItem *option,
                QWidget *widget);
     const QString & name() const;
 
+    // control the pixmaps shown
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
     void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
     void hoverLeaveEvent(QGraphicsSceneHoverEvent *event);
 
 signals:
+    // emit when button is released
     void sgn_btnReleased(const QString &);
 
 protected:
     // pixs list of the item
     QPixmaps2 m_pixs2;
+
     const QString m_name;
     int m_pixStateIndex;
 };

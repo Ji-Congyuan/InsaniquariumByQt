@@ -24,7 +24,8 @@ class Insaniquarium : public QGraphicsView
 
 public:
     Insaniquarium(QWidget *parent = nullptr);
-    // show start menu
+    ~Insaniquarium(){}
+
     void showStartGameMenu();
     void showRestartMenu();
     void showNextLevelMenu();
@@ -32,7 +33,7 @@ public:
     void init();
     void initSounds();
     void mousePressEvent(QMouseEvent *event);
-    // void paintEvent(QPaintEvent *event);
+
     void addFood(const QPointF &pos);
     void addFish(const QString &name, const QPointF &pos);
     void addFish(const QString & name, const QPointF &pos, const qreal dir);
@@ -46,8 +47,10 @@ public:
 public slots:
     void slt_start();
     void slt_choosePets();
+
     // update scene
     void slt_update();
+
     void slt_foodReduce();
     void slt_fishUpgrade(const QString &, const QPointF &, const qreal);
     void slt_moneyPicked(int);
@@ -55,18 +58,31 @@ public slots:
     void slt_yieldFish(const QString &, const QPointF &);
     void slt_yieldMoney(const QString &, const QPointF &);
     void slt_yieldFood(const QPointF &);
+
+    // alien attack
     void slt_alienAttack();
-    // alien attack ends
     void slt_attatckEnd();
+
     void slt_fishDie();
+
     void slt_petSkill(const QString &, const QPointF &);
+
     void slt_btnClicked(const QString &);
 
 signals:
+    // emit when attack the alien
     void sgn_attackAlien(const QPointF &);
+
+    // emit when alien comes
     void sgn_alienComes(const QString &);
+
+    // emit when alien dies
     void sgn_alienDies();
+
+    // emit when the count of money changes
     void sgn_moneyChanged(const int);
+
+    // emit when something yield money
     void sgn_yieldMoney();
 
 private:
@@ -74,8 +90,6 @@ private:
     // bg images
     QPixmap m_bgGamePix;
     QPixmap m_bgMenuPix;
-
-    // QPixmap m_startGameBtnPix;
 
     int m_maxFoodCount;
     int m_currentFoodCount;

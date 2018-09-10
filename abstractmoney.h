@@ -12,7 +12,10 @@ public:
           QGraphicsItem *parent = nullptr);
     ~AbstractMoney(){}
 
+    // return the value of the money
     virtual const int value() const = 0;
+
+    // pick money
     virtual void mousePressEvent(QGraphicsSceneMouseEvent * event);
 
 signals:

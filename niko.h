@@ -18,6 +18,8 @@ public:
     void advance(int);
     void findTarget();
     void yield();
+
+    // get the pearl when pressed
     void mousePressEvent(QGraphicsSceneMouseEvent *);
 
 protected:

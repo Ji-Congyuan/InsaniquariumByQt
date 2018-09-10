@@ -18,7 +18,6 @@
 #include <QGraphicsSceneHoverEvent>
 #include <QTimer>
 
-
 class AbstractGameItem : public QGraphicsObject
 {
     Q_OBJECT
@@ -28,14 +27,19 @@ public:
                      QGraphicsItem *parent = nullptr);
     virtual ~AbstractGameItem(){}
     virtual const QString & name() const = 0;
+
+    // the size of pixmap
     qreal width() const;
     qreal height() const;
 
 protected:
+    // related to the animation control
     uint m_step;
+
     // size of the item
     qreal m_w;
     qreal m_h;
+
     // index of the pixs
     int m_pixIndex;
 };

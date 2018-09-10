@@ -37,8 +37,6 @@
 
 #include "moneydisplayer.h"
 
-#include <QImage>
-
 class Factory
 {
 public:
@@ -60,10 +58,7 @@ public:
                                    QGraphicsScene *scene);
     static Btn * creatBtn(const QString & name,
                           QGraphicsScene *scene);
-    /*
-    static MoneyDisplayer * createDisplayer(const int digital,
-                                            QGraphicsScene *scene);
-    */
+
 private:
     explicit Factory(){}
 };

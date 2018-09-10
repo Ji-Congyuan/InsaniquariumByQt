@@ -12,19 +12,41 @@ public:
                         const QPixmaps2 &pixs2, QGraphicsScene *scene,
                         QGraphicsItem *parent = nullptr);
     ~AbstractMovableItem() {}
+
+    // deal with collide event,
+    // include eat food, pick money, etc
     virtual void doCollide() = 0;
+
+    // return collision size of the item
     QRectF boundingRect() const;
+
+    // return the paint path of the item
     QPainterPath shape() const;
+
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
                QWidget *widget);
+
     // check if item in the view
     EDGE checkPos();
+
+    // control the animation
     void advance(int);
+
+    // towards the target
     virtual void aimAt(AbstractMovableItem *target);
+
     virtual void move();
+
+    // change m_left, m_right corresponding to direction
     virtual void updateDirection();
+
+    // vanish after eaten / die / drop out of screen
     virtual void vanish();
+
+    // return the centre pos of the pixmap
     QPointF centrePos();
+
+    // keep the item in the screen
     virtual void keepInScene();
 
     qreal speed() const;
@@ -47,13 +69,16 @@ public:
 
 
 signals:
+    // emit when deleted
     void sgn_deleting();
 
 public slots:
+    // the target deleted
     void slt_lostAim();
 
 protected:
     qreal m_speed;
+
     // rad
     qreal m_direction;
 
@@ -62,7 +87,6 @@ protected:
 
     bool m_hasTarget;
     AbstractMovableItem * m_target;
-
 
     // control turning
     bool m_left;

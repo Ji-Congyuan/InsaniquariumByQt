@@ -18,6 +18,7 @@ public:
     void aimAt(QGraphicsObject *target);
 
 signals:
+    // emit when food is eaten or drop out of screen
     void sgn_foodWasted();
 
 protected:

@@ -15,13 +15,19 @@ public:
     void advance(int);
     void doCollide();
     virtual void eat(const int exp) = 0;
+
+    // health decrease when attacked
     void injured(const int deltaHealth);
+
     void move();
     void findFood();
     void die();
+
+    // yield diamond when die
     void yield();
 
 public slots:
+    // being attacked when press the mouse
     virtual void slt_attacked(const QPointF &);
 
 signals:

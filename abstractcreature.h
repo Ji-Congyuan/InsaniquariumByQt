@@ -12,13 +12,22 @@ public:
                      QGraphicsItem *parent = nullptr);
     ~AbstractCreature() {}
     void advance(int);
+
+    // get exp to upgrade, being full
     virtual void eat(const int exp) = 0;
+
+    // hungry to die
     virtual void die();
+
     virtual void findFood() = 0;
     void move();
     void keepInScene();
+
+    // yield money, small fish or other things
     virtual void yield() = 0;
+
     void aimAt(AbstractMovableItem *target);
+
     bool isAlive();
     bool willDie();
 
