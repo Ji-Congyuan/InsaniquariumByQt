@@ -60,14 +60,14 @@ void AbstractAlien::advance(int)
 void AbstractAlien::doCollide()
 {
     foreach (QGraphicsItem * t, collidingItems()){
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
-            if (!movableItem->isVisible()){
+                .contains(gameItem->name())){
+            if (!gameItem->isVisible()){
                 continue;
             }
-            AbstractFish * fish = dynamic_cast<AbstractFish *> (movableItem);
+            AbstractFish * fish = dynamic_cast<AbstractFish *> (gameItem);
             eat(0);
             fish->vanish();
         }

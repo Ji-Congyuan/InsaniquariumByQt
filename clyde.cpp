@@ -34,12 +34,12 @@ void Clyde::move()
 void Clyde::doCollide()
 {
     foreach (QGraphicsItem * t, collidingItems()) {
-        AbstractMovableItem * movableItem
-                = dynamic_cast<AbstractMovableItem *> (t);
+        AbstractGameItem * gameItem
+                = dynamic_cast<AbstractGameItem *> (t);
         if (Config::COLLIDABLE_ITEMS[name()]
-                .contains(movableItem->name())){
+                .contains(gameItem->name())){
             AbstractMoney * money =
-                    dynamic_cast<AbstractMoney *> (movableItem);
+                    dynamic_cast<AbstractMoney *> (gameItem);
             connect(this, SIGNAL(sgn_pickMoney(int)),
                     money, SIGNAL(sgn_moneyPicked(int)));
             emit sgn_pickMoney(money->value());
