@@ -21,6 +21,9 @@ void BigGuppy::doCollide()
 
 void BigGuppy::upgrade()
 {
+    if (RandomMaker::creatRandom(10) < 7){
+        return;
+    }
     emit sgn_fishUpgrade("kingGuppy", scenePos(), direction());
     vanish();
 }

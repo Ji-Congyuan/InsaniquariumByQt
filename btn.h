@@ -36,6 +36,10 @@ signals:
     // emit when button is released
     void sgn_btnReleased(const QString &);
 
+public slots:
+    // interact with main ctrler
+    void slt_clickReceived(const QString &);
+
 protected:
     // pixs list of the item
     QPixmaps2 m_pixs2;

@@ -108,7 +108,6 @@ AbstractAlien *Factory::createAlien(const QString &name,
         alien = new Psychosquid(Config::ALIENS_WIDTH,
                                 Config::ALIENS_HEIGHT,
                                 pos, pixs2, scene);
-        qDebug() << "pixs2.size" << pixs2.size();
     }
 
     alien->setSpeed(Config::ALIENS_SPEED[name]);

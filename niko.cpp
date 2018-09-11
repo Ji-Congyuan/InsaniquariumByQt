@@ -16,6 +16,14 @@ Niko::Niko(qreal w, qreal h, const QPointF &pos,
     m_closeSound->setLoopCount(1);
 }
 
+Niko::~Niko()
+{
+    delete m_openSound;
+    m_openSound = nullptr;
+    delete m_closeSound;
+    m_closeSound = nullptr;
+}
+
 const QString &Niko::name() const
 {
     return m_name;

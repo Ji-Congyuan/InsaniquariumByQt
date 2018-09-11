@@ -12,7 +12,7 @@ public:
                  const QPixmaps2 &pixs2, QGraphicsScene *scene,
                  QGraphicsItem *parent = nullptr);
 
-    ~AbstractFish(){}
+    ~AbstractFish();
     void advance(int);
     void move();
     void eat(const int exp);

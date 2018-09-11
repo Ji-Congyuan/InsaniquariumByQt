@@ -11,7 +11,7 @@ public:
     Niko(qreal w, qreal h, const QPointF &pos,
          const QPixmaps2 &pixs2, QGraphicsScene *scene,
          QGraphicsItem *parent = nullptr);
-    ~Niko(){}
+    ~Niko();
     const QString & name() const;
     void move();
     void doCollide();

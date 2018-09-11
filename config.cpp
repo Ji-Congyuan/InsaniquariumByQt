@@ -58,7 +58,7 @@ const int Config::NUMBERS_HEIGHT       = 13;
 // init const
 const int Config::INIT_FOODS_RESTRICT = 1;   // defualt 1
 const int Config::INIT_FISH_COUNT     = 2;   // default 2
-const int Config::INIT_MONEY          = 99999;   // default 0
+const int Config::INIT_MONEY          = 200;   // default 0
 
 // foods size
 const int Config::FOODS_WIDTH  = 40;
@@ -141,7 +141,7 @@ const int Config::UPDATE_PAINT_STEP       = 5;
 const int Config::CHANGE_DIRECTION_STEP   = 5;
 const int Config::CHASE_STEP              = 2;
 const int Config::FIND_FOOD_STEP          = 5;
-const int Config::ALIENS_ATTACK_BASE_STEP = 599; // default maybe 2000
+const int Config::ALIENS_ATTACK_BASE_STEP = 2000; // default maybe 2000
 const int Config::FIND_TARGET_STEP        = 3;
 
 // hash
@@ -153,7 +153,7 @@ const QHash<QString, int> Config::FISH_YIELD_STEP = {
     { "carnivore",     1000 },
     { "ulturavore",    1000 },
     { "middleBreeder", 1000 },
-    { "bigBreeder",    1000 },
+    { "bigBreeder",    500  },
     { "grubber",       1000 },
     { "gekko",         1000 }
 };

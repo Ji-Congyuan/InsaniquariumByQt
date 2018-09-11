@@ -1,4 +1,5 @@
 #include "btn.h"
+#include <QDebug>
 
 Btn::Btn(const QString &name,
          const QPointF &pos,
@@ -52,6 +53,7 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
     if (event->button() == Qt::LeftButton) {
         event->accept();
         m_pixIndex = Config::PRESSED_BTN_INDEX;
+        /*
         if (name() == "moreFoodBtn"){
             if (m_pixStateIndex < Config::MORE_FOOD_STATE_COUNT - 1){
                 m_pixStateIndex++;
@@ -62,6 +64,7 @@ void Btn::mousePressEvent(QGraphicsSceneMouseEvent *event)
                 m_pixStateIndex++;
             }
         }
+        */
         update();
     } else {
         event->ignore();
@@ -87,5 +90,22 @@ void Btn::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
 {
     event->accept();
     m_pixIndex = Config::DEFAULT_BTN_INDEX;
+    update();
+}
+
+void Btn::slt_clickReceived(const QString & btnName)
+{
+    if (name() == "moreFoodBtn"
+            && btnName == "moreFoodBtn"){
+        if (m_pixStateIndex < Config::MORE_FOOD_STATE_COUNT - 1){
+            m_pixStateIndex++;
+        }
+    }
+    else if (name() == "eggBtn"
+             && btnName == "eggBtn"){
+        if (m_pixStateIndex < Config::EGG_STATE_COUNT - 1){
+            m_pixStateIndex++;
+        }
+    }
     update();
 }

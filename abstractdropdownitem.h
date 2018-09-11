@@ -11,7 +11,7 @@ public:
     AbstractDropdownItem(qreal w, qreal h, const QPointF &pos,
                          const QPixmaps2 &pixs2, QGraphicsScene *scene,
                          QGraphicsItem *parent = nullptr);
-    ~AbstractDropdownItem(){}
+    ~AbstractDropdownItem();
 
     void advance(int);
     void move();

@@ -29,4 +29,6 @@ void Loading::loading()
     label->close();
     delete movie;
     delete label;
+    movie = nullptr;
+    label = nullptr;
 }

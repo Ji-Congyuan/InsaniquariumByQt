@@ -7,6 +7,16 @@ AbstractDropdownItem::AbstractDropdownItem(qreal w, qreal h, const QPointF &pos,
     : AbstractMovableItem(w, h, pos, pixs2, scene, parent), m_isDown(false)
 {
     setDirection(Config::PI / 2);
+    m_timer = new QTimer;
+    m_timer->setSingleShot(true);
+    connect(m_timer, SIGNAL(timeout()),
+            this, SLOT(slt_vanish()));
+}
+
+AbstractDropdownItem::~AbstractDropdownItem()
+{
+    delete m_timer;
+    m_timer = nullptr;
 }
 
 void AbstractDropdownItem::advance(int)
@@ -28,9 +38,7 @@ void AbstractDropdownItem::move()
     AbstractMovableItem::move();
     if (checkPos() == DOWNEDGE && !m_isDown){
         m_isDown = true;
-        m_timer = new QTimer;
-        connect(m_timer, SIGNAL(timeout()),
-                this, SLOT(slt_vanish()));
+
         m_timer->start(500);
         setSpeed(0);
     }

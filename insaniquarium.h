@@ -17,6 +17,7 @@
 #include <QSet>
 #include <QDesktopWidget>
 #include <QSoundEffect>
+#include <QKeyEvent>
 
 class Insaniquarium : public QGraphicsView
 {
@@ -24,7 +25,7 @@ class Insaniquarium : public QGraphicsView
 
 public:
     Insaniquarium(QWidget *parent = nullptr);
-    ~Insaniquarium(){}
+    ~Insaniquarium();
 
     void showStartGameMenu();
     void showRestartMenu();
@@ -33,6 +34,7 @@ public:
     void init();
     void initSounds();
     void mousePressEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent * event);
 
     void addFood(const QPointF &pos);
     void addFish(const QString &name, const QPointF &pos);
@@ -41,6 +43,7 @@ public:
     void addPet(const QString & name, const QPointF &pos);
     void addBtn(const QString & name);
     void addTick(const QString & btn);
+    void addAlien(const QString & name);
     void addDisplayer();
     void gameOver();
 
@@ -85,6 +88,9 @@ signals:
     // emit when something yield money
     void sgn_yieldMoney();
 
+    // emit when interact with btn
+    void sgn_clickReceived(const QString &);
+
 private:
     QGraphicsScene *m_scene;
     // bg images
@@ -107,6 +113,7 @@ private:
     QTimer * m_alienAttackTimer;
 
     bool m_alienAttack;
+    bool m_alienAllowed;
     QString m_alienName;
 
     bool m_feedable;

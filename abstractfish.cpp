@@ -13,6 +13,12 @@ AbstractFish::AbstractFish(qreal w, qreal h, const QPointF &pos,
             this, SIGNAL(sgn_die()));
 }
 
+AbstractFish::~AbstractFish()
+{
+    delete m_timer;
+    m_timer = nullptr;
+}
+
 void AbstractFish::advance(int)
 {
     AbstractCreature::advance(0);

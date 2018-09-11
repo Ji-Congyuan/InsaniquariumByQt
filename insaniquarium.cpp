@@ -10,7 +10,7 @@ Insaniquarium::Insaniquarium(QWidget *parent)
       m_maxFoodLevel(2), m_foodLevel(0),
       m_step(0), m_money(0),
       m_fishCount(0), m_gameLevel(0), m_eggLevel(0),
-      m_feedable(true)
+      m_feedable(true), m_alienAllowed(true)
 {
     // set screen sizes
     setFixedSize(Config::SCREEN_WIDTH, Config::SCREEN_HEIGHT);
@@ -58,6 +58,24 @@ Insaniquarium::Insaniquarium(QWidget *parent)
     qsrand(QTime(0,0,0).secsTo(QTime::currentTime()));
 
     showStartGameMenu();
+}
+
+Insaniquarium::~Insaniquarium()
+{
+    delete m_timer;
+    m_timer = nullptr;
+    delete m_alienAttackTimer;
+    m_alienAttackTimer = nullptr;
+    delete m_nextLevelSound;
+    m_nextLevelSound = nullptr;
+    delete m_buySound;
+    m_buySound = nullptr;
+    delete m_hitAlienSound;
+    m_hitAlienSound = nullptr;
+    delete m_splashSound;
+    m_splashSound = nullptr;
+    delete m_warningSound;
+    m_warningSound = nullptr;
 }
 
 void Insaniquarium::showStartGameMenu()
@@ -122,11 +140,12 @@ void Insaniquarium::init()
     m_alienName = "";
     m_feedable = true;
     m_gaming = true;
+    m_alienAllowed = true;
     m_step = 0;
 
     // init money
+    m_money = 0;
     addDisplayer();
-
     slt_moneyPicked(Config::INIT_MONEY);
 
     // init fish
@@ -211,6 +230,35 @@ void Insaniquarium::mousePressEvent(QMouseEvent *event)
 
 }
 
+void Insaniquarium::keyPressEvent(QKeyEvent *event)
+{
+    if (m_gaming){
+        switch (event->key()) {
+        case Qt::Key_0:
+            slt_moneyPicked(10000);
+            break;
+        case Qt::Key_1:
+            addAlien("deepBlue");
+            break;
+        case Qt::Key_2:
+            addAlien("gus");
+            break;
+        case Qt::Key_3:
+            addAlien("balrog");
+            break;
+        case Qt::Key_4:
+            addAlien("psychosquid");
+            break;
+        case Qt::Key_5:
+            m_alienAllowed = !m_alienAllowed;
+            break;
+        default:
+            break;
+        }
+    }
+    QGraphicsView::keyPressEvent(event);
+}
+
 void Insaniquarium::addFood(const QPointF & pos)
 {
     Food * food = Factory::createFood(Config::FOODS_NAME[m_foodLevel], pos, m_scene);
@@ -288,6 +336,8 @@ void Insaniquarium::addBtn(const QString &name)
 
     connect(btn, SIGNAL(sgn_btnReleased(QString)),
             this, SLOT(slt_btnClicked(QString)));
+    connect(this, SIGNAL(sgn_clickReceived(QString)),
+            btn, SLOT(slt_clickReceived(QString)));
     m_scene->addItem(btn);
 }
 
@@ -299,6 +349,30 @@ void Insaniquarium::addTick(const QString &btn)
                      Qt::KeepAspectRatioByExpanding);
     QGraphicsPixmapItem * pixmapItem = m_scene->addPixmap(pix);
     pixmapItem->setOffset(Config::TICK_POS[btn]);
+}
+
+void Insaniquarium::addAlien(const QString &name)
+{
+    if (m_alienAttack){
+        return;
+    }
+    if (name != "gus"){
+        m_feedable = false;
+    }
+    m_alienAttack = true;
+    QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
+                                                     Config::POOL_UPPER_BOUND,
+                                                     Config::POOL_LOWER_BOUND);
+
+    AbstractAlien * alien = Factory::createAlien(name, initPos, m_scene);
+    connect(alien, SIGNAL(sgn_alienDie()),
+            this, SLOT(slt_attatckEnd()));
+    connect(alien, SIGNAL(sgn_yieldMoney(QString,QPointF)),
+            this, SLOT(slt_yieldMoney(QString,QPointF)));
+    connect(this, SIGNAL(sgn_attackAlien(QPointF)),
+            alien, SLOT(slt_attacked(QPointF)));
+    m_scene->addItem(alien);
+    emit sgn_alienComes(alien->name());
 }
 
 void Insaniquarium::addDisplayer()
@@ -325,23 +399,7 @@ void Insaniquarium::slt_alienAttack()
 {
     int alienIndex = RandomMaker::creatRandom(Config::ALIENS_NAME.size());
     m_alienName = Config::ALIENS_NAME[alienIndex];
-    if (m_alienName != "gus"){
-        m_feedable = false;
-    }
-    m_alienAttack = true;
-    QPointF initPos = RandomMaker::createRandomPoint(0, Config::SCREEN_WIDTH,
-                                                     Config::POOL_UPPER_BOUND,
-                                                     Config::POOL_LOWER_BOUND);
-
-    AbstractAlien * alien = Factory::createAlien(m_alienName, initPos, m_scene);
-    connect(alien, SIGNAL(sgn_alienDie()),
-            this, SLOT(slt_attatckEnd()));
-    connect(alien, SIGNAL(sgn_yieldMoney(QString,QPointF)),
-            this, SLOT(slt_yieldMoney(QString,QPointF)));
-    connect(this, SIGNAL(sgn_attackAlien(QPointF)),
-            alien, SLOT(slt_attacked(QPointF)));
-    m_scene->addItem(alien);
-    emit sgn_alienComes(alien->name());
+    addAlien(m_alienName);
 }
 
 void Insaniquarium::gameOver()
@@ -379,7 +437,9 @@ void Insaniquarium::slt_update()
             }
         }
     }
-    if (m_step % Config::ALIENS_ATTACK_BASE_STEP == 0){
+    if (m_step % Config::ALIENS_ATTACK_BASE_STEP == 0
+            && m_alienAllowed
+            && !m_alienAttack){
         m_warningSound->play();
         m_alienAttackTimer->setSingleShot(true);
         m_alienAttackTimer->start(2000);
@@ -501,6 +561,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
             m_maxFoodCount++;
             m_money -= Config::BTNS_COST[btnName];
             emit sgn_moneyChanged(m_money);
+            emit sgn_clickReceived(btnName);
             m_buySound->play();
         }
     }
@@ -509,6 +570,7 @@ void Insaniquarium::slt_btnClicked(const QString & btnName)
             m_eggLevel++;
             m_money -= Config::BTNS_COST[btnName];
             emit sgn_moneyChanged(m_money);
+            emit sgn_clickReceived(btnName);
             m_buySound->play();
         } else {
             m_gameLevel++;

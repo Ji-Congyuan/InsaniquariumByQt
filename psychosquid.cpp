@@ -15,6 +15,12 @@ Psychosquid::Psychosquid(qreal w, qreal h, const QPointF &pos,
     m_timer->setSingleShot(true);
 }
 
+Psychosquid::~Psychosquid()
+{
+    delete m_timer;
+    m_timer = nullptr;
+}
+
 const QString &Psychosquid::name() const
 {
     return m_name;
@@ -59,7 +65,7 @@ void Psychosquid::advance(int)
             && !m_recovering){
         m_secRec = true;
         m_recovering = true;
-        m_timer->start(2000);
+        m_timer->start(1500);
         m_hasTarget = false;
         m_target = nullptr;
     }
