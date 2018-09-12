@@ -49,7 +49,6 @@ public:
 
 public slots:
     void slt_start();
-    void slt_choosePets();
 
     // update scene
     void slt_update();

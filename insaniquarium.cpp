@@ -414,11 +414,6 @@ void Insaniquarium::slt_start()
     init();
 }
 
-void Insaniquarium::slt_choosePets()
-{
-    // FIXME
-}
-
 void Insaniquarium::slt_update()
 {
     if (!m_gaming){
