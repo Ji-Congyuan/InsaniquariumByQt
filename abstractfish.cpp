@@ -126,6 +126,7 @@ void AbstractFish::eat(const int exp)
 void AbstractFish::gettingHungry()
 {
     m_hungry--;
+    qDebug() << "hungry:" << m_hungry;
     if (m_hungry == 0){
         die();
     }

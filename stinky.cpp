@@ -71,6 +71,7 @@ void Stinky::advance(int)
         }
         m_pixIndex = 9;
         setSpeed(0);
+        update();
     }
 }
 

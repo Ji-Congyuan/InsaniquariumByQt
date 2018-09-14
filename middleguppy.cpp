@@ -7,6 +7,7 @@ MiddleGuppy::MiddleGuppy(qreal w, qreal h, const QPointF &pos,
     : Guppy(w, h, pos, pixs2, scene, parent),
       m_name("middleGuppy")
 {
+    m_hungry = Config::FISH_INIT_HUNGRY[m_name];
 }
 
 const QString &MiddleGuppy::name() const
